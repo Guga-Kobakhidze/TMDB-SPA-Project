@@ -2,7 +2,6 @@ import { Fetching } from "../helpers/functions.js";
 import { MovieKeywords, CategoryKeywords } from "../helpers/Links.js";
 
 const DetailedPage = (cover, title, date, rate, desc, img, id) => {
-  console.log(id);
   const detailedPage = `
     <div class="mainSection">            
         <img class="mainCover" src="https://image.tmdb.org/t/p/w500${cover}" alt="cover" />
@@ -23,17 +22,14 @@ const DetailedPage = (cover, title, date, rate, desc, img, id) => {
     </div>
   `;
 
-  console.log(detailedPage);
-
   return detailedPage;
 };
 
 const renderDetailedPage = () => {
   const app = document.getElementById("app");
 
-  Fetching(CategoryKeywords.movie ,MovieKeywords.popular)
+  Fetching(CategoryKeywords.movie, MovieKeywords.popular)
     .then((data) => {
-      console.log(data);
       const rand = data.results[0];
       const detailedPageContent = DetailedPage(
         rand.backdrop_path,
@@ -48,6 +44,5 @@ const renderDetailedPage = () => {
     })
     .catch((err) => console.error(err));
 };
-
 
 export default renderDetailedPage;

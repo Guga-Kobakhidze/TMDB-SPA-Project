@@ -2,7 +2,6 @@ import { Fetching } from "../helpers/functions.js";
 import { CategoryKeywords, MovieKeywords } from "../helpers/Links.js";
 
 const DetailedPage = (cover, id) => {
-  console.log(id);
   const detailedPage = `
     <div class="heroSection" key="${id}">            
         <img class="heroCover" src="https://image.tmdb.org/t/p/w500${cover}" alt="cover" />
@@ -17,23 +16,17 @@ const DetailedPage = (cover, id) => {
     </div>
   `;
 
-  console.log(detailedPage);
-
   return detailedPage;
 };
 
 const renderDetailedPage = () => {
   const app = document.getElementById("app");
 
-  Fetching(CategoryKeywords.movie, MovieKeywords.upcoming )
+  Fetching(CategoryKeywords.movie, MovieKeywords.upcoming)
     .then((data) => {
-      console.log(data);
       const randomNumber = Math.floor(Math.random() * 20);
       const rand = data.results[randomNumber];
-      const trendingCards = DetailedPage(
-        rand.backdrop_path,
-        rand.id
-      );
+      const trendingCards = DetailedPage(rand.backdrop_path, rand.id);
       app.innerHTML = trendingCards;
     })
     .catch((err) => console.error(err));

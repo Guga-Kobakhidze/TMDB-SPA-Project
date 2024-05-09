@@ -7,7 +7,17 @@ export const modules = {
   },
 };
 
-export const Fetching = async (category, title) =>
-  fetch(`https://api.themoviedb.org/3/${category}/${title}`, modules).then(
-    (response) => response.json()
-  );
+export const Fetching = async (category, title, page) =>
+  fetch(
+    `https://api.themoviedb.org/3/${category}/${title}?${page}`,
+    modules
+  ).then((response) => response.json());
+
+// Scroll to Top
+
+export const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};

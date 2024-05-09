@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body,
 div,
@@ -157,6 +161,6 @@ button {
 }
 
 body {
-  background-color: #0b0b0b;
+  background-color: #fff;
   height: 200vh;
 }

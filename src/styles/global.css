@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body,
 div,
@@ -156,7 +160,7 @@ button {
 }
 
 body {
-  background-color: #0b0b0b;
+  background-color: #fff;
   height: 200vh;
 }
 
@@ -192,6 +196,68 @@ header .header_content ul .search i {
 }
 header .header_content ul li a {
   color: #fff;
+}
+
+.card {
+  width: 182px;
+  height: 373px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 2px 5px 2px rgba(180, 179, 179, 0.511);
+}
+.card img {
+  width: 100%;
+  height: calc(100% - 100px);
+}
+.card .card-content {
+  position: relative;
+  padding: 20px 15px 20px 5px;
+  z-index: 0;
+}
+.card .card-content .precent {
+  position: absolute;
+  top: -20px;
+  left: 12px;
+  color: white;
+}
+.card .card-content .precent .precentColor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.card .card-content .precent h3 {
+  display: flex;
+  font-size: 14px;
+  margin-left: 2px;
+}
+.card .card-content .precent h3 span {
+  font-size: 8px;
+  transform: translate(2px, 0px);
+}
+.card .card-content .precent::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
+  z-index: -1;
+}
+.card .card-content h1 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.card .card-content p {
+  font-size: 14px;
+  color: gray;
 }
 
 .mainSection,
