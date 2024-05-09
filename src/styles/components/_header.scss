@@ -1,0 +1,40 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #03033f;
+  transition: 0.8s;
+
+  .header_content {
+    @include flexBox;
+    justify-content: space-between;
+    padding: 40px 0;
+    background-color: transparent;
+
+    .logo {
+      img {
+        width: 150px;
+      }
+    }
+
+    ul {
+      @include flexBox;
+      gap: 20px;
+
+      .search {
+        i {
+          color: white;
+          font-size: 20px;
+        }
+      }
+
+      li {
+        a {
+          color: $main-color;
+        }
+      }
+    }
+  }
+}

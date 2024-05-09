@@ -1,0 +1,327 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  font-family: "Work Sans", sans-serif;
+  background-color: #f7f7f7;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 100px;
+}
+
+body {
+  background-color: #0b0b0b;
+  height: 200vh;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #03033f;
+  transition: 0.8s;
+}
+header .header_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+  background-color: transparent;
+}
+header .header_content .logo img {
+  width: 150px;
+}
+header .header_content ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+header .header_content ul .search i {
+  color: white;
+  font-size: 20px;
+}
+header .header_content ul li a {
+  color: #fff;
+}
+
+.mainSection,
+.heroSection {
+  position: relative;
+  margin-bottom: 100px;
+}
+.mainSection .mainCover,
+.mainSection .heroCover,
+.heroSection .mainCover,
+.heroSection .heroCover {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  filter: blur(10px) brightness(50%);
+}
+.mainSection .heroCover,
+.heroSection .heroCover {
+  height: 80vh;
+  filter: blur(8px);
+}
+.mainSection .mainContent,
+.mainSection .heroContent,
+.heroSection .mainContent,
+.heroSection .heroContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  height: 100%;
+  color: #fff;
+  padding-top: 120px;
+}
+.mainSection .mainContent h1,
+.mainSection .heroContent h1,
+.heroSection .mainContent h1,
+.heroSection .heroContent h1 {
+  color: #fff;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+.mainSection .mainContent h3,
+.mainSection .heroContent h3,
+.heroSection .mainContent h3,
+.heroSection .heroContent h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+.mainSection .mainContent .paragraph,
+.mainSection .heroContent .paragraph,
+.heroSection .mainContent .paragraph,
+.heroSection .heroContent .paragraph {
+  color: rgba(255, 255, 255, 0.404);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+.mainSection .mainContent button,
+.mainSection .heroContent button,
+.heroSection .mainContent button,
+.heroSection .heroContent button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #fb1351;
+  border: none;
+  padding: 17px 24px;
+  gap: 5px;
+}
+.mainSection .heroContent,
+.heroSection .heroContent {
+  display: block;
+  width: 100%;
+  padding-top: 200px;
+}
+.mainSection .heroContent h3,
+.heroSection .heroContent h3 {
+  font-size: 32px;
+  margin-bottom: 60px;
+}
+.mainSection .heroContent .searchForm,
+.heroSection .heroContent .searchForm {
+  width: 100%;
+  position: relative;
+}
+.mainSection .heroContent .searchForm input,
+.heroSection .heroContent .searchForm input {
+  width: 100%;
+  height: 50px;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  padding: 0 20px;
+  font-size: 20px;
+}
+.mainSection .heroContent .searchForm .searchBtn,
+.heroSection .heroContent .searchForm .searchBtn {
+  position: absolute;
+  height: 50px;
+  border-radius: 25px;
+  bottom: 0;
+  right: 0;
+  font-size: 20px;
+  background: linear-gradient(to right, #4caf50 20%, #2196f3 80%);
+  background: -ms-linear-gradient(left, #4caf50 0%, #2196f3 100%);
+}
+.mainSection .heroContent .searchForm .searchBtn:hover,
+.heroSection .heroContent .searchForm .searchBtn:hover {
+  color: black;
+}
+.mainSection .mainImage,
+.heroSection .mainImage {
+  height: 600px;
+}
+.mainSection .mainImage img,
+.heroSection .mainImage img {
+  height: 100%;
+}/*# sourceMappingURL=global.css.map */

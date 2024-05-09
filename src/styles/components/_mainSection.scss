@@ -1,0 +1,128 @@
+.mainSection,
+.heroSection {
+  position: relative;
+  margin-bottom: 100px;
+
+  .mainCover,
+  .heroCover {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    filter: blur(10px) brightness(50%);
+  }
+
+  .heroCover {
+    height: 80vh;
+    filter: blur(8px);
+  }
+
+  .mainContent,
+  .heroContent {
+    @include flexBox;
+    gap: 100px;
+    height: 100%;
+    color: $main-color;
+    padding-top: 120px;
+
+    h1 {
+      @include textContent($main-color, $mainHeading, $semiBold-w7);
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      @include textContent($main-color, $subtitle, $medium-w5);
+      margin-bottom: 20px;
+    }
+
+    .paragraph {
+      @include textContent($paragraph-color, $paragraph, $medium-w5);
+      margin-bottom: 20px;
+      max-width: 600px;
+    }
+
+    button {
+      @include flexBox;
+      @include textContent($main-color, $buttons, $medium-w5);
+      background-color: $red-color;
+      border: none;
+      padding: 17px 24px;
+      gap: 5px;
+    }
+  }
+
+  .heroContent {
+    display: block;
+    width: 100%;
+    padding-top: 200px;
+
+    h3 {
+      font-size: 32px;
+      margin-bottom: 60px;
+    }
+
+    .searchForm {
+      width: 100%;
+      position: relative;
+
+      input {
+        width: 100%;
+        height: 50px;
+        border-radius: 40px;
+        border: none;
+        outline: none;
+        padding: 0 20px;
+        font-size: 20px;
+      }
+
+      .searchBtn {
+        position: absolute;
+        height: 50px;
+        border-radius: 25px;
+        bottom: 0;
+        right: 0;
+        font-size: 20px;
+        background: linear-gradient(
+          to right,
+          rgba(#4CAF50, 1) 20%,
+          rgba(#2196F3, 1) 80%
+        );
+        background: -webkit-linear-gradient(
+          left,
+          rgba(#4CAF50, 1) 0%,
+          rgba(#2196F3, 1) 100%
+        );
+        background: -moz-linear-gradient(
+          left,
+          rgba(#4CAF50, 1) 0%,
+          rgba(#2196F3, 1) 100%
+        );
+        background: -o-linear-gradient(
+          left,
+          rgba(#4CAF50, 1) 0%,
+          rgba(#2196F3, 1) 100%
+        );
+        background: -ms-linear-gradient(
+          left,
+          rgba(#4CAF50, 1) 0%,
+          rgba(#2196F3, 1) 100%
+        );
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+
+  .mainImage {
+    height: 600px;
+
+    img {
+      height: 100%;
+    }
+  }
+}

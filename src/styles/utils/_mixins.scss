@@ -1,0 +1,12 @@
+@mixin flexBox($justyfy: center, $align: center) {
+  display: flex;
+  justify-content: $justyfy;
+  align-items: $align;
+}
+
+@mixin textContent($color, $size, $weight) {
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: normal;
+}
