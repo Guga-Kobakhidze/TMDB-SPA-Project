@@ -4,7 +4,7 @@ import movies from "./views/movies.js";
 
 const routes = {
   "/": { title: "Home", render: home },
-  "/movies": { title: "Movies", render: myRender },
+  "/movies": { title: "Movies", render: movies },
   "/tvshows": { title: "Tv Shows", render: tvshows },
 };
 

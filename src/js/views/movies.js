@@ -40,7 +40,7 @@ const allMovies = (key) => {
   const app = document.getElementById("app");
 
   const loadMovies = (page) => {
-    Fetching(CategoryKeywords.movie, key, `page=${page}`)
+    Fetching(CategoryKeywords.movie, MovieKeywords.now_playing, `page=${page}`)
       .then((data) => {
         const trendingCards = data.results.map((card) => {
           return DetailedPage(
