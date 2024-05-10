@@ -6,6 +6,7 @@ const DetailedPage = (cover, id) => {
   const detailedPage = `
     <div class="heroSection" key="${id}">            
         <img class="heroCover" src="https://image.tmdb.org/t/p/original${cover}" alt="cover" />
+        
         <div class="heroContent container"> 
             <h1>welcome</h1>
             <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
@@ -14,6 +15,7 @@ const DetailedPage = (cover, id) => {
               <button class="searchBtn" type="submit">Search</button>
             </form>
         </div>
+        <div class="overlay"></div>
     </div>
   `;
 
