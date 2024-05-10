@@ -6,7 +6,6 @@ let currentPage = 1;
 
 const people = () => {
   const app = document.getElementById("app");
-  console.log(app);
 
   const loadPerson = (page) => {
     Fetching(CategoryKeywords.person, "popular", `page=${page}`)

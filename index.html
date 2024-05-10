@@ -27,15 +27,87 @@
               <!-- <li><a href="/" data-link>Home</a></li> -->
               <li>
                 <a href="/movies" data-link>Movies</a>
-                <ul>
-                  <li><a class="movieKey" href="/movies" data-movie-type="popular">popular</a></li>
-                  <li><a class="movieKey" href="/movies" data-movie-type="nowplaying">now playing</a></li>
-                  <li><a class="movieKey" href="/movies" data-movie-type="toprated">top rated</a></li>
-                  <li><a class="movieKey" href="/movies" data-movie-type="upcoming">upcoming</a></li>
+                <ul class="nav_links">
+                  <li>
+                    <a
+                      class="movieKey"
+                      href="/movies/popular"
+                      data-link
+                      data-show-type="popular"
+                      >popular</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="movieKey"
+                      href="/movies/nowplaying"
+                      data-link
+                      data-show-type="nowplaying"
+                      >now playing</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="movieKey"
+                      href="/movies/toprated"
+                      data-link
+                      data-show-type="toprated"
+                      >top rated</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="movieKey"
+                      href="/movies/upcoming"
+                      data-link
+                      data-show-type="upcoming"
+                      >upcoming</a
+                    >
+                  </li>
                 </ul>
               </li>
-              <li><a href="/tvshows" data-link>TV Shows</a></li>
-              <li><a href="#">People</a></li>
+              <li>
+                <a href="/tvshows" data-link>TV Shows</a>
+                <ul class="nav_links">
+                  <li>
+                    <a
+                      class="movieKey"
+                      href="/tvshows/popular"
+                      data-link
+                      data-show-type="popular"
+                      >popular</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="movieKey"
+                      href="/tvshows/on_the_air"
+                      data-link
+                      data-show-type="on_the_air"
+                      >on the air</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="movieKey"
+                      href="/tvshows/top_rated"
+                      data-link
+                      data-show-type="top_rated"
+                      >top rated</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="movieKey"
+                      href="/tvshows/airing_today"
+                      data-link
+                      data-show-type="airing_today"
+                      >airing today</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/person" data-link>People</a></li>
               <li><a href="#">More</a></li>
               <div class="search">
                 <i class="bx bx-search-alt-2"></i>
@@ -47,7 +119,6 @@
     </header>
 
     <main id="app"></main>
-    
 
     <script type="module" src="./src/js/main.js"></script>
   </body>

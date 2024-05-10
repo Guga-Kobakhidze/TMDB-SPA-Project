@@ -1,40 +1,8 @@
+import { DetailedPage } from "../components/productCard.js";
 import { Fetching, scrollToTop } from "../helpers/functions.js";
-import { CategoryKeywords, MovieKeywords } from "../helpers/Links.js";
+import { CategoryKeywords } from "../helpers/Links.js";
 
 let currentPage = 1;
-
-const DetailedPage = (id, title, img, vote, date) => {
-  let colorChange = "";
-
-  if (vote >= 4 && vote < 7) {
-    colorChange = "rgb(169, 169, 25)";
-  } else if (vote >= 7) {
-    colorChange = "rgb(14, 90, 14)";
-  } else {
-    colorChange = "rgb(155, 155, 155)";
-  }
-
-  const detailedPage = `
-    <a href="/" data-link>
-        <div class="card" key="${id}"> 
-            <img src="https://image.tmdb.org/t/p/w500${img}" alt="${title}"/>
-            <div class="card-content">
-                <div class="precent"> 
-                    <div class="precentColor" style="border: 2px solid ${colorChange}"></div>
-                    <h3>${vote
-                      .toString()
-                      .replace(".", "")
-                      .slice(0, 2)} <span>%</span></h3>
-                </div>
-                <h1>${title}</h1>
-                <p>${date}</p>
-            </div>
-        </div>
-    </a>
-  `;
-
-  return detailedPage;
-};
 
 const allMovies = (key) => {
   const app = document.getElementById("app");
