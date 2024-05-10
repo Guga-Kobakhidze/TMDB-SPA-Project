@@ -281,7 +281,7 @@ header .header_content ul li a {
 .mainSection .heroCover,
 .heroSection .heroCover {
   height: 80vh;
-  filter: blur(8px);
+  filter: hue-rotate(100deg);
 }
 .mainSection .mainContent,
 .mainSection .heroContent,
@@ -374,7 +374,7 @@ header .header_content ul li a {
   height: 50px;
   border-radius: 25px;
   bottom: 0;
-  right: 0;
+  right: -1px;
   font-size: 20px;
   background: linear-gradient(to right, #4caf50 20%, #2196f3 80%);
   background: -ms-linear-gradient(left, #4caf50 0%, #2196f3 100%);
