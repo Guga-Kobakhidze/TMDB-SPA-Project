@@ -1,41 +1,4 @@
-import home from "./views/home.js";
-import tvshows from "./views/tvshows.js";
-import movies from "./views/movies.js";
-
-const routes = {
-  "/": { title: "Home", render: home },
-  "/movies": { title: "Movies", render: myRender },
-  "/tvshows": { title: "Tv Shows", render: tvshows },
-};
-
-function myRender() {
-  movies("upcoming");
-
-  const Links = document.querySelectorAll(".movieKey");
-  Links.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const LinkType = link.getAttribute(["data-movie-type"]);
-      switch (LinkType) {
-        case "popular":
-          movies("popular");
-          break;
-        case "nowplaying":
-          movies("now_playing");
-          break;
-        case "toprated":
-          movies("top_rated");
-          break;
-        case "upcoming":
-          movies("upcoming");
-          break;
-      }
-
-      return movieKey;
-    });
-  });
-}
+import routes from "./route/route";
 
 function router() {
   let view = routes[location.pathname];
@@ -55,31 +18,36 @@ function handleLinkClick(event) {
   if (target && target.matches("[data-link]")) {
     event.preventDefault();
     const href = target.getAttribute("href");
-    history.pushState(null, "", href);
+
+    const linkType = target.getAttribute("data-show-type");
+    if (linkType === "movie") {
+      history.pushState(null, "", `/movies/${linkType}`);
+    } else if (linkType === "tvShows") {
+      history.pushState(null, "", `/tvshows/${linkType}`);
+    } else {
+      history.pushState(null, "", href);
+    }
     router();
   }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  router();
+router();
 
-  document.addEventListener("click", handleLinkClick);
+document.addEventListener("click", handleLinkClick);
 
-  // Header Function
-  const Header = document.getElementById("main-header");
-  let lastScrollTop = 0;
+// Header Function
+const Header = document.getElementById("main-header");
+let lastScrollTop = 0;
 
-  window.addEventListener("scroll", function () {
-    let currentScroll = window.scrollY;
+window.addEventListener("scroll", function () {
+  let currentScroll = window.scrollY;
 
-    if (currentScroll > lastScrollTop && currentScroll > 200) {
-      Header.style.transform = "translateY(-100%)";
-    } else {
-      Header.style.transform = "translateY(0)";
-    }
+  if (currentScroll > lastScrollTop && currentScroll > 200) {
+    Header.style.transform = "translateY(-100%)";
+  } else {
+    Header.style.transform = "translateY(0)";
+  }
 
-    lastScrollTop = currentScroll;
-  });
+  lastScrollTop = currentScroll;
 });
-
 window.addEventListener("popstate", router);

@@ -2,8 +2,9 @@ export const CategoryKeywords = {
   movie: "movie",
   tvshow: "tvshow",
   trending: "trending",
-  tv: "tv"
-}
+  tv: "tv",
+  person: "person",
+};
 
 export const MovieKeywords = {
   popular: "popular",

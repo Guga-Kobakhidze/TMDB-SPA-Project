@@ -2,7 +2,7 @@ import { Fetching } from "../helpers/functions.js";
 import { CategoryKeywords, MovieKeywords } from "../helpers/Links.js";
 
 const DetailedPage = (cover, id) => {
-  console.log(cover)
+  console.log(cover);
   const detailedPage = `
     <div class="heroSection" key="${id}">            
         <img class="heroCover" src="https://image.tmdb.org/t/p/original${cover}" alt="cover" />
