@@ -1,3 +1,4 @@
+import { pagination } from "../components/pagination/pagination.js";
 import { PeopleCard } from "../components/peopleCard.js";
 import { Fetching, scrollToTop } from "../helpers/functions.js";
 import { CategoryKeywords } from "../helpers/Links.js";
@@ -10,7 +11,7 @@ const people = () => {
   const loadPerson = (page) => {
     Fetching(CategoryKeywords.person, "popular", `page=${page}`)
       .then((data) => {
-        const personCard = data.results.map((card) => {
+        const personCards = data.results.map((card) => {
           return PeopleCard(
             card.id,
             card.original_name,
@@ -19,17 +20,10 @@ const people = () => {
           );
         });
 
-        const allCards = personCard.join("");
+        const allCards = personCards.join("");
         const allCardsContainer = document.createElement("div");
         allCardsContainer.classList.add("PersonCards");
         allCardsContainer.innerHTML = allCards;
-
-        const pagination = `
-            <div class="pagination">
-                <button class="prev scrollTop">prev</button>
-                <button class="next scrollTop">next</button>
-            </div>
-          `;
 
         const Title = document.createElement("h1");
         Title.innerHTML = "Popular People";

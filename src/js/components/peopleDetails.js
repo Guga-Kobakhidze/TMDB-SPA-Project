@@ -20,20 +20,23 @@ export const PersonDetails = (
                 <h4>${known}</h4>
             </div>
             <div class="birthday"> 
-                <h3>${birthday}</h3>
+                <h3>Personal Info<h2>
+                <h4>${birthday}</h4>
             </div>
             <div class="birthday"> 
-                <h3>${birthPlace}</h3>
+                <h3>Place of Birth</h3>
+                <h4>${birthPlace}</h4>
             </div>
         </div>
-        <div class="peopleInfo"> 
+        <div class="peopleContent">
+          <div class="peopleInfo"> 
             <h1>${name}</h1>
             <h2>Biography</h2>
-            <div class="description">
-                <p>${desc}</p>
-                <button class="readMore">Read More</button>
+            <p>${desc}</p>
             </div>
-            <div class="casts" id="castContainer"></div>
+            <div class="castSlider">
+              <div class="casts" id="castContainer"></div>
+            </div>
         </div>
     </div>
  `;

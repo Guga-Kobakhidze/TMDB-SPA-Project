@@ -2,6 +2,7 @@
 .heroSection {
   position: relative;
   margin-bottom: 100px;
+  height: 80vh;
 
   .mainCover,
   .heroCover {
@@ -11,11 +12,12 @@
     left: 0;
     right: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
 
   .heroCover {
     height: 80vh;
+    object-fit: cover;
   }
 
   .overlay {
@@ -25,7 +27,7 @@
     bottom: 0;
     width: 100%;
     height: 80vh;
-    background-color: rgba(0, 0, 255, 0.384);
+    background-color: rgba(3, 37, 65, 0.7);
     z-index: -1;
   }
 
@@ -35,7 +37,6 @@
     gap: 100px;
     height: 100%;
     color: $main-color;
-    padding-top: 140px;
 
     h1 {
       @include textContent($main-color, $mainHeading, $semiBold-w7);
@@ -64,13 +65,15 @@
   }
 
   .heroContent {
-    display: block;
+    @include flexBox;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
     width: 100%;
-    padding-top: 200px;
 
     h3 {
       font-size: 32px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
 
     .searchForm {

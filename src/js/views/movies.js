@@ -1,3 +1,4 @@
+import { pagination } from "../components/pagination/pagination.js";
 import { DetailedPage } from "../components/productCard.js";
 import { Fetching, scrollToTop } from "../helpers/functions.js";
 import { CategoryKeywords } from "../helpers/Links.js";
@@ -10,7 +11,7 @@ const allMovies = (key) => {
   const loadMovies = (page) => {
     Fetching(CategoryKeywords.movie, key, `page=${page}`)
       .then((data) => {
-        const trendingCards = data.results.map((card) => {
+        const movieCards = data.results.map((card) => {
           return DetailedPage(
             card.id,
             card.title,
@@ -20,17 +21,10 @@ const allMovies = (key) => {
           );
         });
 
-        const allCards = trendingCards.join("");
+        const allCards = movieCards.join("");
         const allCardsContainer = document.createElement("div");
         allCardsContainer.classList.add("AllCards");
         allCardsContainer.innerHTML = allCards;
-
-        const pagination = `
-            <div class="pagination">
-                <button class="prev scrollTop">prev</button>
-                <button class="next scrollTop">next</button>
-            </div>
-          `;
 
         const container = document.createElement("div");
         container.classList.add("ProductsSection");
