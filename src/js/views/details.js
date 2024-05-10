@@ -4,7 +4,7 @@ import { MovieKeywords, CategoryKeywords } from "../helpers/Links.js";
 const DetailedPage = (cover, title, date, rate, desc, img, id) => {
   const detailedPage = `
     <div class="mainSection">            
-        <img class="mainCover" src="https://image.tmdb.org/t/p/w500${cover}" alt="cover" />
+        <img class="mainCover" src="https://image.tmdb.org/t/p/original${cover}" alt="cover" />
         <div class="mainContent container"> 
             <div>
                 <h1>${title}</h1>

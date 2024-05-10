@@ -4,17 +4,38 @@ import movies from "./views/movies.js";
 
 const routes = {
   "/": { title: "Home", render: home },
-  "/movies": { title: "Movies", render: movies },
+  "/movies": { title: "Movies", render: myRender },
   "/tvshows": { title: "Tv Shows", render: tvshows },
 };
 
-// function myRender() {
-//   movies("upcoming")
+function myRender() {
+  movies("upcoming");
 
-//   const Href = document.querySelector(".movieKey")
-// console.log(Href.getAttribute(["data-movie-type"]))
+  const Links = document.querySelectorAll(".movieKey");
+  Links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
 
-// }
+      const LinkType = link.getAttribute(["data-movie-type"]);
+      switch (LinkType) {
+        case "popular":
+          movies("popular");
+          break;
+        case "nowplaying":
+          movies("now_playing");
+          break;
+        case "toprated":
+          movies("top_rated");
+          break;
+        case "upcoming":
+          movies("upcoming");
+          break;
+      }
+
+      return movieKey;
+    });
+  });
+}
 
 function router() {
   let view = routes[location.pathname];

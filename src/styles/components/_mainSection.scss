@@ -17,7 +17,7 @@
 
   .heroCover {
     height: 80vh;
-    filter: blur(8px);
+    filter: hue-rotate(100deg);
   }
 
   .mainContent,
@@ -83,32 +83,32 @@
         height: 50px;
         border-radius: 25px;
         bottom: 0;
-        right: 0;
+        right: -1px;
         font-size: 20px;
         background: linear-gradient(
           to right,
-          rgba(#4CAF50, 1) 20%,
-          rgba(#2196F3, 1) 80%
+          rgba(#4caf50, 1) 20%,
+          rgba(#2196f3, 1) 80%
         );
         background: -webkit-linear-gradient(
           left,
-          rgba(#4CAF50, 1) 0%,
-          rgba(#2196F3, 1) 100%
+          rgba(#4caf50, 1) 0%,
+          rgba(#2196f3, 1) 100%
         );
         background: -moz-linear-gradient(
           left,
-          rgba(#4CAF50, 1) 0%,
-          rgba(#2196F3, 1) 100%
+          rgba(#4caf50, 1) 0%,
+          rgba(#2196f3, 1) 100%
         );
         background: -o-linear-gradient(
           left,
-          rgba(#4CAF50, 1) 0%,
-          rgba(#2196F3, 1) 100%
+          rgba(#4caf50, 1) 0%,
+          rgba(#2196f3, 1) 100%
         );
         background: -ms-linear-gradient(
           left,
-          rgba(#4CAF50, 1) 0%,
-          rgba(#2196F3, 1) 100%
+          rgba(#4caf50, 1) 0%,
+          rgba(#2196f3, 1) 100%
         );
 
         &:hover {
