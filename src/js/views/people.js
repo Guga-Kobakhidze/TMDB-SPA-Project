@@ -1,28 +1,27 @@
-import { DetailedPage } from "../components/productCard.js";
+import { PeopleCard } from "../components/peopleCard.js";
 import { Fetching, scrollToTop } from "../helpers/functions.js";
 import { CategoryKeywords } from "../helpers/Links.js";
 
 let currentPage = 1;
 
-const allMovies = (key) => {
+const people = () => {
   const app = document.getElementById("app");
 
-  const loadMovies = (page) => {
-    Fetching(CategoryKeywords.movie, key, `page=${page}`)
+  const loadPerson = (page) => {
+    Fetching(CategoryKeywords.person, "popular", `page=${page}`)
       .then((data) => {
-        const trendingCards = data.results.map((card) => {
-          return DetailedPage(
+        const personCard = data.results.map((card) => {
+          return PeopleCard(
             card.id,
-            card.title,
-            card.poster_path,
-            card.vote_average,
-            card.release_date
+            card.original_name,
+            card.profile_path,
+            card.known_for
           );
         });
 
-        const allCards = trendingCards.join("");
+        const allCards = personCard.join("");
         const allCardsContainer = document.createElement("div");
-        allCardsContainer.classList.add("AllCards");
+        allCardsContainer.classList.add("PersonCards");
         allCardsContainer.innerHTML = allCards;
 
         const pagination = `
@@ -32,9 +31,12 @@ const allMovies = (key) => {
             </div>
           `;
 
+        const Title = document.createElement("h1");
+        Title.innerHTML = "Popular People";
+
         const container = document.createElement("div");
-        container.classList.add("ProductsSection");
-        container.appendChild(allCardsContainer);
+        container.classList.add("PersonSection", "container");
+        container.append(Title, allCardsContainer);
         container.insertAdjacentHTML("beforeend", pagination);
 
         app.innerHTML = "";
@@ -45,14 +47,14 @@ const allMovies = (key) => {
 
         nextBtn.addEventListener("click", () => {
           currentPage++;
-          loadMovies(currentPage);
+          loadPerson(currentPage);
           scrollToTop();
         });
 
         prevBtn.addEventListener("click", () => {
           if (currentPage > 1) {
             currentPage--;
-            loadMovies(currentPage);
+            loadPerson(currentPage);
             scrollToTop();
           }
         });
@@ -60,7 +62,7 @@ const allMovies = (key) => {
       .catch((err) => console.error(err));
   };
 
-  loadMovies(currentPage);
+  loadPerson(currentPage);
 };
 
-export default allMovies;
+export default people;

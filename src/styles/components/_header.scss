@@ -21,7 +21,7 @@ header {
 
     ul {
       @include flexBox;
-      gap: 20px;
+      gap: 50px;
 
       .search {
         i {
@@ -31,9 +31,35 @@ header {
       }
 
       li {
+        position: relative;
+        line-height: 34px;
+
+        &:hover {
+          .nav_links {
+            @include flexBox;
+          }
+        }
+
         a {
           color: $main-color;
         }
+      }
+    }
+
+    .nav_links {
+      position: absolute;
+      display: none;
+      width: 120px;
+      border-radius: 10px;
+      background-color: #fff;
+      top: 100px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      flex-direction: column;
+      gap: 0;
+
+      a {
+        color: #000;
       }
     }
   }

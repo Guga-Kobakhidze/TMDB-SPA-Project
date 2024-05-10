@@ -1,48 +1,26 @@
+import { PersonDetails } from "../components/peopleDetails.js";
 import { Fetching } from "../helpers/functions.js";
-import { MovieKeywords, CategoryKeywords } from "../helpers/Links.js";
+import { CategoryKeywords } from "../helpers/Links.js";
 
-const DetailedPage = (cover, title, date, rate, desc, img, id) => {
-  const detailedPage = `
-    <div class="mainSection">            
-        <img class="mainCover" src="https://image.tmdb.org/t/p/original${cover}" alt="cover" />
-        <div class="mainContent container"> 
-            <div>
-                <h1>${title}</h1>
-                <h3>Release: ${date} Rate: ${rate}</h3>
-                <p class="paragraph">${desc}</p>
-                <button id="watchNow">
-                    <img src="" alt="btnarr"/>
-                    watch now
-                </button>
-            </div>
-            <div class="mainImage">
-                <img class="mainImg" src="https://image.tmdb.org/t/p/w500${img}" alt="mainimage" />
-            </div>
-        </div>
-    </div>
-  `;
-
-  return detailedPage;
-};
-
-const renderDetailedPage = () => {
+const details = () => {
   const app = document.getElementById("app");
+  const urlParams = new URLSearchParams(window.location.search);
+  const personId = urlParams.get("id");
 
-  Fetching(CategoryKeywords.movie, MovieKeywords.popular)
+  Fetching(CategoryKeywords.person, personId)
     .then((data) => {
-      const rand = data.results[0];
-      const detailedPageContent = DetailedPage(
-        rand.backdrop_path,
-        rand.title,
-        rand.release_date,
-        rand.vote_average,
-        rand.overview,
-        rand.poster_path,
-        rand.id
+      const detailedPageContent = PersonDetails(
+        data.profile_path,
+        data.name,
+        data.biography,
+        data.known_for_department,
+        data.birthday,
+        data.place_of_birth,
+        data.id
       );
       app.innerHTML = detailedPageContent;
     })
     .catch((err) => console.error(err));
 };
 
-export default renderDetailedPage;
+export default details;
