@@ -1,5 +1,4 @@
 export const HeroSection = (cover, id) => {
-  console.log(cover);
   const heroSection = `
       <div class="heroSection" key="${id}">            
           <img class="heroCover" src="https://image.tmdb.org/t/p/original${cover}" alt="cover" />

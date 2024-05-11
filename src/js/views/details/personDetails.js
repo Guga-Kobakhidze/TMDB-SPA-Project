@@ -1,6 +1,6 @@
-import { PersonDetails } from "../components/peopleDetails.js";
-import { Fetching } from "../helpers/functions.js";
-import { CategoryKeywords } from "../helpers/Links.js";
+import { PersonDetails } from "../../components/detailed/peopleDetails.js";
+import { Fetching } from "../../helpers/functions.js";
+import { CategoryKeywords } from "../../helpers/Links.js";
 
 const details = () => {
   const app = document.getElementById("app");

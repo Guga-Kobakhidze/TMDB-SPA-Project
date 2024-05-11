@@ -2,7 +2,8 @@ import home from "../views/home.js";
 import tvshows from "../views/tvshows.js";
 import movies from "../views/movies.js";
 import people from "../views/people.js";
-import details from "../views/details.js";
+import movieDetails from "../views/details/details.js";
+import personDetails from "../views/details/personDetails.js";
 
 const routes = {
   "/": { title: "Home", render: home },
@@ -45,10 +46,13 @@ const routes = {
     render: people,
   },
   "/person/details": {
-    title: "details",
-    render: details,
+    title: "Person Details",
+    render: personDetails,
+  },
+  "/movies/details": {
+    title: "Movie Details",
+    render: movieDetails,
   },
 };
-
 
 export default routes;

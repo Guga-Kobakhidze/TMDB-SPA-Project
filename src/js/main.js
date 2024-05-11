@@ -1,3 +1,4 @@
+import { Fetching } from "./helpers/functions";
 import routes from "./route/route";
 
 function router() {

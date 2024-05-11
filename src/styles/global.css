@@ -351,26 +351,29 @@ header .header_content .nav_links a {
   width: 150px;
 }
 .peaopleDetails .peopleContent {
-  overflow: hidden;
+  overflow-x: hidden;
 }
-.peaopleDetails .peopleContent .peopleInfo h1 {
+.peaopleDetails .peopleContent .peopleInfo h1,
+.peaopleDetails .peopleContent .castSlider h1 {
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 30px;
 }
-.peaopleDetails .peopleContent .peopleInfo h2 {
+.peaopleDetails .peopleContent .peopleInfo h2,
+.peaopleDetails .peopleContent .castSlider h2 {
   font-size: 28px;
   font-weight: 500;
   margin-bottom: 10px;
 }
-.peaopleDetails .peopleContent .peopleInfo p {
+.peaopleDetails .peopleContent .peopleInfo p,
+.peaopleDetails .peopleContent .castSlider p {
   font-size: 18px;
   font-weight: 500;
   line-height: 22px;
 }
 .peaopleDetails .peopleContent .castSlider {
   margin-top: 30px;
-  overflow: auto;
+  overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -380,6 +383,42 @@ header .header_content .nav_links a {
   align-items: center;
   justify-content: start;
   gap: 10px;
+}
+.peaopleDetails .peopleContent .castSlider .casts .castCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: start;
+  height: 300px;
+  text-align: center;
+  color: black;
+}
+.peaopleDetails .peopleContent .castSlider .casts .castCard img {
+  height: 220px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.peaopleDetails .peopleContent .castSlider .casts .castCard span {
+  font-size: 12px;
+  line-height: 20px;
+  margin-top: 5px;
+}
+
+.videoBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 80%;
+  z-index: 1000;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.videoBox iframe {
+  width: 100%;
+  height: 100%;
 }
 
 .mainSection,

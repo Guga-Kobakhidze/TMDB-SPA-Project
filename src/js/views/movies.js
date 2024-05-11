@@ -1,5 +1,5 @@
 import { pagination } from "../components/pagination/pagination.js";
-import { DetailedPage } from "../components/productCard.js";
+import { ProductsCard } from "../components/productCard.js";
 import { Fetching, scrollToTop } from "../helpers/functions.js";
 import { CategoryKeywords } from "../helpers/Links.js";
 
@@ -12,7 +12,8 @@ const allMovies = (key) => {
     Fetching(CategoryKeywords.movie, key, `page=${page}`)
       .then((data) => {
         const movieCards = data.results.map((card) => {
-          return DetailedPage(
+          return ProductsCard(
+            "movies",
             card.id,
             card.title,
             card.poster_path,

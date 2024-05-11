@@ -1,5 +1,5 @@
-import { Fetching } from "../helpers/functions";
-import { CategoryKeywords } from "../helpers/Links";
+import { Fetching } from "../../helpers/functions";
+import { CategoryKeywords } from "../../helpers/Links";
 
 export const PersonDetails = (
   img,
@@ -35,6 +35,7 @@ export const PersonDetails = (
             <p>${desc}</p>
             </div>
             <div class="castSlider">
+              <h2>Known For</h2>
               <div class="casts" id="castContainer"></div>
             </div>
         </div>
@@ -55,9 +56,15 @@ function fetchCasts(personId) {
         const castImg = document.createElement("img");
         castImg.src = `https://image.tmdb.org/t/p/original${cast.poster_path}`;
 
-        const castCard = document.createElement("div");
+        const castTitle = document.createElement("span");
+        castTitle.innerHTML = cast.title;
+
+        const castCard = document.createElement("a");
+        castCard.href = `/movies/details?id=${cast.id}`;
+        castCard.setAttribute("data-link", "true");
         castCard.classList.add("castCard");
-        castCard.appendChild(castImg);
+
+        castCard.append(castImg, castTitle);
 
         castContainer.appendChild(castCard);
       });

@@ -43,9 +43,10 @@
   }
 
   .peopleContent {
-    overflow: hidden;
+    overflow-x: hidden;
 
-    .peopleInfo {
+    .peopleInfo,
+    .castSlider {
       h1 {
         font-size: 48px;
         font-weight: 700;
@@ -66,7 +67,7 @@
     }
     .castSlider {
       margin-top: 30px;
-      overflow: auto;
+      overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
 
@@ -74,6 +75,26 @@
         @include flexBox;
         justify-content: start;
         gap: 10px;
+
+        .castCard {
+          @include flexBox;
+          flex-direction: column;
+          justify-content: start;
+          height: 300px;
+          text-align: center;
+          color: black;
+
+          img {
+            height: 220px;
+            object-fit: cover;
+          }
+
+          span {
+            font-size: 12px;
+            line-height: 20px;
+            margin-top: 5px;
+          }
+        }
       }
     }
   }

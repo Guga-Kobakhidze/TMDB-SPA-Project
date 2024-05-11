@@ -1,4 +1,4 @@
-export const DetailedPage = (id, title, img, vote, date) => {
+export const ProductsCard = (key, id, title, img, vote, date) => {
   let colorChange = "";
 
   if (vote >= 4 && vote < 7) {
@@ -9,10 +9,10 @@ export const DetailedPage = (id, title, img, vote, date) => {
     colorChange = "rgb(155, 155, 155)";
   }
 
-  const detailedPage = `
-      <a href="/" data-link>
+  const productsCard = `
+      <a href="/${key}/details?id=${id}" data-link>
           <div class="card" key="${id}"> 
-              <img src="https://image.tmdb.org/t/p/w500${img}" alt="${title}"/>
+              <img src="https://image.tmdb.org/t/p/original${img}" alt="${title}"/>
               <div class="card-content">
                   <div class="precent"> 
                       <div class="precentColor" style="border: 2px solid ${colorChange}"></div>
@@ -28,5 +28,5 @@ export const DetailedPage = (id, title, img, vote, date) => {
       </a>
     `;
 
-  return detailedPage;
+  return productsCard;
 };
