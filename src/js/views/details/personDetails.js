@@ -1,4 +1,4 @@
-import { PersonDetails } from "../../components/detailed/peopleDetails.js";
+import { PersonDetails } from "../../components/detailed/personDetails.js";
 import { Fetching } from "../../helpers/functions.js";
 import { CategoryKeywords } from "../../helpers/Links.js";
 

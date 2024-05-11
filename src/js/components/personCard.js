@@ -1,5 +1,5 @@
-export const PeopleCard = (id, name, img, desc) => {
-  const peopleCard = `
+export const PersonCard = (id, name, img, desc) => {
+  const personCard = `
     <a href="/person/details?id=${id}" data-link>
       <div class="card personCard" key="${id}"> 
         <img src="https://image.tmdb.org/t/p/original${img}" alt="${name}"/>
@@ -13,5 +13,5 @@ export const PeopleCard = (id, name, img, desc) => {
     </a>
   `;
 
-  return peopleCard;
+  return personCard;
 };

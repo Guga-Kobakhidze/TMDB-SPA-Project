@@ -1,7 +1,7 @@
 import home from "../views/home.js";
 import tvshows from "../views/tvshows.js";
 import movies from "../views/movies.js";
-import people from "../views/people.js";
+import person from "../views/person.js";
 import movieDetails from "../views/details/details.js";
 import personDetails from "../views/details/personDetails.js";
 
@@ -43,7 +43,7 @@ const routes = {
   },
   "/person": {
     title: "Person populars",
-    render: people,
+    render: person,
   },
   "/person/details": {
     title: "Person Details",

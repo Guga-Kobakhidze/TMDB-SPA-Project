@@ -1,18 +1,18 @@
 import { pagination } from "../components/pagination/pagination.js";
-import { PeopleCard } from "../components/peopleCard.js";
+import { PersonCard } from "../components/personCard.js";
 import { Fetching, scrollToTop } from "../helpers/functions.js";
 import { CategoryKeywords } from "../helpers/Links.js";
 
 let currentPage = 1;
 
-const people = () => {
+const person = () => {
   const app = document.getElementById("app");
 
   const loadPerson = (page) => {
     Fetching(CategoryKeywords.person, "popular", `page=${page}`)
       .then((data) => {
         const personCards = data.results.map((card) => {
-          return PeopleCard(
+          return PersonCard(
             card.id,
             card.original_name,
             card.profile_path,
@@ -26,7 +26,7 @@ const people = () => {
         allCardsContainer.innerHTML = allCards;
 
         const Title = document.createElement("h1");
-        Title.innerHTML = "Popular People";
+        Title.innerHTML = "Popular Persons";
 
         const container = document.createElement("div");
         container.classList.add("PersonSection", "container");
@@ -59,4 +59,4 @@ const people = () => {
   loadPerson(currentPage);
 };
 
-export default people;
+export default person;
