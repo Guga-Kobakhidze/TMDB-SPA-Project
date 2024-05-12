@@ -1,0 +1,40 @@
+footer {
+  background-color: rgb(3, 37, 65);
+  padding: 60px 0 100px;
+
+  .footer_content {
+    @include flexBox;
+    gap: 40px;
+    align-items: start;
+    color: #fff;
+    list-style: none;
+
+    .logo {
+      width: 150px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .footer-nav {
+      h2 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      li {
+        margin-bottom: 10px;
+
+        a {
+          color: #ffffffc2;
+          transition: 0.3s;
+
+          &:hover {
+            color: gray;
+          }
+        }
+      }
+    }
+  }
+}

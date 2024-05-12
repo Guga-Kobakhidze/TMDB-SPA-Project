@@ -24,6 +24,7 @@ function handleLinkClick(event) {
     const href = target.getAttribute("href");
 
     const linkType = target.getAttribute("data-show-type");
+
     if (linkType === "movie") {
       history.pushState(null, "", `/movies/${linkType}`);
     } else if (linkType === "tvShows") {

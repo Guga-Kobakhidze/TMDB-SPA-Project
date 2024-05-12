@@ -149,15 +149,33 @@ table {
   border-spacing: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    color: gray;
+  }
+}
+
 button {
   cursor: pointer;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .container {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 100px;
+  padding: 0 40px;
 }
 
 body {

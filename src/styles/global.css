@@ -148,15 +148,32 @@ table {
   border-spacing: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s;
+  cursor: pointer;
+}
+a:hover {
+  color: gray;
+}
+
 button {
   cursor: pointer;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .container {
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 100px;
+  padding: 0 40px;
 }
 
 body {
@@ -188,7 +205,7 @@ header .header_content {
   justify-content: center;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 0;
+  padding: 20px 0;
   background-color: transparent;
 }
 header .header_content .logo img {
@@ -230,6 +247,177 @@ header .header_content .nav_links {
 }
 header .header_content .nav_links a {
   color: #000;
+}
+
+footer {
+  background-color: rgb(3, 37, 65);
+  padding: 60px 0 100px;
+}
+footer .footer_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  align-items: start;
+  color: #fff;
+  list-style: none;
+}
+footer .footer_content .logo {
+  width: 150px;
+}
+footer .footer_content .logo img {
+  width: 100%;
+}
+footer .footer_content .footer-nav h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+footer .footer_content .footer-nav li {
+  margin-bottom: 10px;
+}
+footer .footer_content .footer-nav li a {
+  color: rgba(255, 255, 255, 0.7607843137);
+  transition: 0.3s;
+}
+footer .footer_content .footer-nav li a:hover {
+  color: gray;
+}
+
+.ProductsSection {
+  margin-top: 100px;
+}
+.ProductsSection .mainTitle {
+  font-size: 28px;
+  font-weight: 500;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+.ProductsSection .productsContent {
+  display: grid;
+  grid-template-columns: 300px 3fr;
+}
+.ProductsSection .AllCards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 20px;
+}
+.ProductsSection .filterContent,
+.ProductsSection .sortContent {
+  background-color: #fff;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.164);
+  border-radius: 10px;
+  padding: 20px 20px 40px 20px;
+  height: -moz-max-content;
+  height: max-content;
+  overflow: hidden;
+}
+.ProductsSection .filterContent .title,
+.ProductsSection .sortContent .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  cursor: pointer;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.207);
+  margin-bottom: 20px;
+}
+.ProductsSection .filterContent .title i,
+.ProductsSection .sortContent .title i {
+  font-size: 22px;
+  rotate: 90deg;
+}
+.ProductsSection .filterContent .filterForm h2,
+.ProductsSection .sortContent .filterForm h2 {
+  font-size: 18px;
+  font-weight: 200;
+  color: rgba(128, 128, 128, 0.612);
+  margin-bottom: 15px;
+}
+.ProductsSection .filterContent .filterForm .radioGroup,
+.ProductsSection .sortContent .filterForm .radioGroup {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.207);
+  margin-bottom: 20px;
+}
+.ProductsSection .filterContent .filterForm .radioGroup,
+.ProductsSection .filterContent .filterForm .radioLabel,
+.ProductsSection .sortContent .filterForm .radioGroup,
+.ProductsSection .sortContent .filterForm .radioLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+.ProductsSection .filterContent .filterForm .radioGroup .radioLabel,
+.ProductsSection .filterContent .filterForm .radioLabel .radioLabel,
+.ProductsSection .sortContent .filterForm .radioGroup .radioLabel,
+.ProductsSection .sortContent .filterForm .radioLabel .radioLabel {
+  flex-direction: row;
+  align-items: center;
+}
+.ProductsSection .sortContent {
+  height: 0%;
+  margin-bottom: 20px;
+}
+.ProductsSection .sortContent .title i {
+  rotate: 0deg;
+}
+.ProductsSection .sortContent .selectBox {
+  margin-bottom: 20px;
+}
+.ProductsSection .sortContent .selectBox .selected-item {
+  margin-top: 15px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.203);
+  background-color: transparent;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px;
+}
+.ProductsSection .sortContent .selectBox .selected-item::-ms-expand {
+  display: none;
+}
+.ProductsSection .sortContent .selectBox .mySelect {
+  position: relative;
+}
+.ProductsSection .sortContent .selectBox .mySelect .selectIcon {
+  position: absolute;
+  top: 32px;
+  right: 10px;
+  font-size: 10px;
+  z-index: 0;
+}
+.ProductsSection .show {
+  height: 0%;
+}
+.ProductsSection .show .title i {
+  rotate: 0deg;
+}
+.ProductsSection .showSort {
+  height: -moz-max-content;
+  height: max-content;
+}
+.ProductsSection .showSort .title i {
+  rotate: 90deg;
+}
+.ProductsSection .searchBtn {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 40px;
+  font-size: 22px;
+  background-color: rgba(128, 128, 128, 0.273);
 }
 
 .card {
@@ -299,7 +487,7 @@ header .header_content .nav_links a {
 }
 
 .PersonSection {
-  margin-top: 140px;
+  margin-top: 100px;
 }
 .PersonSection h1 {
   font-size: 32px;
