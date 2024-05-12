@@ -163,6 +163,17 @@ body {
   background-color: #fff;
 }
 
+.mainOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.563);
+  z-index: 1000;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -232,18 +243,31 @@ header .header_content .nav_links a {
   width: 100%;
   height: calc(100% - 100px);
 }
-.card .card-content {
+.card .card-content,
+.card .movieInfo {
   position: relative;
   padding: 20px 15px 20px 5px;
   z-index: 0;
 }
-.card .card-content .precent {
+.card .card-content h1,
+.card .movieInfo h1 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.card .card-content p,
+.card .movieInfo p {
+  font-size: 14px;
+  color: gray;
+}
+
+.precent {
   position: absolute;
   top: -20px;
   left: 12px;
   color: white;
 }
-.card .card-content .precent .precentColor {
+.precent .precentColor {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -252,16 +276,16 @@ header .header_content .nav_links a {
   height: 45px;
   border-radius: 50%;
 }
-.card .card-content .precent h3 {
+.precent h3 {
   display: flex;
   font-size: 14px;
   margin-left: 2px;
 }
-.card .card-content .precent h3 span {
+.precent h3 span {
   font-size: 8px;
   transform: translate(2px, 0px);
 }
-.card .card-content .precent::after {
+.precent::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -272,15 +296,6 @@ header .header_content .nav_links a {
   border-radius: 50%;
   background-color: black;
   z-index: -1;
-}
-.card .card-content h1 {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-.card .card-content p {
-  font-size: 14px;
-  color: gray;
 }
 
 .PersonSection {
@@ -405,7 +420,138 @@ header .header_content .nav_links a {
   margin-top: 5px;
 }
 
-.videoBox {
+.movieDetailsCard {
+  position: relative;
+  height: 100vh;
+  color: #fff;
+}
+.movieDetailsCard img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.movieDetailsCard .movieCover {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(4px) brightness(0.5);
+}
+.movieDetailsCard .movieContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+  height: 100%;
+  padding: 80px 40px 0;
+  z-index: 2;
+}
+.movieDetailsCard .movieContent .movieImg img {
+  width: 350px;
+  height: 450px;
+  border-radius: 15px;
+}
+.movieDetailsCard .movieContent .movieInfo {
+  position: relative;
+}
+.movieDetailsCard .movieContent .movieInfo h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.movieDetailsCard .movieContent .movieInfo h1 span {
+  font-weight: 200;
+  opacity: 0.8;
+}
+.movieDetailsCard .movieContent .movieInfo .movieDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  margin-bottom: 40px;
+  color: rgb(211, 198, 198);
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: start;
+  gap: 30px;
+  position: relative;
+  margin-bottom: 90px;
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent {
+  margin-left: 70px;
+  top: -12px;
+  cursor: pointer;
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent i {
+  padding: 10px;
+  font-size: 20px;
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent::after {
+  width: 45px;
+  height: 45px;
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox .precent {
+  top: 0px;
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentColor {
+  width: 60px;
+  height: 60px;
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox .precent::after {
+  width: 70px;
+  height: 70px;
+}
+.movieDetailsCard .movieContent .movieInfo .playTrailer {
+  margin-bottom: 15px;
+}
+.movieDetailsCard .movieContent .movieInfo .playTrailer i {
+  font-size: 22px;
+}
+.movieDetailsCard .movieContent .movieInfo .playTrailer button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  background-color: transparent;
+  transition: 0.3s;
+}
+.movieDetailsCard .movieContent .movieInfo .playTrailer button:hover {
+  color: gray;
+}
+.movieDetailsCard .movieContent .movieInfo .tagline {
+  font-size: 18px;
+  color: rgb(175, 172, 172);
+  margin-bottom: 15px;
+  font-style: italic;
+}
+.movieDetailsCard .movieContent .movieInfo .overview,
+.movieDetailsCard .movieContent .movieInfo .company {
+  margin-bottom: 15px;
+}
+.movieDetailsCard .movieContent .movieInfo .overview h3,
+.movieDetailsCard .movieContent .movieInfo .company h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.movieDetailsCard .movieContent .movieInfo .overview h4,
+.movieDetailsCard .movieContent .movieInfo .company h4 {
+  font-size: 18px;
+  color: rgb(209, 188, 188);
+  margin-bottom: 15px;
+}
+.movieDetailsCard .videoBox {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -416,9 +562,13 @@ header .header_content .nav_links a {
   border-radius: 20px;
   overflow: hidden;
 }
-.videoBox iframe {
+.movieDetailsCard .videoBox iframe {
   width: 100%;
   height: 100%;
+}
+
+.change {
+  color: rgb(145, 0, 0);
 }
 
 .mainSection,

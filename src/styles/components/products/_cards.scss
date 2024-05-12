@@ -10,51 +10,11 @@
     height: calc(100% - 100px);
   }
 
-  .card-content {
+  .card-content,
+  .movieInfo {
     position: relative;
     padding: 20px 15px 20px 5px;
     z-index: 0;
-
-    .precent {
-      position: absolute;
-      top: -20px;
-      left: 12px;
-      color: white;
-
-      .precentColor {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-      }
-
-      h3 {
-        display: flex;
-        font-size: 14px;
-        margin-left: 2px;
-
-        span {
-          font-size: 8px;
-          transform: translate(2px, 0px);
-        }
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: black;
-        z-index: -1;
-      }
-    }
 
     h1 {
       font-size: 16px;
@@ -66,5 +26,46 @@
       font-size: 14px;
       color: gray;
     }
+  }
+}
+
+.precent {
+  position: absolute;
+  top: -20px;
+  left: 12px;
+  color: white;
+
+  .precentColor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+
+  h3 {
+    display: flex;
+    font-size: 14px;
+    margin-left: 2px;
+
+    span {
+      font-size: 8px;
+      transform: translate(2px, 0px);
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    z-index: -1;
   }
 }

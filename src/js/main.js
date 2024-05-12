@@ -1,3 +1,4 @@
+import { scrollToTop } from "./helpers/functions";
 import routes from "./route/route";
 
 function router() {
@@ -8,12 +9,15 @@ function router() {
     view.render();
   } else {
     history.replaceState("", "", "/");
+
     router();
   }
 }
 
 function handleLinkClick(event) {
   const target = event.target.closest("a");
+
+  scrollToTop();
 
   if (target && target.matches("[data-link]")) {
     event.preventDefault();

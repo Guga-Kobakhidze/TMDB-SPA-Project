@@ -27,40 +27,47 @@ export const MovieDetails = (
 
   const movieDetails = `
         <div class="movieDetailsCard" key="${id}">
-            <img class="movieCover" src="https://image.tmdb.org/t/p/original${cover}" />
-            <div class="movieImg" >
-                <img src="https://image.tmdb.org/t/p/original${img}" />
+            <div class="overlay">
+               <img class="movieCover" src="https://image.tmdb.org/t/p/original${cover}" />
             </div>
-            <div class="movieInfo">
-                <h1>${title} <span>(${date.slice(0, 4)})</span></h1>
-                <div class="movieDate">
-                    <h3>${date} <span>(${language})</span></h3>
-                    <h3>${genre}</h3>
-                    <h3>${runtime} <span>min</span></h3>
+            <div class="movieContent">
+                <div class="movieImg" >
+                    <img src="https://image.tmdb.org/t/p/original${img}" />
                 </div>
-                <div class="precent"> 
-                    <div class="precentColor" style="border: 2px solid ${colorChange}"></div>
-                    <h3>${vote.toString().replace(".", "").slice(0, 2)} 
-                    <span>%</span></h3>
-                </div>
-                <div class="movieVideo">
-                    <div class="like">
-                        like
+                <div class="movieInfo">
+                    <h1>${title} <span>(${date.slice(0, 4)})</span></h1>
+                    <div class="movieDate">
+                        <h3>${date} <span>(${language})</span></h3>
+                        &#x2219
+                        <h3>${genre}</h3>
+                        &#x2219
+                        <h3>${runtime} <span>min</span></h3>
                     </div>
-                    <div>
-                        <button class="playTrailer">
+                    <div class="precentBox">
+                        <div class="precent"> 
+                            <div class="precentColor" style="border: 4px solid ${colorChange}"></div>
+                            <h3>${vote.toString().replace(".", "").slice(0, 2)} 
+                            <span>%</span></h3>
+                        </div>
+                        <div class="like-btn precent">
+                            <i class='bx bxs-heart'></i>
+                        </div>
+                    </div>
+                    <div class="playTrailer">
+                        <button>
+                            <i class='bx bxs-right-arrow' ></i>
                             Play Trailer
                         </button>
                     </div>
-                <div>
-                <h3>${tagline}</h3>
-                <div class="overview"> 
-                    <h3>Overview</h3>
-                    <h4>${desc}</h4>
-                </div>
-                <div class="company">
-                    <h3>Company</h3>
-                    <h4>${company}</h4>
+                    <h3 class="tagline">${tagline}</h3>
+                    <div class="overview"> 
+                        <h3>Overview</h3>
+                        <h4>${desc}</h4>
+                    </div>
+                    <div class="company">
+                        <h3>Company</h3>
+                        <h4>${company}</h4>
+                    </div>
                 </div>
             </div>
             <div class="videoBox" id="videoSection"></div>
@@ -91,9 +98,22 @@ function FetchVideo(itemId) {
         videoSection.appendChild(iframe);
 
         const playBtn = document.querySelector(".playTrailer");
+        const mainOverlay = document.querySelector(".mainOverlay")
 
         playBtn.addEventListener("click", () => {
           videoSection.style.display = "block";
+          mainOverlay.style.display = "block"
+        });
+
+        mainOverlay.addEventListener("click", () => {
+          videoSection.style.display = "none";
+          mainOverlay.style.display = "none"
+        })
+
+        const likeBtn = document.querySelector(".like-btn");
+
+        likeBtn.addEventListener("click", () => {
+          likeBtn.classList.toggle("change");
         });
       } else {
         console.error("No video found for this movie.");

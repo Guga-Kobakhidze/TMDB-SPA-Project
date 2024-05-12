@@ -7,7 +7,10 @@ import personDetails from "../views/details/personDetails.js";
 
 const routes = {
   "/": { title: "Home", render: home },
-  "/movies": { title: "Movies", render: () => movies("popular") },
+  "/movies": {
+    title: "Movies",
+    render: () => movies("popular"),
+  },
   "/movies/popular": {
     title: "Movies - Popular",
     render: () => movies("popular"),
@@ -24,7 +27,14 @@ const routes = {
     title: "Movies - Upcoming",
     render: () => movies("upcoming"),
   },
-  "/tvshows": { title: "TV Shows", render: () => tvshows("popular") },
+  "/movies/details": {
+    title: "Movie Details",
+    render: movieDetails,
+  },
+  "/tvshows": {
+    title: "TV Shows",
+    render: () => tvshows("popular"),
+  },
   "/tvshows/popular": {
     title: "TV Shows - popular",
     render: () => tvshows("popular"),
@@ -48,10 +58,6 @@ const routes = {
   "/person/details": {
     title: "Person Details",
     render: personDetails,
-  },
-  "/movies/details": {
-    title: "Movie Details",
-    render: movieDetails,
   },
 };
 
