@@ -218,11 +218,11 @@ header .header_content ul {
   gap: 50px;
 }
 header .header_content ul .search i {
+  cursor: pointer;
   color: white;
   font-size: 20px;
 }
 header .header_content ul li {
-  position: relative;
   line-height: 34px;
 }
 header .header_content ul li:hover .nav_links {
@@ -247,6 +247,36 @@ header .header_content .nav_links {
 }
 header .header_content .nav_links a {
   color: #000;
+}
+header .SearchForm {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+header .SearchForm input {
+  width: 100%;
+  height: 50px;
+  border: none;
+  padding-left: 70px;
+  font-size: 18px;
+  outline: none;
+}
+header .SearchForm .SearchBtn {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  top: -35px;
+  left: 40px;
+}
+header .SearchForm .SearchBtn .searchItem {
+  color: black;
+}
+header .showSearch {
+  display: block;
 }
 
 footer {

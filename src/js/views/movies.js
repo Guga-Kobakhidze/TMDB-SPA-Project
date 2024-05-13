@@ -62,6 +62,14 @@ const allMovies = (key) => {
           });
         }
 
+        // const sortForm = document.querySelector(".sortBox");
+        // const selectedItem = document.querySelector(".selected-item");
+        // sortForm.addEventListener("submit", (e) => {
+        //   e.preventDefault();
+
+        //   console.log(selectedItem.value);
+        // });
+
         getSearch(sortClick, sortContent, "showSort");
         getSearch(filterClick, filterContent, "show");
 

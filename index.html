@@ -113,7 +113,19 @@
               </li>
               <li><a href="/person" data-link>People</a></li>
               <div class="search">
-                <i class="bx bx-search-alt-2"></i>
+                <div class="showSearch">
+                  <i class="bx bx-search-alt-2"></i>
+                </div>
+                <form class="SearchForm">
+                  <input
+                    class="SearchInput"
+                    type="text"
+                    placeholder="Search for a movie, tv show, person"
+                  />
+                  <button class="SearchBtn" type="submit">
+                    <i class="bx bx-search-alt-2 searchItem"></i>
+                  </button>
+                </form>
               </div>
             </ul>
           </nav>
@@ -159,5 +171,6 @@
     </footer>
 
     <script type="module" src="./src/js/main.js"></script>
+    <script type="module" src="./src/js/views/search/search.js"></script>
   </body>
 </html>

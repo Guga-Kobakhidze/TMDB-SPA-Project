@@ -56,3 +56,12 @@ window.addEventListener("scroll", function () {
   lastScrollTop = currentScroll;
 });
 window.addEventListener("popstate", router);
+
+// Show Search Input
+
+const showSearch = document.querySelector(".showSearch");
+const searchForm = document.querySelector(".SearchForm");
+
+showSearch.addEventListener("click", () => {
+  searchForm.classList.toggle("showSearch");
+});
