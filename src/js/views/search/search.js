@@ -1,11 +1,11 @@
 import { Fetching, scrollToTop } from "../../helpers/functions";
 
-export function SearchedItem(img, title, value) {
+export function SearchedItem(key, img, title, id) {
   const searchedItems = `
-        <div>
+        <a href="/${key}/details?id=${id}" data-link>
           <img width="300px" src="https://image.tmdb.org/t/p/original${img}"/>
           <h1>${title}</h1>
-        </div>
+        </a>
     `;
 
   return searchedItems;
@@ -28,15 +28,15 @@ const app = document.getElementById("app");
 const SearchData = (query) => {
   const searchMovies = () => {
     Fetching("search", "movie", `query=${query}&page=${1}`)
-      .then((movies) => {
-        const Movies = movies.results.map((movie) =>
-          SearchedItem(movie.backdrop_path, movie.title)
+      .then((items) => {
+        const Items = items.results.map((item) =>
+          SearchedItem("movies", item.backdrop_path, item.title, item.id)
         );
 
         Fetching("search", "movie", `query=${query}`).then((movie) => {
           Fetching("search", "tv", `query=${query}`).then((tv) => {
             Fetching("search", "person", `query=${query}`).then((person) => {
-              const allCards = Movies.join("");
+              const allCards = Items.join("");
               const container = document.createElement("div");
               container.classList.add("searchedContent");
               container.classList.add("container");
@@ -65,9 +65,7 @@ const SearchData = (query) => {
       .catch((err) => console.error(err));
   };
 
-  scrollToTop();
   searchMovies();
-
   history.pushState({}, "", `/search/query=${query}`);
 };
 
@@ -81,12 +79,39 @@ SearchForm.addEventListener("submit", (e) => {
   const searchQuery = SearchInput.value.trim();
   localStorage.setItem("searchQuery", searchQuery);
 
+  scrollToTop();
   SearchData(searchQuery);
+
+  setTimeout(() => {
+    SearchInput.value = "";
+    SearchForm.classList.remove("showSearch");
+  }, 0);
 });
 
-window.addEventListener("load", () => {
-  const savedQuery = localStorage.getItem("searchQuery");
-  if (savedQuery) {
-    SearchData(savedQuery);
-  }
+SearchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const searchQuery = SearchInput.value.trim();
+  localStorage.setItem("searchQuery", searchQuery);
+
+  SearchData(searchQuery);
+  setTimeout(() => {
+    SearchInput.value = "";
+    SearchForm.classList.remove("showSearch");
+  }, 0);
 });
+
+// window.addEventListener("load", () => {
+//   const savedQuery = localStorage.getItem("searchQuery");
+//   const currentLocation = window.location.pathname;
+
+//   if (currentLocation.includes("/search/query") && savedQuery) {
+//     SearchData(savedQuery);
+//   } else {
+//     if (savedQuery) {
+//       localStorage.removeItem("searchQuery");
+//       history.pushState({}, "", `/search/query=${savedQuery}`);
+//       SearchData(savedQuery);
+//     }
+//   }
+// });

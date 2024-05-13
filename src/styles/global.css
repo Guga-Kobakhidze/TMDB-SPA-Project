@@ -287,7 +287,7 @@ footer .footer_content {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 60px;
   align-items: start;
   color: #fff;
   list-style: none;
@@ -701,7 +701,7 @@ footer .footer_content .footer-nav li a:hover {
   justify-content: start;
   gap: 30px;
   position: relative;
-  margin-bottom: 90px;
+  margin-bottom: 60px;
 }
 .movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent {
   margin-left: 70px;
