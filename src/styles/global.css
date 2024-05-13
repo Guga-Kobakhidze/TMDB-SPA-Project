@@ -223,6 +223,7 @@ header .header_content ul .search i {
   font-size: 20px;
 }
 header .header_content ul li {
+  position: relative;
   line-height: 34px;
 }
 header .header_content ul li:hover .nav_links {
@@ -244,6 +245,7 @@ header .header_content .nav_links {
   transform: translate(-50%, -50%);
   flex-direction: column;
   gap: 0;
+  z-index: 20;
 }
 header .header_content .nav_links a {
   color: #000;
@@ -255,7 +257,6 @@ header .SearchForm {
   top: 70px;
   left: 0;
   right: 0;
-  z-index: 10;
 }
 header .SearchForm input {
   width: 100%;
@@ -264,6 +265,7 @@ header .SearchForm input {
   padding-left: 70px;
   font-size: 18px;
   outline: none;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
 }
 header .SearchForm .SearchBtn {
   position: relative;
