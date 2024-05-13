@@ -56,6 +56,7 @@
         padding-bottom: 20px;
         border-bottom: 1px solid rgba(128, 128, 128, 0.207);
         margin-bottom: 20px;
+       
       }
 
       .radioGroup,
@@ -63,6 +64,7 @@
         @include flexBox;
         flex-direction: column;
         align-items: start;
+        justify-items: center;
         gap: 10px;
 
         .radioLabel {
