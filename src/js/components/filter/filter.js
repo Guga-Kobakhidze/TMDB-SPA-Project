@@ -99,8 +99,37 @@ export const Filter = () => {
             </div>
             <div class='radioGroup genresSection filterForm'>
             <h2>Genres</h2>
-           
-
+           </div>
+            <div class='radioGroup' >
+            <label > Language </label>
+            <select class="languages" name="languages>
+            <option value="">Select a language...</option>
+            </select>           
+            </div>
+            <div class='radioGroup' > 
+            <div class="double_range_slider_box">
+      <div class="double_range_slider">
+        <span class="range_track" id="range_track"></span>
+ 
+        <input type="range" class="min" min="0" max="100" value="0" step="0" />
+        <input type="range" class="max" min="0" max="100" value="20" step="0" />
+ 
+        <div class="minvalue"></div>
+        <div class="maxvalue"></div>
+      </div>
+    </div>
+            </div>
+            <div class='radioGroup' > 
+            <label for='minVotes'>Minimum User Votes</label>
+            <p>test</p>
+            <input id='minVotes' type='range' value='250' min='0' max='500'/>
+            </div>
+            <div class='radioGroup' > 
+            <label for='rate'>Runtime</label>
+            <p>test</p>
+            <input id='rate' type='range' value='0' min='0' max='360'/>
+            </div>
+            
             </div>
             <button type="submit" class="searchBtn">Search</button>
         </form>        
@@ -144,9 +173,26 @@ export const Filter = () => {
   })  
    
   }
+  const languageGenerator = async () => {
+    fetch(`https://api.themoviedb.org/3/configuration/languages`,modules).then(res=> res.json()).then((data) => 
+        {
+           const arr = data.map(({english_name, iso_639_1}) =>  ({english_name,iso_639_1})) 
+           
+          
+           for(let element of arr) {
+            const optionElement = document.createElement('option');
+            optionElement.value = element.iso_639_1;
+            optionElement.textContent = element.english_name;
+            filterSection.querySelector('.languages').append(optionElement)
+           }
+           
+        }
+    )
 
+  }
+  
   genreElementsCreator();
-
+  languageGenerator();
   
   return searchSection;
 }
