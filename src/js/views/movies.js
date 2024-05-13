@@ -33,10 +33,10 @@ const allMovies = (key) => {
 
         const container = document.createElement("div");
         container.classList.add("ProductsSection");
+        container.classList.add("container");
 
         const productsContent = document.createElement("div");
         productsContent.classList.add("productsContent");
-        productsContent.classList.add("container");
 
         let view = routes[location.pathname];
         const mainTitle = document.createElement("h1");
@@ -61,14 +61,6 @@ const allMovies = (key) => {
             content.classList.toggle(className);
           });
         }
-
-        // const sortForm = document.querySelector(".sortBox");
-        // const selectedItem = document.querySelector(".selected-item");
-        // sortForm.addEventListener("submit", (e) => {
-        //   e.preventDefault();
-
-        //   console.log(selectedItem.value);
-        // });
 
         getSearch(sortClick, sortContent, "showSort");
         getSearch(filterClick, filterContent, "show");
