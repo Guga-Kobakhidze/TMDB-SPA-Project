@@ -33,10 +33,11 @@ const allMovies = (key) => {
 
         const container = document.createElement("div");
         container.classList.add("ProductsSection");
+        container.classList.add("container");
 
         const productsContent = document.createElement("div");
         productsContent.classList.add("productsContent");
-        productsContent.classList.add("container");
+        
 
         let view = routes[location.pathname];
         const mainTitle = document.createElement("h1");

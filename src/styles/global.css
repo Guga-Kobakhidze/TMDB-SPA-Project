@@ -386,6 +386,7 @@ footer .footer_content .footer-nav li a:hover {
   align-items: center;
   flex-direction: column;
   align-items: start;
+  justify-items: center;
   gap: 10px;
 }
 .ProductsSection .filterContent .filterForm .radioGroup .radioLabel,
@@ -484,7 +485,7 @@ footer .footer_content .footer-nav li a:hover {
 .precent {
   position: absolute;
   top: -20px;
-  left: 12px;
+  left: 20px;
   color: white;
 }
 .precent .precentColor {
