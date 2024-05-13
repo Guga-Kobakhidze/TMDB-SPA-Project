@@ -30,7 +30,7 @@ export const MovieDetails = (
             <div class="overlay">
                <img class="movieCover" src="https://image.tmdb.org/t/p/original${cover}" />
             </div>
-            <div class="movieContent">
+            <div class="movieContent container">
                 <div class="movieImg" >
                     <img src="https://image.tmdb.org/t/p/original${img}" />
                 </div>
@@ -98,17 +98,17 @@ function FetchVideo(itemId) {
         videoSection.appendChild(iframe);
 
         const playBtn = document.querySelector(".playTrailer");
-        const mainOverlay = document.querySelector(".mainOverlay")
+        const mainOverlay = document.querySelector(".mainOverlay");
 
         playBtn.addEventListener("click", () => {
           videoSection.style.display = "block";
-          mainOverlay.style.display = "block"
+          mainOverlay.style.display = "block";
         });
 
         mainOverlay.addEventListener("click", () => {
           videoSection.style.display = "none";
-          mainOverlay.style.display = "none"
-        })
+          mainOverlay.style.display = "none";
+        });
 
         const likeBtn = document.querySelector(".like-btn");
 

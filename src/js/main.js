@@ -17,9 +17,8 @@ function router() {
 function handleLinkClick(event) {
   const target = event.target.closest("a");
 
-  scrollToTop();
-
   if (target && target.matches("[data-link]")) {
+    scrollToTop();
     event.preventDefault();
     const href = target.getAttribute("href");
 
@@ -64,4 +63,13 @@ const searchForm = document.querySelector(".SearchForm");
 
 showSearch.addEventListener("click", () => {
   searchForm.classList.toggle("showSearch");
+});
+
+document.addEventListener("click", (event) => {
+  const isFormClicked = searchForm.contains(event.target);
+  const isShowClicked = showSearch.contains(event.target);
+
+  if (!isShowClicked && !isFormClicked) {
+    searchForm.classList.remove("showSearch");
+  }
 });
