@@ -844,6 +844,106 @@ footer .footer_content .footer-nav li a:hover {
   color: rgb(145, 0, 0);
 }
 
+.searchedContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: start;
+  justify-content: start;
+  gap: 40px;
+  margin-top: 130px;
+}
+.searchedContent .searchedCard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: start;
+  gap: 20px;
+}
+.searchedContent .searchedCard .SearchedItems {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.238);
+}
+.searchedContent .searchedCard .SearchedItems img {
+  height: 200px;
+  width: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.searchedContent .searchedCard .SearchedDesc span {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.searchedContent .searchedCard .SearchedDesc h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(128, 128, 128, 0.527);
+  margin-bottom: 20px;
+}
+.searchedContent .searchedCard .SearchedDesc p {
+  font-size: 12px;
+  max-width: 95%;
+}
+.searchedContent .SearchResults {
+  width: 300px;
+  border-radius: 15px;
+  overflow: hidden;
+  height: -moz-max-content;
+  height: max-content;
+  padding-bottom: 15px;
+  border: 1px solid rgba(128, 128, 128, 0.648);
+}
+.searchedContent .SearchResults .title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: rgb(1, 180, 228);
+  padding: 20px 100px 20px 20px;
+  margin-bottom: 15px;
+}
+.searchedContent .SearchResults .filteredContent .filterResult {
+  cursor: pointer;
+}
+.searchedContent .SearchResults .filteredContent .filterResult :hover {
+  background-color: rgba(123, 123, 123, 0.503);
+}
+.searchedContent .SearchResults .filteredContent .filterResult h1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  margin: 5px 0;
+}
+.searchedContent .SearchResults .filteredContent .filterResult :not(:last-child) {
+  padding-bottom: 20px;
+}
+.searchedContent .SearchResults .filteredContent .filterResult h1 span {
+  display: block;
+  padding: 5px 30px;
+  background-color: rgb(232, 232, 232);
+  border-radius: 20px;
+}
+.searchedContent .SearchResults .filteredContent .filterResult h1 span:hover {
+  background-color: rgb(232, 232, 232);
+}
+.searchedContent .filterPara {
+  margin-top: 30px;
+  max-width: 270px;
+  text-align: start;
+}
+
 .mainSection,
 .heroSection {
   position: relative;

@@ -1,51 +1,41 @@
-import { Fetching, scrollToTop } from "../../helpers/functions";
-
-export function SearchedItem(key, img, title, id) {
-  const searchedItems = `
-        <a href="/${key}/details?id=${id}" data-link>
-          <img width="300px" src="https://image.tmdb.org/t/p/original${img}"/>
-          <h1>${title}</h1>
-        </a>
-    `;
-
-  return searchedItems;
-}
-
-export function searchedValues(movie, tv, person) {
-  const searchedValues = `
-      <div>
-          <h1>${movie}</h1>
-          <h1>${tv}</h1>
-          <h1>${person}</h1>
-      </div>
-    `;
-
-  return searchedValues;
-}
+import { pagination } from "../../components/pagination/pagination";
+import { SearchedItem, searchedValues } from "../../components/search/searched";
+import { Fetching, SearchFunction } from "../../helpers/functions";
 
 const app = document.getElementById("app");
+let currentPage = 1;
+let fetchKey = "movie";
 
 const SearchData = (query) => {
-  const searchMovies = () => {
-    Fetching("search", "movie", `query=${query}&page=${1}`)
+  const searchQuery =
+    query || new URLSearchParams(window.location.search).get("query") || "";
+
+  const searchItem = (page, key) => {
+    Fetching("search", key, `query=${searchQuery}&page=${page}`)
       .then((items) => {
         const Items = items.results.map((item) =>
-          SearchedItem("movies", item.backdrop_path, item.title, item.id)
+          SearchedItem(
+            `${key}s`,
+            item.backdrop_path,
+            item.title,
+            item.release_date,
+            item.overview,
+            item.id
+          )
         );
+        const allCards = Items.join("");
+        const container = document.createElement("div");
+        container.classList.add("searchedContent");
+        container.classList.add("container");
+
+        const searchedCards = document.createElement("div");
+        searchedCards.classList.add("searchedCard");
+
+        searchedCards.innerHTML = allCards;
 
         Fetching("search", "movie", `query=${query}`).then((movie) => {
           Fetching("search", "tv", `query=${query}`).then((tv) => {
             Fetching("search", "person", `query=${query}`).then((person) => {
-              const allCards = Items.join("");
-              const container = document.createElement("div");
-              container.classList.add("searchedContent");
-              container.classList.add("container");
-
-              const searchedCards = document.createElement("div");
-              searchedCards.classList.add("searchedCard");
-
-              searchedCards.innerHTML = allCards;
-
               const values = document.createElement("div");
               values.classList.add("searchedValues");
               values.innerHTML = searchedValues(
@@ -54,10 +44,55 @@ const SearchData = (query) => {
                 person.total_results
               );
 
-              container.append(searchedCards, values);
+              container.append(values, searchedCards);
+              const mainContent = document.createElement("div");
+              mainContent.classList.add("mainContent");
+
+              mainContent.append(container);
+              mainContent.insertAdjacentHTML("beforeend", pagination);
 
               app.innerHTML = "";
-              app.append(container);
+              app.append(mainContent);
+
+              const filterResults = document.querySelectorAll(".filterResult");
+
+              filterResults.forEach((result) => {
+                result.addEventListener("click", () => {
+                  const accessKey = result.getAttribute("accesskey");
+
+                  switch (accessKey) {
+                    case "movie":
+                      fetchKey = "movie";
+                      searchItem(currentPage, fetchKey);
+                      break;
+                    case "tv":
+                      fetchKey = "tv";
+                      searchItem(currentPage, fetchKey);
+                      break;
+                    case "people":
+                      fetchKey = "person";
+                      searchItem(currentPage, fetchKey);
+                      break;
+                  }
+                });
+              });
+
+              const nextBtn = mainContent.querySelector(".next");
+              const prevBtn = mainContent.querySelector(".prev");
+
+              nextBtn.addEventListener("click", () => {
+                currentPage++;
+                searchItem(currentPage);
+                scrollToTop();
+              });
+
+              prevBtn.addEventListener("click", () => {
+                if (currentPage > 1) {
+                  currentPage--;
+                  searchItem(currentPage);
+                  scrollToTop();
+                }
+              });
             });
           });
         });
@@ -65,9 +100,8 @@ const SearchData = (query) => {
       .catch((err) => console.error(err));
   };
 
-  searchMovies();
-
-  history.pushState({}, "", `/search/query=${query}`);
+  searchItem(currentPage, fetchKey);
+  history.pushState({}, "", `/search/items?query=${searchQuery}`);
 };
 
 export default SearchData;
@@ -75,27 +109,4 @@ export default SearchData;
 const SearchForm = document.querySelector(".SearchForm");
 const SearchInput = document.querySelector(".SearchInput");
 
-SearchForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const searchQuery = SearchInput.value.trim();
-  localStorage.setItem("searchQuery", searchQuery);
-
-  scrollToTop();
-  SearchData(searchQuery);
-
-  setTimeout(() => {
-    SearchInput.value = "";
-    SearchForm.classList.remove("showSearch");
-  }, 0);
-});
-
-window.addEventListener("load", () => {
-  const savedQuery = localStorage.getItem("searchQuery");
-  const currentLocation = window.location.pathname;
-
-  if (currentLocation !== "/search/query") {
-    localStorage.removeItem("searchQuery");
-  } else if (savedQuery) {
-    SearchData(savedQuery);
-  }
-});
+SearchFunction(SearchInput, SearchForm);

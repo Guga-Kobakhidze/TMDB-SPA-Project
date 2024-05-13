@@ -1,0 +1,112 @@
+.searchedContent {
+  @include flexBox;
+  align-items: start;
+  justify-content: start;
+  gap: 40px;
+  margin-top: 130px;
+
+  .searchedCard {
+    width: 100%;
+    @include flexBox;
+    flex-direction: column;
+    justify-content: start;
+    gap: 20px;
+
+    .SearchedItems {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.238);
+
+      img {
+        height: 200px;
+        width: 150px;
+        object-fit: cover;
+      }
+    }
+
+    .SearchedDesc {
+      span {
+        display: block;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 14px;
+        font-weight: 700;
+        color: rgba(128, 128, 128, 0.527);
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 12px;
+        max-width: 95%;
+      }
+    }
+  }
+
+  .SearchResults {
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    height: max-content;
+    padding-bottom: 15px;
+    border: 1px solid rgba(128, 128, 128, 0.648);
+
+    .title {
+      color: #fff;
+      font-weight: 700;
+      font-size: 20px;
+      background-color: rgb(1, 180, 228);
+      padding: 20px 100px 20px 20px;
+      margin-bottom: 15px;
+    }
+
+    .filteredContent {
+      .filterResult {
+        cursor: pointer;
+
+        :hover {
+          background-color: rgba(123, 123, 123, 0.503);
+        }
+
+        h1 {
+          width: 100%;
+          @include flexBox;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 20px;
+          margin: 5px 0;
+        }
+
+        :not(:last-child) {
+          padding-bottom: 20px;
+        }
+
+        h1 {
+          span {
+            display: block;
+            padding: 5px 30px;
+            background-color: rgb(232, 232, 232);
+            border-radius: 20px;
+
+            &:hover {
+              background-color: rgb(232, 232, 232);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .filterPara {
+    margin-top: 30px;
+    max-width: 270px;
+    text-align: start;
+  }
+}

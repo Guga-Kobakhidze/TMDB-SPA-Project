@@ -1,3 +1,7 @@
+import SearchData from "../views/search/search";
+
+// Fetching Data functions
+
 export const modules = {
   method: "GET",
   headers: {
@@ -21,3 +25,22 @@ export const scrollToTop = () => {
     behavior: "smooth",
   });
 };
+
+// Search Function
+
+export function SearchFunction(input, form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const searchQuery = input.value.trim();
+
+    if (searchQuery === "") return;
+
+    scrollToTop();
+    SearchData(searchQuery);
+
+    setTimeout(() => {
+      input.value = "";
+      form.classList.remove("showSearch");
+    }, 0);
+  });
+}
