@@ -66,6 +66,7 @@ const SearchData = (query) => {
   };
 
   searchMovies();
+
   history.pushState({}, "", `/search/query=${query}`);
 };
 
@@ -88,30 +89,13 @@ SearchForm.addEventListener("submit", (e) => {
   }, 0);
 });
 
-SearchForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+window.addEventListener("load", () => {
+  const savedQuery = localStorage.getItem("searchQuery");
+  const currentLocation = window.location.pathname;
 
-  const searchQuery = SearchInput.value.trim();
-  localStorage.setItem("searchQuery", searchQuery);
-
-  SearchData(searchQuery);
-  setTimeout(() => {
-    SearchInput.value = "";
-    SearchForm.classList.remove("showSearch");
-  }, 0);
+  if (currentLocation !== "/search/query") {
+    localStorage.removeItem("searchQuery");
+  } else if (savedQuery) {
+    SearchData(savedQuery);
+  }
 });
-
-// window.addEventListener("load", () => {
-//   const savedQuery = localStorage.getItem("searchQuery");
-//   const currentLocation = window.location.pathname;
-
-//   if (currentLocation.includes("/search/query") && savedQuery) {
-//     SearchData(savedQuery);
-//   } else {
-//     if (savedQuery) {
-//       localStorage.removeItem("searchQuery");
-//       history.pushState({}, "", `/search/query=${savedQuery}`);
-//       SearchData(savedQuery);
-//     }
-//   }
-// });

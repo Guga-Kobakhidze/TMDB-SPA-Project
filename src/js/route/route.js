@@ -51,10 +51,6 @@ const routes = {
     title: "Person Details",
     render: personDetails,
   },
-  "/search/query=:query": {
-    title: "Search",
-    render: (params) => SearchData(params.query),
-  },
 };
 
 export default routes;
