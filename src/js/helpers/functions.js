@@ -21,3 +21,9 @@ export const scrollToTop = () => {
     behavior: "smooth",
   });
 };
+
+export const generalDataFetcher = async (keyword1, keyword2) =>
+  fetch(
+    `https://api.themoviedb.org/3/${keyword1}/${keyword2}`,
+    modules
+  ).then((response) => response.json());
