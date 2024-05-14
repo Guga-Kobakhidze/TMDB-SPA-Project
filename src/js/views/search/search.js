@@ -24,78 +24,83 @@ const SearchData = (query) => {
           )
         );
 
-        Fetching("search", "movie", `query=${query}`).then((movie) => {
-          Fetching("search", "tv", `query=${query}`).then((tv) => {
-            Fetching("search", "person", `query=${query}`).then((person) => {
-              const values = document.createElement("div");
-              values.classList.add("searchedValues");
-              values.innerHTML = searchedValues(
-                movie.total_results,
-                tv.total_results,
-                person.total_results
-              );
-              const allCards = Items.join("");
-              const container = document.createElement("div");
-              container.classList.add("searchedContent");
-              container.classList.add("container");
+        Fetching("search", "movie", `query=${searchQuery}`).then((movie) => {
+          Fetching("search", "tv", `query=${searchQuery}`).then((tv) => {
+            Fetching("search", "person", `query=${searchQuery}`).then(
+              (person) => {
+                const values = document.createElement("div");
+                values.classList.add("searchedValues");
+                values.innerHTML = searchedValues(
+                  movie.total_results,
+                  tv.total_results,
+                  person.total_results
+                );
 
-              const searchedCards = document.createElement("div");
-              searchedCards.classList.add("searchedCard");
+                const allCards = Items.join("");
+                const container = document.createElement("div");
+                container.classList.add("searchedContent");
+                container.classList.add("container");
 
-              searchedCards.innerHTML = allCards;
+                const searchedCards = document.createElement("div");
+                searchedCards.classList.add("searchedCard");
 
-              container.append(values, searchedCards);
-              const mainContent = document.createElement("div");
-              mainContent.classList.add("mainContent");
+                searchedCards.innerHTML = allCards;
 
-              mainContent.append(container);
-              mainContent.insertAdjacentHTML("beforeend", pagination);
+                container.append(values, searchedCards);
+                const mainContent = document.createElement("div");
+                mainContent.classList.add("mainContent");
 
-              app.innerHTML = "";
-              app.append(mainContent);
+                mainContent.append(container);
+                mainContent.insertAdjacentHTML("beforeend", pagination);
 
-              const filterResults = document.querySelectorAll(".filterResult");
+                app.innerHTML = "";
+                app.append(mainContent);
 
-              filterResults.forEach((result) => {
-                result.addEventListener("click", () => {
-                  const accessKey = result.getAttribute("accesskey");
+                const filterResults =
+                  document.querySelectorAll(".filterResult");
 
-                  switch (accessKey) {
-                    case "movie":
-                      fetchKey = "movie";
-                      searchItem(currentPage, fetchKey);
-                      break;
-                    case "tv":
-                      fetchKey = "tv";
-                      searchItem(currentPage, fetchKey);
-                      break;
-                    case "people":
-                      fetchKey = "person";
-                      searchItem(currentPage, fetchKey);
-                      break;
+                filterResults.forEach((result) => {
+                  result.addEventListener("click", () => {
+                    const accessKey = result.getAttribute("accesskey");
+
+                    switch (accessKey) {
+                      case "movie":
+                        fetchKey = "movie";
+                        searchItem(currentPage, fetchKey);
+                        break;
+                      case "tv":
+                        fetchKey = "tv";
+                        searchItem(currentPage, fetchKey);
+                        break;
+                      case "people":
+                        fetchKey = "person";
+                        searchItem(currentPage, fetchKey);
+                        break;
+                    }
+                  });
+                });
+
+                const nextBtn = mainContent.querySelector(".next");
+                const prevBtn = mainContent.querySelector(".prev");
+
+                console.log(nextBtn, prevBtn);
+
+                nextBtn.addEventListener("click", () => {
+                  currentPage++;
+                  searchItem(currentPage);
+                  console.log(currentPage);
+                  scrollToTop();
+                });
+
+                prevBtn.addEventListener("click", () => {
+                  if (currentPage > 1) {
+                    currentPage--;
+                    searchItem(currentPage);
+                    scrollToTop();
                   }
                 });
-              });
-
-              const nextBtn = mainContent.querySelector(".next");
-              const prevBtn = mainContent.querySelector(".prev");
-
-              console.log(nextBtn, prevBtn);
-              nextBtn.addEventListener("click", () => {
-                currentPage++;
-                searchItem(currentPage);
-                console.log(currentPage);
-                scrollToTop();
-              });
-
-              prevBtn.addEventListener("click", () => {
-                if (currentPage > 1) {
-                  currentPage--;
-                  searchItem(currentPage);
-                  scrollToTop();
-                }
-              });
-            });
+              }
+            );
           });
         });
       })

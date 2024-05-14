@@ -26,14 +26,10 @@ export const scrollToTop = () => {
   });
 };
 
-<<<<<<< HEAD
 export const generalDataFetcher = async (keyword1, keyword2) =>
-  fetch(
-    `https://api.themoviedb.org/3/${keyword1}/${keyword2}`,
-    modules
-  ).then((response) => response.json());
-=======
-// Search Function
+  fetch(`https://api.themoviedb.org/3/${keyword1}/${keyword2}`, modules).then(
+    (response) => response.json()
+  );
 
 export function SearchFunction(input, form) {
   form.addEventListener("submit", (e) => {
@@ -51,4 +47,3 @@ export function SearchFunction(input, form) {
     }, 0);
   });
 }
->>>>>>> 23f3e79950063e3aa39ef424828ddcf51d71bd39
