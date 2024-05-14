@@ -45,6 +45,10 @@ header {
           color: $main-color;
         }
       }
+
+      @include responsive(tablet) {
+        display: none;
+      }
     }
 
     .nav_links {

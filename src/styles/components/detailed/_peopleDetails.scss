@@ -71,10 +71,14 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
 
+      &:hover .casts {
+        animation-play-state: paused;
+      }
+
       .casts {
         @include flexBox;
-        justify-content: start;
         gap: 10px;
+        @include Slider;
 
         .castCard {
           @include flexBox;
@@ -85,6 +89,7 @@
           color: black;
 
           img {
+            border-radius: 5px;
             height: 220px;
             object-fit: cover;
           }

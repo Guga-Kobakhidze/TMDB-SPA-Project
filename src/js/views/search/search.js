@@ -10,19 +10,33 @@ const SearchData = (query) => {
   const searchQuery =
     query || new URLSearchParams(window.location.search).get("query") || "";
 
-  const searchItem = (page, key) => {
+  const searchItem = async (page, key) => {
     Fetching("search", key, `query=${searchQuery}&page=${page}`)
       .then((items) => {
-        const Items = items.results.map((item) =>
-          SearchedItem(
-            `${key}s`,
-            item.backdrop_path,
-            item.title,
-            item.release_date,
-            item.overview,
-            item.id
-          )
-        );
+        let Items;
+        if (key === "person") {
+          Items = items.results.map((item) =>
+            SearchedItem(
+              `${key}`,
+              item.profile_path,
+              item.original_name,
+              item.popularity,
+              item.known_for_department,
+              item.id
+            )
+          );
+        } else {
+          Items = items.results.map((item) =>
+            SearchedItem(
+              `${key}`,
+              key === "tv" ? item.backdrop_path : item.poster_path,
+              key === "tv" ? item.name : item.title,
+              key === "tv" ? item.first_air_date : item.release_date,
+              item.overview,
+              item.id
+            )
+          );
+        }
 
         Fetching("search", "movie", `query=${searchQuery}`).then((movie) => {
           Fetching("search", "tv", `query=${searchQuery}`).then((tv) => {
@@ -87,15 +101,14 @@ const SearchData = (query) => {
 
                 nextBtn.addEventListener("click", () => {
                   currentPage++;
-                  searchItem(currentPage);
-                  console.log(currentPage);
+                  searchItem(currentPage, fetchKey);
                   scrollToTop();
                 });
 
                 prevBtn.addEventListener("click", () => {
                   if (currentPage > 1) {
                     currentPage--;
-                    searchItem(currentPage);
+                    searchItem(currentPage, fetchKey);
                     scrollToTop();
                   }
                 });

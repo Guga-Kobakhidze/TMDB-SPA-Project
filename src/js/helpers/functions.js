@@ -35,11 +35,12 @@ export function SearchFunction(input, form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const searchQuery = input.value.trim();
+    console.log(searchQuery);
 
-    if (searchQuery === "") return;
+    // if (searchQuery === "") return;
 
-    scrollToTop();
     SearchData(searchQuery);
+    scrollToTop();
 
     setTimeout(() => {
       input.value = "";

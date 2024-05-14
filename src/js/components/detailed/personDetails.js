@@ -1,5 +1,6 @@
 import { Fetching } from "../../helpers/functions";
 import { CategoryKeywords } from "../../helpers/Links";
+import Image from "../../../assets/unnamed.png";
 
 export const PersonDetails = (
   img,
@@ -10,10 +11,13 @@ export const PersonDetails = (
   birthPlace,
   id
 ) => {
+  const resetImage =
+    img === null ? Image : `https://image.tmdb.org/t/p/original${img}`;
+
   const personDetails = `
     <div class="peaopleDetails container">            
         <div class="personalInfo">
-            <img class="peaopleImage" src="https://image.tmdb.org/t/p/original${img}" alt="cover" />
+            <img class="peaopleImage" src="${resetImage}" alt="cover" />
             <div class="knownFor">
                 <h2>Personal Info<h2>
                 <h3>Known For</h3>
@@ -54,7 +58,9 @@ function fetchCasts(personId) {
 
       data.cast.map((cast) => {
         const castImg = document.createElement("img");
-        castImg.src = `https://image.tmdb.org/t/p/original${cast.poster_path}`;
+        castImg.src = `https://image.tmdb.org/t/p/original${
+          cast.poster_path === null ? resetImage : cast.poster_path
+        }`;
 
         const castTitle = document.createElement("span");
         castTitle.innerHTML = cast.title;

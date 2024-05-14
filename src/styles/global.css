@@ -189,6 +189,20 @@ body {
   z-index: 1000;
 }
 
+@keyframes Slider {
+  0% {
+    transform: translateX(0);
+  }
+  33% {
+    transform: translateX(-100%);
+  }
+  66% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 header {
   position: fixed;
   top: 0;
@@ -231,6 +245,11 @@ header .header_content ul li:hover .nav_links {
 }
 header .header_content ul li a {
   color: #fff;
+}
+@media only screen and (max-width: 800px) {
+  header .header_content ul {
+    display: none;
+  }
 }
 header .header_content .nav_links {
   position: absolute;
@@ -287,6 +306,7 @@ footer .footer_content {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 60px;
   align-items: start;
   color: #fff;
@@ -665,12 +685,15 @@ footer .footer_content .footer-nav li a:hover {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+.peaopleDetails .peopleContent .castSlider:hover .casts {
+  animation-play-state: paused;
+}
 .peaopleDetails .peopleContent .castSlider .casts {
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: start;
   gap: 10px;
+  animation: Slider 30s infinite 1s;
 }
 .peaopleDetails .peopleContent .castSlider .casts .castCard {
   display: flex;
@@ -683,6 +706,7 @@ footer .footer_content .footer-nav li a:hover {
   color: black;
 }
 .peaopleDetails .peopleContent .castSlider .casts .castCard img {
+  border-radius: 5px;
   height: 220px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -697,6 +721,7 @@ footer .footer_content .footer-nav li a:hover {
   position: relative;
   height: 100vh;
   color: #fff;
+  margin-bottom: 340px;
 }
 .movieDetailsCard img {
   width: 100%;
@@ -710,7 +735,7 @@ footer .footer_content .footer-nav li a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  filter: blur(4px) brightness(0.5);
+  filter: brightness(0.2) blur(2px);
 }
 .movieDetailsCard .movieContent {
   display: flex;
@@ -783,6 +808,7 @@ footer .footer_content .footer-nav li a:hover {
 }
 .movieDetailsCard .movieContent .movieInfo .playTrailer {
   margin-bottom: 15px;
+  width: 150px;
 }
 .movieDetailsCard .movieContent .movieInfo .playTrailer i {
   font-size: 22px;
@@ -824,6 +850,19 @@ footer .footer_content .footer-nav li a:hover {
   color: rgb(209, 188, 188);
   margin-bottom: 15px;
 }
+@media only screen and (max-width: 800px) {
+  .movieDetailsCard .movieContent {
+    flex-direction: column;
+  }
+  .movieDetailsCard .movieContent .movieImg {
+    width: 100%;
+  }
+  .movieDetailsCard .movieContent .movieImg img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
 .movieDetailsCard .videoBox {
   position: fixed;
   top: 50%;
@@ -838,6 +877,40 @@ footer .footer_content .footer-nav li a:hover {
 .movieDetailsCard .videoBox iframe {
   width: 100%;
   height: 100%;
+}
+.movieDetailsCard .casts {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  max-width: 90%;
+  padding: 10px 40px;
+  margin: 0 auto;
+}
+.movieDetailsCard .casts h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 10px;
+}
+.movieDetailsCard .casts .castSlider {
+  display: flex;
+  gap: 10px;
+  bottom: 0;
+}
+.movieDetailsCard .casts .castSlider .castBox {
+  color: black;
+}
+.movieDetailsCard .casts .castSlider .castBox img {
+  border-radius: 10px;
+  width: 150px;
+  height: 200px;
+  margin-bottom: 5px;
+}
+.movieDetailsCard .casts .castSlider .castBox h2 {
+  margin-bottom: 5px;
+}
+.movieDetailsCard .casts .castSlider .castBox p {
+  color: rgba(128, 128, 128, 0.781);
 }
 
 .change {
