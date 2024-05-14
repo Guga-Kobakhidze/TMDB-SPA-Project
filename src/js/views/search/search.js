@@ -1,6 +1,6 @@
 import { pagination } from "../../components/pagination/pagination";
 import { SearchedItem, searchedValues } from "../../components/search/searched";
-import { Fetching, SearchFunction } from "../../helpers/functions";
+import { Fetching, SearchFunction, scrollToTop } from "../../helpers/functions";
 
 const app = document.getElementById("app");
 let currentPage = 1;
@@ -23,15 +23,6 @@ const SearchData = (query) => {
             item.id
           )
         );
-        const allCards = Items.join("");
-        const container = document.createElement("div");
-        container.classList.add("searchedContent");
-        container.classList.add("container");
-
-        const searchedCards = document.createElement("div");
-        searchedCards.classList.add("searchedCard");
-
-        searchedCards.innerHTML = allCards;
 
         Fetching("search", "movie", `query=${query}`).then((movie) => {
           Fetching("search", "tv", `query=${query}`).then((tv) => {
@@ -43,6 +34,15 @@ const SearchData = (query) => {
                 tv.total_results,
                 person.total_results
               );
+              const allCards = Items.join("");
+              const container = document.createElement("div");
+              container.classList.add("searchedContent");
+              container.classList.add("container");
+
+              const searchedCards = document.createElement("div");
+              searchedCards.classList.add("searchedCard");
+
+              searchedCards.innerHTML = allCards;
 
               container.append(values, searchedCards);
               const mainContent = document.createElement("div");
@@ -80,9 +80,11 @@ const SearchData = (query) => {
               const nextBtn = mainContent.querySelector(".next");
               const prevBtn = mainContent.querySelector(".prev");
 
+              console.log(nextBtn, prevBtn);
               nextBtn.addEventListener("click", () => {
                 currentPage++;
                 searchItem(currentPage);
+                console.log(currentPage);
                 scrollToTop();
               });
 
