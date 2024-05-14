@@ -136,4 +136,12 @@
       background-color: #0d0d22;
     }
   }
+
+  @include responsive(l-tablet) {
+    flex-direction: column;
+
+    button {
+      padding: 20px 0;
+    }
+  }
 }

@@ -223,32 +223,74 @@ header .header_content {
 header .header_content .logo img {
   width: 150px;
 }
-header .header_content ul {
+header .header_content .navMenu {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
 }
-header .header_content ul .search i {
+header .header_content .navMenu .search i {
   cursor: pointer;
   color: white;
   font-size: 20px;
 }
-header .header_content ul li {
+header .header_content .navMenu li {
   position: relative;
   line-height: 34px;
 }
-header .header_content ul li:hover .nav_links {
+header .header_content .navMenu li:hover .nav_links {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-header .header_content ul li a {
+header .header_content .navMenu li a {
   color: #fff;
 }
 @media only screen and (max-width: 800px) {
-  header .header_content ul {
+  header .header_content .navMenu {
     display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-left: 10px;
+    width: 350px;
+    height: 500px;
+    background-color: white;
+  }
+  header .header_content .navMenu li a {
+    color: black;
+  }
+  header .header_content .navMenu li i {
+    color: black;
+  }
+}
+header .header_content .mobileNav {
+  display: none;
+}
+header .header_content .mobileNav .line {
+  height: 2px;
+  background-color: white;
+  width: 20px;
+}
+header .header_content .mobileNav .line:not(:last-child) {
+  margin-bottom: 5px;
+}
+header .header_content .mobileNav .line1 {
+  animation: menuAnimate 1s infinite;
+}
+header .header_content .mobileNav .line3 {
+  animation: menuAnimate 1s infinite 0.2s;
+}
+@keyframes menuAnimate {
+  0% {
+    width: 0px;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0px;
   }
 }
 header .header_content .nav_links {
@@ -604,6 +646,11 @@ footer .footer_content .footer-nav li a:hover {
   justify-content: space-between;
   gap: 25px;
   flex-wrap: wrap;
+}
+@media only screen and (max-width: 1024px) {
+  .PersonSection .PersonCards {
+    justify-content: center;
+  }
 }
 .PersonSection .PersonCards .personCard {
   width: 280px;
@@ -1183,4 +1230,12 @@ footer .footer_content .footer-nav li a:hover {
 }
 .pagination button:hover {
   background-color: #0d0d22;
+}
+@media only screen and (max-width: 1024px) {
+  .pagination {
+    flex-direction: column;
+  }
+  .pagination button {
+    padding: 20px 0;
+  }
 }/*# sourceMappingURL=global.css.map */
