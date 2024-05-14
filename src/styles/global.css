@@ -394,6 +394,37 @@ footer .footer_content .footer-nav li a:hover {
   flex-direction: row;
   align-items: center;
 }
+.ProductsSection .languageContainer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.207);
+  margin-bottom: 30px;
+  gap: 10px;
+}
+.ProductsSection .scoreScale {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.ProductsSection .scoreScale li {
+  display: flex;
+  flex: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: rgba(128, 128, 128, 0.612);
+}
+.ProductsSection .scoreScale li::before {
+  content: "|";
+  font-size: 30px;
+  width: 10px;
+}
+.ProductsSection .scoreScale li .division::before {
+  content: "|";
+  font-size: 10px;
+}
 .ProductsSection .sortContent {
   height: 0%;
   margin-bottom: 20px;
@@ -452,20 +483,21 @@ footer .footer_content .footer-nav li a:hover {
 }
 
 .double_range_slider_box {
+  margin-top: 30px;
   position: relative;
-  width: 500px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   background: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
 }
 
 .double_range_slider {
-  width: 90%;
+  width: 100%;
   height: 10px;
-  position: relative;
+  position: absolute;
   background-color: #dddddd;
   border-radius: 20px;
 }
@@ -474,6 +506,7 @@ footer .footer_content .footer-nav li a:hover {
   height: 100%;
   position: absolute;
   border-radius: 20px;
+  width: 20px;
   background-color: #95d564;
 }
 
@@ -503,6 +536,42 @@ footer .footer_content .footer-nav li a:hover {
   font-size: 1rem;
   transition: right 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   will-change: right, transform;
+}
+
+.inputRange {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+input::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 3px solid rgb(1, 180, 255);
+  background-color: rgb(1, 180, 255);
+  pointer-events: auto;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin-bottom: 1px;
+}
+
+input::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 3px solid #cbffa3;
+  background-color: #95d564;
+  pointer-events: auto;
+  -moz-appearance: none;
+  cursor: pointer;
+  margin-top: 30%;
 }
 
 .card {

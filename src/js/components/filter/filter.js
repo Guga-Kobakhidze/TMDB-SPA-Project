@@ -100,19 +100,23 @@ export const Filter = () => {
             <div class='radioGroup genresSection filterForm'>
             <h2>Genres</h2>
            </div>
-            <div class='radioGroup' >
-            <label > Language </label>
+            <div class='radioGroup filterForm languageContainer' >
+            <h2> Language </h2>
             <select class="languages" name="languages>
             <option value="">Select a language...</option>
             </select>           
             </div>
-            <div class='radioGroup' > 
-            <div class="double_range_slider_box">
+            <div class='radioGroup filterForm' >
+            <h2>User Score</h2> 
+            <div class="double_range_slider_box ">
+            <ul class='scoreScale'>
+        </ul>
       <div class="double_range_slider">
+        
         <span class="range_track" id="range_track"></span>
- 
-        <input type="range" class="min" min="0" max="100" value="0" step="0" />
-        <input type="range" class="max" min="0" max="100" value="20" step="0" />
+        
+        <input type="range" class="inputRange" min="0" max="10" value="0" step="1" />
+        <input type="range" class="inputRange" min="0" max="80" value="20" step="1" />
  
         <div class="minvalue"></div>
         <div class="maxvalue"></div>
@@ -154,9 +158,10 @@ export const Filter = () => {
     
     const rawData =  fetch('https://api.themoviedb.org/3/genre/movie/list',modules).then((response) => response.json()).then((responseData) =>
         {
-            console.log(responseData.genres);
+            
             const arr = [];
             const divContainer = document.createElement("div");
+            divContainer.classList.add("radioGroup")
             
             
             for(let genre of responseData.genres) {
@@ -164,7 +169,8 @@ export const Filter = () => {
               pELement.textContent = genre.name;
               divContainer.append(pELement)
         }
-        console.log(divContainer);
+        
+
        
         
         filterSection.querySelector('.genresSection').append( divContainer);
@@ -190,9 +196,45 @@ export const Filter = () => {
     )
 
   }
-  
+
+
+
+const scoreScaleGenerator = (ulClass, step, quantity, division) => {
+    
+    filterSection.querySelector(ulClass).innerHTML = '';
+
+    
+    const totalSteps = quantity / step;
+
+    const divisionIncrement = totalSteps / division;
+
+    
+    
+   
+    let divisionIndex = 0;
+
+    for (let i = 0; i <= totalSteps; i++) {
+        const liElement = document.createElement('li');
+        filterSection.querySelector(ulClass).appendChild(liElement);
+
+        if (i === Math.round(divisionIndex)) {
+            filterSection.querySelector(ulClass).getElementsByTagName('li')[i].textContent = i * step;
+            filterSection.querySelector(ulClass).getElementsByTagName('li')[i].classList.add('division');
+            
+            
+            divisionIndex += divisionIncrement;
+        }
+    }
+    console.log(filterSection.querySelector(ulClass));
+};
+
+
+
   genreElementsCreator();
   languageGenerator();
+  scoreScaleGenerator('.scoreScale',1,10,2)
+
+
   
   return searchSection;
 }
