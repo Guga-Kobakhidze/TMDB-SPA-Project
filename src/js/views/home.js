@@ -1,7 +1,6 @@
 import { HeroSection } from "../components/heroSection.js";
-import { Fetching } from "../helpers/functions.js";
+import { Fetching, SearchFunction } from "../helpers/functions.js";
 import { CategoryKeywords, MovieKeywords } from "../helpers/Links.js";
-import SearchData from "./search/search.js";
 
 const renderDetailedPage = () => {
   const app = document.getElementById("app");
@@ -13,19 +12,10 @@ const renderDetailedPage = () => {
       const trendingCards = HeroSection(rand.backdrop_path, rand.id);
       app.innerHTML = trendingCards;
 
-      const heroSearch = document.querySelector(".heroSearch");
-      const heroInput = document.querySelector(".searchInput");
+      const HeroSearch = document.querySelector(".heroSearch");
+      const HeroInput = document.querySelector(".searchInput");
 
-      heroSearch.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const searchQuery = heroInput.value.trim();
-        localStorage.setItem("searchQuery", searchQuery);
-
-        SearchData(searchQuery);
-        setTimeout(() => {
-          heroInput.value = "";
-        }, 0);
-      });
+      SearchFunction(HeroInput, HeroSearch);
     })
     .catch((err) => console.error(err));
 };

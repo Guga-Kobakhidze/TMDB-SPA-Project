@@ -4,6 +4,9 @@ import movies from "../views/movies.js";
 import person from "../views/person.js";
 import movieDetails from "../views/details/details.js";
 import personDetails from "../views/details/personDetails.js";
+import SearchData from "../views/search/search.js";
+
+const SearchInput = document.querySelector(".SearchInput");
 
 const routes = {
   "/": { title: "Home", render: home },
@@ -51,9 +54,9 @@ const routes = {
     title: "Person Details",
     render: personDetails,
   },
-  "/search/query=:query": {
-    title: "Search",
-    render: (params) => SearchData(params.query),
+  "/search/items": {
+    title: "Search Results",
+    render: SearchData,
   },
 };
 
