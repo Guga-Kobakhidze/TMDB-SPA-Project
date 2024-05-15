@@ -367,7 +367,6 @@ footer .footer_content .footer-nav li a:hover {
   font-size: 18px;
   font-weight: 200;
   color: rgba(128, 128, 128, 0.612);
-  margin-bottom: 15px;
 }
 .ProductsSection .filterContent .filterForm .radioGroup,
 .ProductsSection .sortContent .filterForm .radioGroup {
@@ -406,24 +405,27 @@ footer .footer_content .footer-nav li a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: 103%;
+  margin-top: 30px;
 }
 .ProductsSection .scoreScale li {
   display: flex;
-  flex: 0;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 23px;
   color: rgba(128, 128, 128, 0.612);
+}
+.ProductsSection .scoreScale li .division {
+  margin-left: 10px;
 }
 .ProductsSection .scoreScale li::before {
   content: "|";
-  font-size: 30px;
   width: 10px;
 }
 .ProductsSection .scoreScale li .division::before {
   content: "|";
   font-size: 10px;
+  display: inline-block;
 }
 .ProductsSection .sortContent {
   height: 0%;
@@ -483,7 +485,7 @@ footer .footer_content .footer-nav li a:hover {
 }
 
 .double_range_slider_box {
-  margin-top: 30px;
+  margin-top: 15px;
   position: relative;
   width: 100%;
   height: 100%;
@@ -493,6 +495,28 @@ footer .footer_content .footer-nav li a:hover {
   justify-content: center;
   align-items: center;
 }
+.double_range_slider_box .rangeInfo {
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+  height: 30px;
+  position: absolute;
+  top: -10px;
+  padding-top: 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+  opacity: 0;
+  transition: all 1s ease;
+  visibility: hidden;
+  left: calc((var(--value1) + var(--value2)) / 2 * 10%);
+}
+.double_range_slider_box .rangeInfo.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: all 1s ease;
+}
 
 .double_range_slider {
   width: 100%;
@@ -500,6 +524,7 @@ footer .footer_content .footer-nav li a:hover {
   position: absolute;
   background-color: #dddddd;
   border-radius: 20px;
+  bottom: 18px;
 }
 
 .range_track {
@@ -540,7 +565,7 @@ footer .footer_content .footer-nav li a:hover {
 
 .inputRange {
   position: absolute;
-  width: 100%;
+  width: 103%;
   height: 5px;
   background: none;
   pointer-events: none;
@@ -554,12 +579,20 @@ input::-webkit-slider-thumb {
   height: 15px;
   width: 15px;
   border-radius: 50%;
-  border: 3px solid rgb(1, 180, 255);
+  border: 1px solid rgb(1, 180, 255);
   background-color: rgb(1, 180, 255);
   pointer-events: auto;
   -webkit-appearance: none;
   cursor: pointer;
   margin-bottom: 1px;
+}
+
+input[type=range].inputRange:nth-of-type(1)::-webkit-slider-thumb {
+  margin-left: -9px;
+}
+
+input[type=range].inputRange:nth-of-type(2)::-webkit-slider-thumb {
+  margin-left: -9px;
 }
 
 input::-moz-range-thumb {

@@ -109,17 +109,17 @@ export const Filter = () => {
             <div class='radioGroup filterForm' >
             <h2>User Score</h2> 
             <div class="double_range_slider_box ">
+            <p class='rangeInfo'>Range<p>
             <ul class='scoreScale'>
         </ul>
       <div class="double_range_slider">
         
-        <span class="range_track" id="range_track"></span>
         
-        <input type="range" class="inputRange" min="0" max="10" value="0" step="1" />
-        <input type="range" class="inputRange" min="0" max="80" value="20" step="1" />
+        
+        <input type="range" class="inputRange range01" min="0" max="10" value="0" step="1" />
+        <input type="range" class="inputRange range02" min="0" max="10" value="10" step="1" />
  
-        <div class="minvalue"></div>
-        <div class="maxvalue"></div>
+      
       </div>
     </div>
             </div>
@@ -229,6 +229,106 @@ const scoreScaleGenerator = (ulClass, step, quantity, division) => {
 };
 
 
+
+    
+   
+
+    
+  
+    const rangeInfo = filterSection.querySelector('.rangeInfo');
+    const range1 = filterSection.querySelector('.range01');
+    const range2 = filterSection.querySelector('.range02');
+    
+    const updateRangeInfoPosition = () => {
+        const value1 = parseInt(range1.value);
+        const value2 = parseInt(range2.value);
+        
+        rangeInfo.style.setProperty('--value1', value1);
+        rangeInfo.style.setProperty('--value2', value2);
+      };
+      
+    const toggleRangeView = ()=> {
+        if(rangeInfo.classList.contains('visible'))  { rangeInfo.classList.remove('visible');}  else {rangeInfo.classList.add('visible');}
+         }
+    let isDragging = false;
+  
+    const updateRangeInfo = () => {
+      const value1 = parseInt(range1.value);
+      const value2 = parseInt(range2.value);
+      rangeInfo.textContent = `Range ${value1} - ${value2}`;
+    };
+  
+    const handleInput = (event) => {
+      const target = event.target;
+      let value1 = parseInt(range1.value);
+      let value2 = parseInt(range2.value);
+  
+      if (target === range1) {
+        if (value1 > value2) {
+          range2.value = value1;
+        }
+      } else if (target === range2) {
+        if (value2 < value1) {
+          range1.value = value2;
+        }
+      }
+  
+      updateRangeInfo();
+  
+      if (value1 === value2) {
+        if (target === range1) {
+          range2.value = value1;
+        } else {
+          range1.value = value2;
+        }
+      }
+  
+      rangeInfo.classList.add('visible');
+    };
+  
+    const handleMouseDown = () => {
+      isDragging = true;
+    };
+  
+    const handleMouseUp = () => {
+      isDragging = false;
+    };
+  
+    const handleDrag = (event) => {
+        if (!isDragging) return;
+      
+        const target = event.target;
+        const value1 = parseInt(range1.value);
+        const value2 = parseInt(range2.value);
+      
+        if (value1 === value2) {
+          if (target === range1) {
+            range2.value = range1.value;
+          } else if (target === range2 && parseInt(event.target.value) > value2) {
+            range1.value = range2.value;
+          }
+        }
+      
+        updateRangeInfo();
+      };
+      
+  
+    range1.addEventListener('input', handleInput);
+    range2.addEventListener('input', handleInput);
+    range1.addEventListener('input', updateRangeInfo);
+    range2.addEventListener('input', updateRangeInfo);
+    range1.addEventListener('mousedown', handleMouseDown);
+    range2.addEventListener('mousedown', handleMouseDown);
+    range1.addEventListener('mouseup', handleMouseUp);
+    range2.addEventListener('mouseup', handleMouseUp);
+    range1.addEventListener('mouseup', toggleRangeView);
+    range2.addEventListener('mouseup', toggleRangeView);
+    range1.addEventListener('input', handleDrag);
+    range2.addEventListener('input', handleDrag);
+  
+    
+
+  
 
   genreElementsCreator();
   languageGenerator();
