@@ -735,8 +735,7 @@ footer .footer_content .footer-nav li a:hover {
   line-height: 22px;
 }
 .peaopleDetails .peopleContent .castSlider {
-  width: -moz-max-content;
-  width: max-content;
+  width: auto;
   margin-top: 30px;
 }
 .peaopleDetails .peopleContent .castSlider .casts {
@@ -931,10 +930,17 @@ footer .footer_content .footer-nav li a:hover {
   height: 100%;
 }
 
-.actors {
+.castBG {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: start;
+  flex-direction: column;
+}
+.castBG .actors {
   font-size: 28px;
   color: black;
-  margin: 20px auto 10px;
+  margin: 20px 0 10px;
 }
 
 .casts {
@@ -943,7 +949,6 @@ footer .footer_content .footer-nav li a:hover {
   -ms-overflow-style: none;
   max-width: 90%;
   padding: 10px 0;
-  margin: 0 auto;
 }
 .casts h1 {
   font-size: 32px;
@@ -1258,7 +1263,7 @@ footer .footer_content .footer-nav li a:hover {
   padding: 60px 0;
   background-size: cover;
   background-position: center;
-  transition: background-image 0.5s ease;
+  transition: all 0.8s ease-in-out;
 }
 .trendingSection .trendingWeek,
 .trendingSection .trendingToday {
@@ -1281,7 +1286,13 @@ footer .footer_content .footer-nav li a:hover {
 .trendingSection .trendingWeek .trendingContent .card,
 .trendingSection .trendingToday .trendingContent .card {
   background-color: #fff;
-  transition: 0.3s;
+  transition: 0.5s;
+  box-shadow: none;
+  border-radius: 10px;
+}
+.trendingSection .trendingWeek .trendingContent .card .card-content,
+.trendingSection .trendingToday .trendingContent .card .card-content {
+  padding-left: 15px;
 }
 .trendingSection .trendingWeek .trendingContent .card:hover,
 .trendingSection .trendingToday .trendingContent .card:hover {
@@ -1342,4 +1353,46 @@ footer .footer_content .footer-nav li a:hover {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 0;
+}
+
+.genreContainer {
+  background-color: #003049;
+}
+.genreContainer .genreCard {
+  overflow: hidden;
+}
+.genreContainer .genreCard .genreContent {
+  width: 100%;
+  display: flex;
+  animation: textSlider 30s infinite linear;
+  animation-fill-mode: both;
+  cursor: default;
+}
+.genreContainer .genreCard .genreContent:hover {
+  animation-play-state: paused;
+}
+.genreContainer .genreCard .genreBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 0;
+}
+.genreContainer .genreCard .genreBox h1 {
+  padding: 0 10px;
+  font-size: 48px;
+  color: transparent;
+  -webkit-text-stroke-width: 0.4px;
+  -webkit-text-stroke-color: white;
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+
+@keyframes textSlider {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-310%);
+  }
 }/*# sourceMappingURL=global.css.map */

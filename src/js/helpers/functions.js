@@ -60,19 +60,20 @@ export function fetchTrending(key, clasName) {
       const trendingContent = document.querySelector(`.${clasName}`);
       const mainSection = document.querySelector(".trendingSection");
 
-      const AllCards = document.querySelectorAll(".card");
-      mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${data.results[1].backdrop_path}")`;
+      const backgroundArray = data.results.map((bg) => bg.backdrop_path);
 
-      AllCards.forEach((card) => {
-        card.addEventListener("mouseover", () => {
-          let randomNum = Math.floor(Math.random() * 20);
-          const imageUrl = `https://image.tmdb.org/t/p/original${data.results[randomNum].backdrop_path}`;
-          mainSection.style.backgroundImage = `url("${imageUrl}")`;
-        });
-      });
+      let randomNum = Math.floor(Math.random() * 20);
+      mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${backgroundArray[randomNum]}")`;
+
+      function getRendomBg() {
+        let random = Math.floor(Math.random() * 20);
+        randomNum = random;
+        mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${backgroundArray[randomNum]}")`;
+      }
+
+      setInterval(getRendomBg, 10000);
 
       const cards = data.results.map((item) => {
-        mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${item.backdrop_path}")`;
         return ProductsCard(
           "movies",
           item.id,

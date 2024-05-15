@@ -3,7 +3,7 @@
   padding: 60px 0;
   background-size: cover;
   background-position: center;
-  transition: background-image 0.5s ease;
+  transition: all 0.8s ease-in-out;
 
   .trendingWeek,
   .trendingToday {
@@ -23,7 +23,13 @@
 
       .card {
         background-color: $main-color;
-        transition: 0.3s;
+        transition: 0.5s;
+        box-shadow: none;
+        border-radius: 10px;
+
+        .card-content {
+          padding-left: 15px;
+        }
 
         &:hover {
           transform: translateY(-10px);

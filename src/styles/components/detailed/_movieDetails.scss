@@ -177,10 +177,16 @@
   }
 }
 
-.actors {
-  font-size: 28px;
-  color: black;
-  margin: 20px auto 10px;
+.castBG {
+  @include flexBox;
+  align-items: start;
+  flex-direction: column;
+
+  .actors {
+    font-size: 28px;
+    color: black;
+    margin: 20px 0 10px;
+  }
 }
 
 .casts {
@@ -189,7 +195,6 @@
   -ms-overflow-style: none;
   max-width: 90%;
   padding: 10px 0;
-  margin: 0 auto;
 
   h1 {
     font-size: 32px;

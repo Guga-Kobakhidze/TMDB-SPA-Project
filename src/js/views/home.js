@@ -8,15 +8,36 @@ import {
   SearchFunction,
   getTrendingCards,
 } from "../helpers/functions.js";
+import { GetGenres } from "../components/detailed/genres/genre.js";
 
 const renderDetailedPage = () => {
   const app = document.getElementById("app");
 
   Fetching(CategoryKeywords.movie, MovieKeywords.upcoming)
     .then((data) => {
+      // Hero Section
       const randomNumber = Math.floor(Math.random() * 20);
       const rand = data.results[randomNumber];
       const heroContent = HeroSection(rand.backdrop_path, rand.id);
+
+      // Genres List
+
+      const genresFirst = GetGenres();
+      const genresSecond = GetGenres();
+
+      const genreContent = document.createElement("div");
+      genreContent.classList.add("genreContent");
+      genreContent.append(genresFirst, genresSecond);
+
+      const genreCard = document.createElement("div");
+      genreCard.classList.add("genreCard", "container");
+      genreCard.append(genreContent);
+
+      const ganreContainer = document.createElement("div");
+      ganreContainer.classList.add("genreContainer");
+      ganreContainer.append(genreCard);
+
+      // Trending Section
 
       const trendingDay = TrendingDay("day");
       const trendingWeek = TrendingWeek("week");
@@ -28,7 +49,7 @@ const renderDetailedPage = () => {
 
       // merge all
       app.innerHTML = heroContent;
-      app.append(mergeTrending);
+      app.append(ganreContainer, mergeTrending);
 
       const HeroSearch = document.querySelector(".heroSearch");
       const HeroInput = document.querySelector(".searchInput");
