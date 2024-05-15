@@ -1,6 +1,6 @@
+import Image from "../../../assets/unnamed.png";
 import { Fetching } from "../../helpers/functions";
 import { CategoryKeywords } from "../../helpers/Links";
-import Image from "../../../assets/unnamed.png";
 
 export const MovieDetails = (
   cover,
@@ -28,57 +28,60 @@ export const MovieDetails = (
 
   const movieDetails = `
         <div class="movieDetailsCard" key="${id}">
-            <div class="overlay">
-               <img class="movieCover" src="https://image.tmdb.org/t/p/original${cover}" />
-            </div>
-            <div class="movieContent container">
-                <div class="movieImg" >
-                    <img src="https://image.tmdb.org/t/p/original${img}" />
+                <div class="overlay">
+                  <img class="movieCover" src="https://image.tmdb.org/t/p/original${cover}" />
                 </div>
-                <div class="movieInfo">
-                    <h1>${title} <span>(${date.slice(0, 4)})</span></h1>
-                    <div class="movieDate">
-                        <h3>${date} <span>(${language})</span></h3>
-                        &#x2219
-                        <h3>${genre}</h3>
-                        &#x2219
-                        <h3>${runtime} <span>min</span></h3>
+                <div class="movieContent container">
+                    <div class="movieImg" >
+                        <img src="https://image.tmdb.org/t/p/original${img}" />
                     </div>
-                    <div class="precentBox">
-                        <div class="precent"> 
-                            <div class="precentColor" style="border: 4px solid ${colorChange}"></div>
-                            <h3>${vote.toString().replace(".", "").slice(0, 2)} 
-                            <span>%</span></h3>
+                    <div class="movieInfo">
+                        <h1>${title} <span>(${date.slice(0, 4)})</span></h1>
+                        <div class="movieDate">
+                            <h3>${date} <span>(${language})</span></h3>
+                            &#x2219
+                            <h3>${genre}</h3>
+                            &#x2219
+                            <h3>${runtime} <span>min</span></h3>
                         </div>
-                        <div class="like-btn precent">
-                            <i class='bx bxs-heart'></i>
+                        <div class="precentBox">
+                            <div class="precent"> 
+                                <div class="precentColor" style="border: 4px solid ${colorChange}"></div>
+                                <h3>${vote
+                                  .toString()
+                                  .replace(".", "")
+                                  .slice(0, 2)} 
+                                <span>%</span></h3>
+                            </div>
+                            <div class="like-btn precent">
+                                <i class='bx bxs-heart'></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="playTrailer">
-                        <button>
-                            <i class='bx bxs-right-arrow' ></i>
-                            Play Trailer
-                        </button>
-                    </div>
-                    <h3 class="tagline">${tagline}</h3>
-                    <div class="overview"> 
-                        <h3>Overview</h3>
-                        <h4>${desc}</h4>
-                    </div>
-                    <div class="company">
-                        <h3>Company</h3>
-                        <h4>${company}</h4>
+                        <div class="playTrailer">
+                            <button>
+                                <i class='bx bxs-right-arrow' ></i>
+                                Play Trailer
+                            </button>
+                        </div>
+                        <h3 class="tagline">${tagline}</h3>
+                        <div class="overview"> 
+                            <h3>Overview</h3>
+                            <h4>${desc}</h4>
+                        </div>
+                        <div class="company">
+                            <h3>Company</h3>
+                            <h4>${company}</h4>
+                        </div>
                     </div>
                 </div>
+                <div class="videoBox" id="videoSection"></div>
             </div>
-            <div class="videoBox" id="videoSection"></div>
-        </div>
-        <div class="castBG container">
-              <h2 class="actors">Actors</h2>
-              <div class="casts">
+            <div class="castBG container">
+                  <h2 class="actors">Actors</h2>
+                  <div class="casts">
                   <div class="castSlider"></div>
-              </div>
-        </div>
+            </div>
+      </div>
     `;
 
   FetchVideo(id);

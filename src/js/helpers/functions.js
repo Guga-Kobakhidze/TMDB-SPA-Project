@@ -1,6 +1,4 @@
-import { ProductsCard } from "../components/productCard";
 import SearchData from "../views/search/search";
-import { CategoryKeywords } from "./Links";
 
 // Fetching Data functions
 
@@ -50,7 +48,7 @@ export function SearchFunction(input, form) {
   });
 }
 
-// Trending  Functions
+// Trending Functions
 
 export function Slider(rightBtn, leftBtn, sliderCard) {
   let currentScroller = 0;

@@ -783,26 +783,22 @@ input::-moz-range-thumb {
   margin-bottom: 20px;
 }
 .peaopleDetails .personalInfo .knownFor,
-.peaopleDetails .personalInfo .birthday,
 .peaopleDetails .personalInfo .birthday {
   margin-bottom: 20px;
 }
 .peaopleDetails .personalInfo .knownFor h2,
-.peaopleDetails .personalInfo .birthday h2,
 .peaopleDetails .personalInfo .birthday h2 {
   font-size: 28px;
   font-weight: 800;
   margin-bottom: 20px;
 }
 .peaopleDetails .personalInfo .knownFor h3,
-.peaopleDetails .personalInfo .birthday h3,
 .peaopleDetails .personalInfo .birthday h3 {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 .peaopleDetails .personalInfo .knownFor h4,
-.peaopleDetails .personalInfo .birthday h4,
 .peaopleDetails .personalInfo .birthday h4 {
   font-size: 18px;
   font-weight: 500;

@@ -1,5 +1,5 @@
 import { CategoryKeywords, MovieKeywords } from "../../helpers/Links";
-import { Fetching, SearchFunction, SearchPopup } from "../../helpers/functions";
+import { Fetching, SearchPopup } from "../../helpers/functions";
 
 export const HeroSection = () => {
   const heroContainer = document.createElement("div");
@@ -9,15 +9,15 @@ export const HeroSection = () => {
   heroContent.classList.add("heroContent", "container");
 
   heroContent.innerHTML = `
-    <h1>Welcome</h1>
-    <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
-    <form class="searchForm heroSearch"> 
-      <input id="search-input" class="searchInput" type="text" name="search" placeholder="Search for a movie, tv show, person...." />
-      <button class="searchBtn" type="submit">Search</button>
-      <div class="SearchPopup" id="searchPopup">What are you looking for? <i class='bx bxs-wink-smile'></i></div>
-    </form>
-    <div class="overlay"></div>
-  `;
+      <h1>Welcome</h1>
+      <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
+      <form class="searchForm heroSearch"> 
+          <input id="search-input" class="searchInput" type="text" name="search" placeholder="Search for a movie, tv show, person...." />
+          <button class="searchBtn" type="submit">Search</button>
+          <div class="SearchPopup" id="searchPopup">What are you looking for? <i class='bx bxs-wink-smile'></i></div>
+      </form>
+      <div class="overlay"></div>
+    `;
 
   const heroCover = document.createElement("img");
   heroCover.classList.add("heroCover");

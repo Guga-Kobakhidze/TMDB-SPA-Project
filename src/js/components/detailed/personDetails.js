@@ -1,6 +1,6 @@
+import Image from "../../../assets/unnamed.png";
 import { Fetching } from "../../helpers/functions";
 import { CategoryKeywords } from "../../helpers/Links";
-import Image from "../../../assets/unnamed.png";
 
 export const PersonDetails = (
   img,
