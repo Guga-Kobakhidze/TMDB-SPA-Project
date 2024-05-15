@@ -1,0 +1,95 @@
+.trendingSection {
+  position: relative;
+  padding: 60px 0;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease;
+
+  .trendingWeek,
+  .trendingToday {
+    position: relative;
+    z-index: 2;
+
+    .trendingContent {
+      @include flexBox;
+      justify-content: start;
+      gap: 20px;
+      padding: 0;
+      min-height: 400px;
+
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      .card {
+        background-color: $main-color;
+        transition: 0.3s;
+
+        &:hover {
+          transform: translateY(-10px);
+        }
+
+        .card-content {
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .trendingWeek {
+    display: none;
+  }
+
+  .buttonTitle {
+    position: relative;
+    z-index: 2;
+    @include flexBox;
+    justify-content: start;
+    gap: 40px;
+    margin-bottom: 40px;
+
+    h2 {
+      font-size: 32px;
+      color: #fff;
+    }
+
+    .buttons {
+      display: flex;
+      border: 2px solid $main-color;
+      border-radius: 60px;
+      background-color: $main-color;
+
+      button {
+        border: none;
+        font-size: 1.2em;
+        padding: 4px 20px;
+        border-radius: 60px;
+        transition: 0.5s;
+        background-color: transparent;
+
+        span {
+          background: linear-gradient(to right, #37914d 0, #58c8ae 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
+      .chosen {
+        background-color: #03033f;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.trendingSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 0;
+}

@@ -38,8 +38,8 @@ export const PersonDetails = (
             <h2>Biography</h2>
             <p>${desc}</p>
             </div>
+            <h2 class="knownFor">Known For</h2>
             <div class="castSlider">
-              <h2>Known For</h2>
               <div class="casts" id="castContainer"></div>
             </div>
         </div>
@@ -58,9 +58,10 @@ function fetchCasts(personId) {
 
       data.cast.map((cast) => {
         const castImg = document.createElement("img");
-        castImg.src = `https://image.tmdb.org/t/p/original${
-          cast.poster_path === null ? resetImage : cast.poster_path
-        }`;
+        castImg.src =
+          cast.poster_path === null
+            ? Image
+            : `https://image.tmdb.org/t/p/original${cast.poster_path}`;
 
         const castTitle = document.createElement("span");
         castTitle.innerHTML = cast.title;

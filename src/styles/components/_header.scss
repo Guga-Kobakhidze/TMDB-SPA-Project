@@ -38,6 +38,10 @@ header {
         &:hover {
           .nav_links {
             @include flexBox;
+
+            a {
+              color: black;
+            }
           }
         }
 

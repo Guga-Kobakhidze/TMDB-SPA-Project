@@ -243,6 +243,9 @@ header .header_content .navMenu li:hover .nav_links {
   justify-content: center;
   align-items: center;
 }
+header .header_content .navMenu li:hover .nav_links a {
+  color: black;
+}
 header .header_content .navMenu li a {
   color: #fff;
 }
@@ -708,6 +711,11 @@ footer .footer_content .footer-nav li a:hover {
 .peaopleDetails .peopleContent {
   overflow-x: hidden;
 }
+.peaopleDetails .peopleContent .knownFor {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 20px;
+}
 .peaopleDetails .peopleContent .peopleInfo h1,
 .peaopleDetails .peopleContent .castSlider h1 {
   font-size: 48px;
@@ -727,20 +735,17 @@ footer .footer_content .footer-nav li a:hover {
   line-height: 22px;
 }
 .peaopleDetails .peopleContent .castSlider {
+  width: -moz-max-content;
+  width: max-content;
   margin-top: 30px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.peaopleDetails .peopleContent .castSlider:hover .casts {
-  animation-play-state: paused;
 }
 .peaopleDetails .peopleContent .castSlider .casts {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-content: start;
   gap: 10px;
-  animation: Slider 30s infinite 1s;
+  margin: 0;
 }
 .peaopleDetails .peopleContent .castSlider .casts .castCard {
   display: flex;
@@ -768,7 +773,7 @@ footer .footer_content .footer-nav li a:hover {
   position: relative;
   height: 100vh;
   color: #fff;
-  margin-bottom: 340px;
+  margin-bottom: 20px;
 }
 .movieDetailsCard img {
   width: 100%;
@@ -925,38 +930,47 @@ footer .footer_content .footer-nav li a:hover {
   width: 100%;
   height: 100%;
 }
-.movieDetailsCard .casts {
+
+.actors {
+  font-size: 28px;
+  color: black;
+  margin: 20px auto 10px;
+}
+
+.casts {
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   max-width: 90%;
-  padding: 10px 40px;
+  padding: 10px 0;
   margin: 0 auto;
 }
-.movieDetailsCard .casts h1 {
+.casts h1 {
   font-size: 32px;
   font-weight: 700;
   color: black;
   margin-bottom: 10px;
 }
-.movieDetailsCard .casts .castSlider {
+.casts .castSlider {
   display: flex;
   gap: 10px;
-  bottom: 0;
+  margin-bottom: 40px;
 }
-.movieDetailsCard .casts .castSlider .castBox {
+.casts .castSlider .castBox {
   color: black;
 }
-.movieDetailsCard .casts .castSlider .castBox img {
+.casts .castSlider .castBox img {
   border-radius: 10px;
-  width: 150px;
+  width: 160px;
   height: 200px;
   margin-bottom: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-.movieDetailsCard .casts .castSlider .castBox h2 {
+.casts .castSlider .castBox h2 {
   margin-bottom: 5px;
 }
-.movieDetailsCard .casts .castSlider .castBox p {
+.casts .castSlider .castBox p {
   color: rgba(128, 128, 128, 0.781);
 }
 
@@ -1067,7 +1081,6 @@ footer .footer_content .footer-nav li a:hover {
 .mainSection,
 .heroSection {
   position: relative;
-  margin-bottom: 100px;
   height: 80vh;
 }
 .mainSection .mainCover,
@@ -1238,4 +1251,95 @@ footer .footer_content .footer-nav li a:hover {
   .pagination button {
     padding: 20px 0;
   }
+}
+
+.trendingSection {
+  position: relative;
+  padding: 60px 0;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease;
+}
+.trendingSection .trendingWeek,
+.trendingSection .trendingToday {
+  position: relative;
+  z-index: 2;
+}
+.trendingSection .trendingWeek .trendingContent,
+.trendingSection .trendingToday .trendingContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  padding: 0;
+  min-height: 400px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.trendingSection .trendingWeek .trendingContent .card,
+.trendingSection .trendingToday .trendingContent .card {
+  background-color: #fff;
+  transition: 0.3s;
+}
+.trendingSection .trendingWeek .trendingContent .card:hover,
+.trendingSection .trendingToday .trendingContent .card:hover {
+  transform: translateY(-10px);
+}
+.trendingSection .trendingWeek .trendingContent .card .card-content,
+.trendingSection .trendingToday .trendingContent .card .card-content {
+  color: #000;
+}
+.trendingSection .trendingWeek {
+  display: none;
+}
+.trendingSection .buttonTitle {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: start;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.trendingSection .buttonTitle h2 {
+  font-size: 32px;
+  color: #fff;
+}
+.trendingSection .buttonTitle .buttons {
+  display: flex;
+  border: 2px solid #fff;
+  border-radius: 60px;
+  background-color: #fff;
+}
+.trendingSection .buttonTitle .buttons button {
+  border: none;
+  font-size: 1.2em;
+  padding: 4px 20px;
+  border-radius: 60px;
+  transition: 0.5s;
+  background-color: transparent;
+}
+.trendingSection .buttonTitle .buttons button span {
+  background: linear-gradient(to right, #37914d 0, #58c8ae 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.trendingSection .buttonTitle .buttons .chosen {
+  background-color: #03033f;
+  color: #fff;
+}
+
+.trendingSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 0;
 }/*# sourceMappingURL=global.css.map */

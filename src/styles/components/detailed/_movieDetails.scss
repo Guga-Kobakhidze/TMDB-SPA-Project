@@ -2,7 +2,7 @@
   position: relative;
   height: 100vh;
   color: #fff;
-  margin-bottom: 340px;
+  margin-bottom: 20px;
 
   img {
     width: 100%;
@@ -150,6 +150,7 @@
 
       .movieImg {
         width: 100%;
+
         img {
           width: 100%;
           object-fit: cover;
@@ -174,44 +175,51 @@
       height: 100%;
     }
   }
+}
 
-  .casts {
-    overflow: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    max-width: 90%;
-    padding: 10px 40px;
-    margin: 0 auto;
+.actors {
+  font-size: 28px;
+  color: black;
+  margin: 20px auto 10px;
+}
 
-    h1 {
-      font-size: 32px;
-      font-weight: 700;
+.casts {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  max-width: 90%;
+  padding: 10px 0;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 10px;
+  }
+
+  .castSlider {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+
+    .castBox {
       color: black;
-      margin-bottom: 10px;
-    }
 
-    .castSlider {
-      display: flex;
-      gap: 10px;
-      bottom: 0;
+      img {
+        border-radius: 10px;
+        width: 160px;
+        height: 200px;
+        margin-bottom: 5px;
+        object-fit: cover;
+      }
 
-      .castBox {
-        color: black;
+      h2 {
+        margin-bottom: 5px;
+      }
 
-        img {
-          border-radius: 10px;
-          width: 150px;
-          height: 200px;
-          margin-bottom: 5px;
-        }
-
-        h2 {
-          margin-bottom: 5px;
-        }
-
-        p {
-          color: rgba(128, 128, 128, 0.781);
-        }
+      p {
+        color: rgba(128, 128, 128, 0.781);
       }
     }
   }

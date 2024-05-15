@@ -45,6 +45,12 @@
   .peopleContent {
     overflow-x: hidden;
 
+    .knownFor {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+
     .peopleInfo,
     .castSlider {
       h1 {
@@ -66,19 +72,14 @@
       }
     }
     .castSlider {
+      width: max-content;
       margin-top: 30px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-
-      &:hover .casts {
-        animation-play-state: paused;
-      }
 
       .casts {
         @include flexBox;
+        justify-content: start;
         gap: 10px;
-        @include Slider;
+        margin: 0;
 
         .castCard {
           @include flexBox;

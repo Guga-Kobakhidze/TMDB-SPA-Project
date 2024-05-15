@@ -71,13 +71,13 @@ export const MovieDetails = (
                     </div>
                 </div>
             </div>
-            <div class="castBG")>
-              <h1>Actors</h1>
+            <div class="videoBox" id="videoSection"></div>
+        </div>
+        <div class="castBG">
+              <h2 class="actors container">Actors</h2>
               <div class="casts">
                   <div class="castSlider"></div>
               </div>
-            </div>
-            <div class="videoBox" id="videoSection"></div>
         </div>
     `;
 

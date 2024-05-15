@@ -126,6 +126,6 @@ $pc-max: $pc - 1;
   }
 }
 
-@mixin Slider($scroll: 30s, $delay: 1s) {
+@mixin Slider($scroll: 40s, $delay: 1s) {
   animation: Slider $scroll infinite $delay;
 }
