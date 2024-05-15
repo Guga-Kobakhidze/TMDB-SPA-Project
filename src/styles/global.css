@@ -1045,7 +1045,7 @@ input::-moz-range-thumb {
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  max-width: 90%;
+  max-width: 100%;
   padding: 10px 0;
 }
 .casts h1 {

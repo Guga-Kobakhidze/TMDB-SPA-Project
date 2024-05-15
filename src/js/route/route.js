@@ -7,7 +7,10 @@ import personDetails from "../views/details/personDetails.js";
 import SearchData from "../views/search/search.js";
 
 const routes = {
-  "/": { title: "Home", render: home },
+  "/": {
+    title: "Home",
+    render: home,
+  },
   "/movies/popular": {
     title: "Movies - Popular",
     render: () => movies("popular"),

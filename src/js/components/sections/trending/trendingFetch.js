@@ -41,9 +41,15 @@ export function fetchTrending(key, clasName) {
 
       const leftBtn = document.querySelector(".handle-left");
       const rightBtn = document.querySelector(".handle-right");
-      const sliderCards = document.querySelector(".trendingContent");
+      const sliderDay = document.querySelector(
+        ".trendingToday .trendingContent"
+      );
+      const sliderWeek = document.querySelector(
+        ".trendingWeek .trendingContent"
+      );
 
-      Slider(rightBtn, leftBtn, sliderCards);
+      Slider(rightBtn, leftBtn, sliderDay);
+      Slider(rightBtn, leftBtn, sliderWeek);
     })
     .catch((err) => console.log(err));
 }
