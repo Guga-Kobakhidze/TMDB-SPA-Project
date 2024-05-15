@@ -1,5 +1,6 @@
 import { Fetching } from "../../helpers/functions";
 import { CategoryKeywords } from "../../helpers/Links";
+import Image from "../../../assets/unnamed.png";
 
 export const MovieDetails = (
   cover,
@@ -72,9 +73,16 @@ export const MovieDetails = (
             </div>
             <div class="videoBox" id="videoSection"></div>
         </div>
+        <div class="castBG container">
+              <h2 class="actors">Actors</h2>
+              <div class="casts">
+                  <div class="castSlider"></div>
+              </div>
+        </div>
     `;
 
   FetchVideo(id);
+  FetchCast(id);
 
   return movieDetails;
 };
@@ -85,7 +93,8 @@ function FetchVideo(itemId) {
       const randomNum = Math.floor(Math.random() * data.results.length);
       const videoKey = data.results[randomNum]?.key;
 
-      console.log(randomNum, data.results.length);
+      const playBtn = document.querySelector(".playTrailer");
+      const mainOverlay = document.querySelector(".mainOverlay");
 
       if (videoKey) {
         const videoSection = document.getElementById("videoSection");
@@ -96,9 +105,6 @@ function FetchVideo(itemId) {
         iframe.src = videoUrl;
 
         videoSection.appendChild(iframe);
-
-        const playBtn = document.querySelector(".playTrailer");
-        const mainOverlay = document.querySelector(".mainOverlay");
 
         playBtn.addEventListener("click", () => {
           videoSection.style.display = "block";
@@ -116,8 +122,43 @@ function FetchVideo(itemId) {
           likeBtn.classList.toggle("change");
         });
       } else {
-        console.error("No video found for this movie.");
+        playBtn.innerHTML =
+          "<span style='color: black'>There is no Video</span>";
       }
+    })
+    .catch((error) => {
+      console.error("Error fetching movie trailer:", error);
+    });
+}
+
+function FetchCast(itemId) {
+  Fetching(CategoryKeywords.movie, `${itemId}/credits`)
+    .then((data) => {
+      const castContainer = document.querySelector(".castSlider");
+      data.cast.map((item) => {
+        const castBox = document.createElement("div");
+        castBox.classList.add("castBox");
+        const castLink = document.createElement("a");
+        castLink.href = `/person/details?id=${item.id}`;
+
+        const castImg = document.createElement("img");
+        const resetImage =
+          item.profile_path === null
+            ? Image
+            : `https://image.tmdb.org/t/p/original${item.profile_path}`;
+        castImg.src = resetImage;
+
+        const actName = document.createElement("h2");
+        const originalName = document.createElement("h2");
+        const desc = document.createElement("p");
+        actName.innerHTML = item.name;
+        originalName.innerHTML = item.original_name;
+        desc.innerHTML = item.popularity;
+
+        castLink.appendChild(castImg);
+        castBox.append(castLink, actName, originalName, desc);
+        castContainer.appendChild(castBox);
+      });
     })
     .catch((error) => {
       console.error("Error fetching movie trailer:", error);

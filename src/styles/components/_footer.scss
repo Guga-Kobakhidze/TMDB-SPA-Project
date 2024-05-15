@@ -4,6 +4,7 @@ footer {
 
   .footer_content {
     @include flexBox;
+    flex-wrap: wrap;
     gap: 60px;
     align-items: start;
     color: #fff;

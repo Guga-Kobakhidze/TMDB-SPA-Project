@@ -1,0 +1,46 @@
+.genreContainer {
+  background-color: #003049;
+
+  .genreCard {
+    overflow: hidden;
+
+    .genreContent {
+      width: 100%;
+      display: flex;
+      animation: textSlider 30s infinite linear;
+      animation-fill-mode: both;
+      cursor: default;
+
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
+
+    .genreBox {
+      @include flexBox;
+
+      gap: 20px;
+      padding: 40px 0;
+
+      h1 {
+        padding: 0 10px;
+        font-size: 48px;
+        color: transparent;
+        -webkit-text-stroke-width: 0.4px;
+        -webkit-text-stroke-color: white;
+        white-space: nowrap;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+@keyframes textSlider {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-310%);
+  }
+}

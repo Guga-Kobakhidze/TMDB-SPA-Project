@@ -6,8 +6,6 @@ import movieDetails from "../views/details/details.js";
 import personDetails from "../views/details/personDetails.js";
 import SearchData from "../views/search/search.js";
 
-const SearchInput = document.querySelector(".SearchInput");
-
 const routes = {
   "/": { title: "Home", render: home },
   "/movies/popular": {

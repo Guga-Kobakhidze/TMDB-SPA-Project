@@ -1,11 +1,19 @@
+import Image from "../../../assets/notfound.jpg";
+
 export function SearchedItem(key, img, title, date, desc, id) {
+  console.log(key);
+  const resetImage =
+    img === null ? Image : `https://image.tmdb.org/t/p/original${img}`;
+
   const searchedItems = `
         <div class="SearchedItems"> 
-            <a href="/${key}/details?id=${id}" data-link>
-                <img width="300px" src="https://image.tmdb.org/t/p/original${img}"/>
+            <a href="/${key}${
+    key === "person" ? "" : "s"
+  }/details?id=${id}" data-link>
+                <img width="300px" src=${resetImage}/>
             </a> 
             <div class="SearchedDesc">
-                <a href="/${key}/details?id=${id}" data-link>
+                <a href="/${key}s/details?id=${id}" data-link>
                     <span>${title}</span>
                 </a> 
                 <h2>${date}</h2>

@@ -19,7 +19,7 @@ header {
       }
     }
 
-    ul {
+    .navMenu {
       @include flexBox;
       gap: 50px;
 
@@ -38,12 +38,73 @@ header {
         &:hover {
           .nav_links {
             @include flexBox;
+
+            a {
+              color: black;
+            }
           }
         }
 
         a {
           color: $main-color;
         }
+      }
+
+      @include responsive(tablet) {
+        display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        padding-left: 10px;
+        width: 350px;
+        height: 500px;
+        background-color: white;
+
+        li {
+          a {
+            color: black;
+          }
+
+          i {
+            color: black;
+          }
+        }
+      }
+    }
+
+    .mobileNav {
+      display: none;
+      .line {
+        height: 2px;
+        background-color: white;
+        width: 20px;
+      }
+
+      .line:not(:last-child) {
+        margin-bottom: 5px;
+      }
+
+      .line1 {
+        animation: menuAnimate 1s infinite;
+      }
+
+      .line3 {
+        animation: menuAnimate 1s infinite 0.2s;
+      }
+    }
+
+    @keyframes menuAnimate {
+      0% {
+        width: 0px;
+      }
+
+      50% {
+        width: 100%;
+      }
+
+      100% {
+        width: 0px;
       }
     }
 
