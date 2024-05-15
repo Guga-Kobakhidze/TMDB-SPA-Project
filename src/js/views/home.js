@@ -1,68 +1,57 @@
 import { HeroSection } from "../components/sections/heroSection.js";
-import { CategoryKeywords, MovieKeywords } from "../helpers/Links.js";
 import { TrendButtons } from "../components/pagination/trendButtons.js";
 import { TrendingDay } from "../components/sections/trending/trendingDay.js";
 import { TrendingWeek } from "../components/sections/trending/trendingWeek.js";
-import {
-  Fetching,
-  SearchFunction,
-  getTrendingCards,
-} from "../helpers/functions.js";
-import { GetGenres } from "../components/detailed/genres/genre.js";
+import { SearchFunction, getTrendingCards } from "../helpers/functions.js";
+import { GetGenres } from "../components/sections/genres/genre.js";
+import { GenreFunc } from "../components/sections/genres/genreFunc.js";
 
 const renderDetailedPage = () => {
   const app = document.getElementById("app");
 
-  Fetching(CategoryKeywords.movie, MovieKeywords.upcoming)
-    .then((data) => {
-      // Hero Section
-      const randomNumber = Math.floor(Math.random() * 20);
-      const rand = data.results[randomNumber];
-      const heroContent = HeroSection(rand.backdrop_path, rand.id);
+  // Hero Section
+  const heroContent = HeroSection();
 
-      // Genres List
+  // Genres Section MOVIE
 
-      const genresFirst = GetGenres();
-      const genresSecond = GetGenres();
+  const movieGenreOne = GetGenres("movie");
+  const movieGenreTwo = GetGenres("movie");
 
-      const genreContent = document.createElement("div");
-      genreContent.classList.add("genreContent");
-      genreContent.append(genresFirst, genresSecond);
+  const getMovieGenre = GenreFunc(movieGenreOne, movieGenreTwo);
 
-      const genreCard = document.createElement("div");
-      genreCard.classList.add("genreCard", "container");
-      genreCard.append(genreContent);
+  // Trending Section
 
-      const ganreContainer = document.createElement("div");
-      ganreContainer.classList.add("genreContainer");
-      ganreContainer.append(genreCard);
+  const trendingDay = TrendingDay("day");
+  const trendingWeek = TrendingWeek("week");
+  const trendingBtns = TrendButtons();
 
-      // Trending Section
+  const mergeTrending = document.createElement("div");
+  mergeTrending.classList.add("trendingSection");
+  mergeTrending.innerHTML = trendingBtns + trendingDay + trendingWeek;
 
-      const trendingDay = TrendingDay("day");
-      const trendingWeek = TrendingWeek("week");
-      const trendingBtns = TrendButtons();
+  // Gemres Section TV
 
-      const mergeTrending = document.createElement("div");
-      mergeTrending.classList.add("trendingSection");
-      mergeTrending.innerHTML = trendingBtns + trendingDay + trendingWeek;
+  const tvGenreOne = GetGenres("tv");
+  const tvGenreTwo = GetGenres("tv");
 
-      // merge all
-      app.innerHTML = heroContent;
-      app.append(ganreContainer, mergeTrending);
+  const getTvGenre = GenreFunc(tvGenreOne, tvGenreTwo, "tvGenre");
 
-      const HeroSearch = document.querySelector(".heroSearch");
-      const HeroInput = document.querySelector(".searchInput");
+  // merge all
+  app.innerHTML = "";
+  app.append(heroContent, getMovieGenre, mergeTrending, getTvGenre);
 
-      SearchFunction(HeroInput, HeroSearch);
+  // Search
 
-      const trendBtns = document.querySelectorAll(".trendBtn");
-      const trendToday = document.querySelector(".trendingToday");
-      const trendWeek = document.querySelector(".trendingWeek");
+  const HeroSearch = document.querySelector(".heroSearch");
+  const HeroInput = document.querySelector(".searchInput");
 
-      getTrendingCards(trendBtns, trendToday, trendWeek);
-    })
-    .catch((err) => console.error(err));
+  SearchFunction(HeroInput, HeroSearch);
+
+  const trendBtns = document.querySelectorAll(".trendBtn");
+  const trendToday = document.querySelector(".trendingToday");
+  const trendWeek = document.querySelector(".trendingWeek");
+
+  getTrendingCards(trendBtns, trendToday, trendWeek);
 };
 
 export default renderDetailedPage;

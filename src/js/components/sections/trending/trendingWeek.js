@@ -1,4 +1,4 @@
-import { fetchTrending } from "../../../helpers/functions";
+import { fetchTrending } from "./trendingFetch";
 
 export const TrendingWeek = (key) => {
   const TrendingWeek = `

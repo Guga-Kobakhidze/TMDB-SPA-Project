@@ -50,46 +50,36 @@ export function SearchFunction(input, form) {
   });
 }
 
-// Trending fetching Functions
+// Trending  Functions
 
-export function fetchTrending(key, clasName) {
-  Fetching(CategoryKeywords.trending, CategoryKeywords.movie + `/${key}`)
-    .then((data) => {
-      const container = document.createElement("div");
-      container.classList.add("trendingContent");
-      const trendingContent = document.querySelector(`.${clasName}`);
-      const mainSection = document.querySelector(".trendingSection");
+export function Slider(rightBtn, leftBtn, sliderCard) {
+  let currentScroller = 0;
 
-      const backgroundArray = data.results.map((bg) => bg.backdrop_path);
+  rightBtn.addEventListener("click", () => {
+    if (currentScroller > 2590) {
+      rightBtn.style.backgroundColor = "red";
+      setTimeout(() => {
+        rightBtn.style.backgroundColor = "";
+      }, 500);
+      return;
+    } else {
+      currentScroller += 200;
+      sliderCard.style.transform = `translateX(-${currentScroller}px)`;
+    }
+  });
 
-      let randomNum = Math.floor(Math.random() * 20);
-      mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${backgroundArray[randomNum]}")`;
-
-      function getRendomBg() {
-        let random = Math.floor(Math.random() * 20);
-        randomNum = random;
-        mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${backgroundArray[randomNum]}")`;
-      }
-
-      setInterval(getRendomBg, 10000);
-
-      const cards = data.results.map((item) => {
-        return ProductsCard(
-          "movies",
-          item.id,
-          item.title,
-          item.poster_path,
-          item.vote_average,
-          item.release_date,
-          item.backdrop_path
-        );
-      });
-
-      const trending = cards.join("");
-      container.innerHTML = trending;
-      trendingContent.appendChild(container);
-    })
-    .catch((err) => console.log(err));
+  leftBtn.addEventListener("click", () => {
+    if (currentScroller <= 0) {
+      leftBtn.style.backgroundColor = "red";
+      setTimeout(() => {
+        leftBtn.style.backgroundColor = "";
+      }, 500);
+      return;
+    } else {
+      currentScroller -= 200;
+      sliderCard.style.transform = `translateX(-${currentScroller}px)`;
+    }
+  });
 }
 
 export function getTrendingCards(button, day, week) {
@@ -116,4 +106,13 @@ export function getTrendingCards(button, day, week) {
       btn.classList.add("chosen");
     });
   });
+}
+
+// Search popup function
+
+export function SearchPopup(e, popup) {
+  const mouseX = e.pageX;
+  const mouseY = e.pageY;
+  popup.style.left = `${mouseX}px`;
+  popup.style.top = `${mouseY}px`;
 }

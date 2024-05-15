@@ -1,17 +1,17 @@
 import { CategoryKeywords } from "../../../helpers/Links";
 import { Fetching } from "../../../helpers/functions";
 
-export function GetGenres() {
+export function GetGenres(key) {
   const genreBox = document.createElement("div");
   genreBox.classList.add("genreBox");
 
-  fetchGenres(genreBox);
+  fetchGenres(genreBox, key);
 
   return genreBox;
 }
 
-function fetchGenres(genreList) {
-  Fetching(CategoryKeywords.genre, CategoryKeywords.movie + "/list")
+function fetchGenres(genreList, key) {
+  Fetching(CategoryKeywords.genre, key + "/list")
     .then((data) => {
       const genres = data.genres.map((genre) => {
         const genreItem = document.createElement("h1");

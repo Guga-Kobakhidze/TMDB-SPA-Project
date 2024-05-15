@@ -7,7 +7,7 @@
     .genreContent {
       width: 100%;
       display: flex;
-      animation: textSlider 30s infinite linear;
+      animation: textSlider 60s infinite linear;
       animation-fill-mode: both;
       cursor: default;
 
@@ -35,6 +35,26 @@
   }
 }
 
+.genreContainer.tvGenre {
+  background-color: $main-color;
+
+  .genreContent {
+    justify-content: end;
+    animation: reverseSlider 60s infinite linear;
+    .genreBox {
+      h1 {
+        padding: 0 10px;
+        font-size: 48px;
+        color: transparent;
+        -webkit-text-stroke-width: 1.2px;
+        -webkit-text-stroke-color: black;
+        white-space: nowrap;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
 @keyframes textSlider {
   from {
     transform: translateX(0);
@@ -42,5 +62,15 @@
 
   to {
     transform: translateX(-310%);
+  }
+}
+
+@keyframes reverseSlider {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(330%);
   }
 }
