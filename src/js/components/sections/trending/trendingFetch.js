@@ -3,7 +3,7 @@ import { Fetching, Slider } from "../../../helpers/functions";
 import { ProductsCard } from "../../productCard";
 
 export function fetchTrending(key) {
-  Fetching(CategoryKeywords.trending, CategoryKeywords.movie + `/${key}`)
+  Fetching(CategoryKeywords.trending, CategoryKeywords.all + `/${key}`)
     .then((data) => {
       const container = document.createElement("div");
       container.classList.add("trendingContent");
@@ -68,11 +68,9 @@ export function fetchTrending(key) {
       const contentCard = document.querySelector(".trending");
       trendBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
-          contentCard.style.filter = "blur(5px)";
-          contentCard.style.opacity = "0";
+          contentCard.style.visibility = "hidden";
           setTimeout(() => {
-            contentCard.style.filter = "blur(0)";
-            contentCard.style.opacity = "1";
+            contentCard.style.visibility = "visible";
           }, 500);
         });
       });

@@ -194,7 +194,7 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-15px);
+  transform: translateY(-10px);
 }
 
 @keyframes Slider {
@@ -406,6 +406,7 @@ footer .footer_content .footer-nav li a:hover {
   align-items: center;
   flex-wrap: wrap;
   justify-content: end;
+  align-content: start;
   gap: 20px;
 }
 .ProductsSection .filterContent,
