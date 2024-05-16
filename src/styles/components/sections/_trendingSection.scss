@@ -9,8 +9,7 @@
     padding: 0;
   }
 
-  .trendingWeek,
-  .trendingToday {
+  .trending {
     position: relative;
     z-index: 2;
     overflow: hidden;
@@ -33,20 +32,15 @@
           padding-left: 15px;
         }
 
-        &:hover {
-          transform: translateY(-10px);
-          filter: blur(3px);
-        }
+        // &:hover {
+        //   transform: translateY(-10px);
+        // }
 
         .card-content {
           color: #000;
         }
       }
     }
-  }
-
-  .trendingWeek {
-    display: none;
   }
 
   .trendingHeading {

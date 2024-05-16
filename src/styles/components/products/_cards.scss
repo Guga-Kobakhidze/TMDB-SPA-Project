@@ -31,41 +31,60 @@
 
 .precent {
   position: absolute;
-  top: -20px;
-  left: 20px;
-  color: white;
+  top: -33px;
+  left: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
 
-  .precentColor {
+  .precentBorder {
     position: absolute;
     top: 50%;
     left: 50%;
+    border-radius: 50%;
     transform: translate(-50%, -50%);
     width: 45px;
     height: 45px;
-    border-radius: 50%;
-  }
+    background-color: gray;
 
-  h3 {
-    display: flex;
-    font-size: 14px;
-    margin-left: 2px;
+    .precentColor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
 
-    span {
-      font-size: 8px;
-      transform: translate(2px, 0px);
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        background-color: black;
+        z-index: 0;
+      }
     }
-  }
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: black;
-    z-index: -1;
+    h3 {
+      position: relative;
+      display: flex;
+      font-size: 14px;
+      margin-left: 2px;
+      color: white;
+
+      span {
+        font-size: 8px;
+        transform: translate(2px, 0px);
+      }
+    }
   }
 }

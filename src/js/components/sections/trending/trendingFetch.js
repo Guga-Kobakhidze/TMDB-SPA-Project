@@ -2,12 +2,12 @@ import { CategoryKeywords } from "../../../helpers/Links";
 import { Fetching, Slider } from "../../../helpers/functions";
 import { ProductsCard } from "../../productCard";
 
-export function fetchTrending(key, clasName) {
+export function fetchTrending(key) {
   Fetching(CategoryKeywords.trending, CategoryKeywords.movie + `/${key}`)
     .then((data) => {
       const container = document.createElement("div");
       container.classList.add("trendingContent");
-      const trendingContent = document.querySelector(`.${clasName}`);
+      const trendingContent = document.querySelector(".trending");
       const mainSection = document.querySelector(".trendingSection");
 
       const backgroundArray = data.results.map((bg) => bg.backdrop_path);
@@ -37,19 +37,39 @@ export function fetchTrending(key, clasName) {
 
       const trending = cards.join("");
       container.innerHTML = trending;
+
+      trendingContent.innerHTML = "";
       trendingContent.appendChild(container);
 
       const leftBtn = document.querySelector(".handle-left");
       const rightBtn = document.querySelector(".handle-right");
-      const sliderDay = document.querySelector(
-        ".trendingToday .trendingContent"
-      );
-      const sliderWeek = document.querySelector(
-        ".trendingWeek .trendingContent"
-      );
+      const sliderDay = document.querySelector(".trending .trendingContent");
 
+      const trendingCards = document.querySelectorAll(".card");
+      trendingCards.forEach((card) => {
+        card.addEventListener("mouseover", () => {
+          card.style.transform = "translateY(-10px)";
+
+          trendingCards.forEach((otherCards) => {
+            if (otherCards != card) {
+              otherCards.style.filter = "blur(5px)";
+            }
+          });
+        });
+
+        card.addEventListener("mouseout", () => {
+          card.style.transform = "translateY(0)";
+          trendingCards.forEach((otherCards) => {
+            if (otherCards != card) {
+              otherCards.style.filter = "blur(0)";
+            }
+          });
+        });
+      });
+
+      console.log(trendingContent);
       Slider(rightBtn, leftBtn, sliderDay);
-      Slider(rightBtn, leftBtn, sliderWeek);
+      return trendingContent;
     })
     .catch((err) => console.log(err));
 }

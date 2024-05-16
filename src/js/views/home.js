@@ -1,8 +1,7 @@
 import { SearchFunction, getTrendingCards } from "../helpers/functions.js";
 import { HeroSection } from "../components/sections/heroSection.js";
 import { TrendButtons } from "../components/pagination/trendButtons.js";
-import { TrendingDay } from "../components/sections/trending/trendingDay.js";
-import { TrendingWeek } from "../components/sections/trending/trendingWeek.js";
+import { TrendingDay } from "../components/sections/trending/trending.js";
 import { GetGenres } from "../components/sections/genres/genre.js";
 import { GenreFunc } from "../components/sections/genres/genreFunc.js";
 
@@ -19,13 +18,12 @@ const renderDetailedPage = () => {
   const getMovieGenre = GenreFunc(movieGenreOne, movieGenreTwo);
 
   // Trending Section
-  const trendingDay = TrendingDay("day");
-  const trendingWeek = TrendingWeek("week");
   const trendingBtns = TrendButtons();
+  const trendingDay = TrendingDay();
 
   const mergeTrending = document.createElement("div");
   mergeTrending.classList.add("trendingSection");
-  mergeTrending.innerHTML = trendingBtns + trendingDay + trendingWeek;
+  mergeTrending.innerHTML = trendingBtns + trendingDay;
 
   // Gemres Section TV
   const tvGenreOne = GetGenres("tv");
@@ -44,10 +42,7 @@ const renderDetailedPage = () => {
   SearchFunction(HeroInput, HeroSearch);
 
   const trendBtns = document.querySelectorAll(".trendBtn");
-  const trendToday = document.querySelector(".trendingToday");
-  const trendWeek = document.querySelector(".trendingWeek");
-
-  getTrendingCards(trendBtns, trendToday, trendWeek);
+  getTrendingCards(trendBtns);
 };
 
 export default renderDetailedPage;

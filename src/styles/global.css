@@ -703,11 +703,27 @@ input::-moz-range-thumb {
 
 .precent {
   position: absolute;
-  top: -20px;
-  left: 20px;
-  color: white;
+  top: -33px;
+  left: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
 }
-.precent .precentColor {
+.precent .precentBorder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+  background-color: gray;
+}
+.precent .precentBorder .precentColor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -716,26 +732,28 @@ input::-moz-range-thumb {
   height: 45px;
   border-radius: 50%;
 }
-.precent h3 {
-  display: flex;
-  font-size: 14px;
-  margin-left: 2px;
-}
-.precent h3 span {
-  font-size: 8px;
-  transform: translate(2px, 0px);
-}
-.precent::after {
+.precent .precentBorder .precentColor::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
   border-radius: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
   background-color: black;
-  z-index: -1;
+  z-index: 0;
+}
+.precent .precentBorder h3 {
+  position: relative;
+  display: flex;
+  font-size: 14px;
+  margin-left: 2px;
+  color: white;
+}
+.precent .precentBorder h3 span {
+  font-size: 8px;
+  transform: translate(2px, 0px);
 }
 
 .PersonSection {
@@ -934,6 +952,8 @@ input::-moz-range-thumb {
 .movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent {
   margin-left: 70px;
   top: -12px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
 }
 .movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent i {
@@ -945,15 +965,23 @@ input::-moz-range-thumb {
   height: 45px;
 }
 .movieDetailsCard .movieContent .movieInfo .precentBox .precent {
-  top: 0px;
-}
-.movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentColor {
+  top: -20px;
+  left: -5px;
   width: 60px;
   height: 60px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .precent::after {
-  width: 70px;
-  height: 70px;
+.movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentBorder {
+  width: 55px;
+  height: 55px;
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentBorder .precentColor {
+  width: 55px;
+  height: 55px;
+  transition: 0.5s;
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentBorder .precentColor::before {
+  width: 50px;
+  height: 50px;
 }
 .movieDetailsCard .movieContent .movieInfo .playTrailer {
   margin-bottom: 15px;
@@ -1391,14 +1419,12 @@ input::-moz-range-thumb {
 .trendingSection .container {
   padding: 0;
 }
-.trendingSection .trendingWeek,
-.trendingSection .trendingToday {
+.trendingSection .trending {
   position: relative;
   z-index: 2;
   overflow: hidden;
 }
-.trendingSection .trendingWeek .trendingContent,
-.trendingSection .trendingToday .trendingContent {
+.trendingSection .trending .trendingContent {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1408,28 +1434,17 @@ input::-moz-range-thumb {
   min-height: 400px;
   transition: 0.5s;
 }
-.trendingSection .trendingWeek .trendingContent .card,
-.trendingSection .trendingToday .trendingContent .card {
+.trendingSection .trending .trendingContent .card {
   background-color: #fff;
   transition: 0.5s;
   box-shadow: none;
   border-radius: 10px;
 }
-.trendingSection .trendingWeek .trendingContent .card .card-content,
-.trendingSection .trendingToday .trendingContent .card .card-content {
+.trendingSection .trending .trendingContent .card .card-content {
   padding-left: 15px;
 }
-.trendingSection .trendingWeek .trendingContent .card:hover,
-.trendingSection .trendingToday .trendingContent .card:hover {
-  transform: translateY(-10px);
-  filter: blur(3px);
-}
-.trendingSection .trendingWeek .trendingContent .card .card-content,
-.trendingSection .trendingToday .trendingContent .card .card-content {
+.trendingSection .trending .trendingContent .card .card-content {
   color: #000;
-}
-.trendingSection .trendingWeek {
-  display: none;
 }
 .trendingSection .trendingHeading {
   display: flex;

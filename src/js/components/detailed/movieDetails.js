@@ -17,14 +17,27 @@ export const MovieDetails = (
   id
 ) => {
   let colorChange = "";
+  let votedPrecent = 0;
 
-  if (vote >= 4 && vote < 7) {
-    colorChange = "rgb(169, 169, 25)";
-  } else if (vote >= 7) {
-    colorChange = "rgb(14, 90, 14)";
-  } else {
-    colorChange = "rgb(155, 155, 155)";
+  function updateColor() {
+    if (votedPrecent >= vote * 10) {
+      clearInterval(intervalId);
+      return;
+    }
+
+    if (vote >= 4 && vote < 7) {
+      colorChange = `conic-gradient(rgb(169, 169, 25) ${votedPrecent}%, rgb(155, 155, 155) 0.5deg)`;
+    } else if (vote >= 7) {
+      colorChange = `conic-gradient(rgb(14, 90, 14) ${votedPrecent}%, rgb(155, 155, 155) 0.5deg)`;
+    } else {
+      colorChange = `conic-gradient(rgb(155, 155, 155) ${votedPrecent}%, rgb(155, 155, 155) 0.5deg)`;
+    }
+
+    document.querySelector(".precentColor").style.backgroundImage = colorChange;
+    votedPrecent += 1;
   }
+
+  const intervalId = setInterval(updateColor, 10);
 
   const movieDetails = `
         <div class="movieDetailsCard" key="${id}">
@@ -46,12 +59,15 @@ export const MovieDetails = (
                         </div>
                         <div class="precentBox">
                             <div class="precent"> 
-                                <div class="precentColor" style="border: 4px solid ${colorChange}"></div>
-                                <h3>${vote
-                                  .toString()
-                                  .replace(".", "")
-                                  .slice(0, 2)} 
-                                <span>%</span></h3>
+                              <div class="precentBorder">
+                                  <div class="precentColor" style="background: ${colorChange}">
+                                      <h3>${vote
+                                        .toString()
+                                        .replace(".", "")
+                                        .slice(0, 2)} 
+                                      <span>%</span></h3>
+                                  </div>
+                                </div>
                             </div>
                             <div class="like-btn precent">
                                 <i class='bx bxs-heart'></i>

@@ -68,6 +68,8 @@
         .like-btn.precent {
           margin-left: 70px;
           top: -12px;
+          width: 40px;
+          height: 40px;
           cursor: pointer;
 
           i {
@@ -82,16 +84,25 @@
         }
 
         .precent {
-          top: 0px;
+          top: -20px;
+          left: -5px;
+          width: 60px;
+          height: 60px;
 
-          .precentColor {
-            width: 60px;
-            height: 60px;
-          }
+          .precentBorder {
+            width: 55px;
+            height: 55px;
 
-          &::after {
-            width: 70px;
-            height: 70px;
+            .precentColor {
+              width: 55px;
+              height: 55px;
+              transition: 0.5s;
+
+              &::before {
+                width: 50px;
+                height: 50px;
+              }
+            }
           }
         }
       }

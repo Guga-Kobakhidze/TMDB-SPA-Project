@@ -1,3 +1,4 @@
+import { fetchTrending } from "../components/sections/trending/trendingFetch";
 import SearchData from "../views/search/search";
 
 // Fetching Data functions
@@ -80,23 +81,15 @@ export function Slider(rightBtn, leftBtn, sliderCard) {
   });
 }
 
-export function getTrendingCards(button, day, week) {
-  button.forEach((btn) => {
-    const attribute = btn.getAttribute("name");
+// Trending Change button EventListener
+export function getTrendingCards(buttons) {
+  buttons.forEach((btn) => {
+    let btnAttr = btn.getAttribute("name");
 
     btn.addEventListener("click", () => {
-      switch (attribute) {
-        case "day":
-          day.style.display = "flex";
-          week.style.display = "none";
-          break;
-        case "week":
-          day.style.display = "none";
-          week.style.display = "flex";
-          break;
-      }
+      fetchTrending(btnAttr);
 
-      button.forEach((otherBtn) => {
+      buttons.forEach((otherBtn) => {
         if (otherBtn !== btn) {
           otherBtn.classList.remove("chosen");
         }
@@ -114,3 +107,6 @@ export function SearchPopup(e, popup) {
   popup.style.left = `${mouseX}px`;
   popup.style.top = `${mouseY}px`;
 }
+
+// precent animation function 
+
