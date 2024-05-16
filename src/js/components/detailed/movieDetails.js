@@ -142,7 +142,8 @@ function FetchVideo(itemId) {
         });
       } else {
         playBtn.innerHTML =
-          "<span style='color: black'>There is no Video</span>";
+          "<span style='color: white'>There is no Video</span>";
+        document.querySelector(".videoBox").style.display = "none";
       }
     })
     .catch((error) => {
