@@ -1,4 +1,5 @@
-import Image from "../../../assets/unnamed.png";
+import personImage from "../../../assets/unnamed.png";
+import coverImage from "../../../assets/notfound.jpg";
 import { Fetching } from "../../helpers/functions";
 import { CategoryKeywords } from "../../helpers/Links";
 
@@ -16,6 +17,9 @@ export const MovieDetails = (
   company,
   id
 ) => {
+  const CoverImage =
+    img === null ? coverImage : `https://image.tmdb.org/t/p/original${img}`;
+
   let colorChange = "";
   let votedPrecent = 0;
 
@@ -25,19 +29,23 @@ export const MovieDetails = (
       return;
     }
 
-    if (vote >= 4 && vote < 7) {
-      colorChange = `conic-gradient(rgb(169, 169, 25) ${votedPrecent}%, rgb(155, 155, 155) 0.5deg)`;
+    if (vote >= 5 && vote < 7) {
+      colorChange = `conic-gradient(#d2d531 ${votedPrecent}%, #423d0f 0.5deg)`;
     } else if (vote >= 7) {
-      colorChange = `conic-gradient(rgb(14, 90, 14) ${votedPrecent}%, rgb(155, 155, 155) 0.5deg)`;
-    } else {
-      colorChange = `conic-gradient(rgb(155, 155, 155) ${votedPrecent}%, rgb(155, 155, 155) 0.5deg)`;
+      colorChange = `conic-gradient(#00890b ${votedPrecent}%, #204529 0.5deg)`;
+    } else if (vote < 5) {
+      colorChange = `conic-gradient(#ca1325 ${votedPrecent}%, #571435 0.5deg)`;
     }
 
     document.querySelector(".precentColor").style.backgroundImage = colorChange;
+    document.querySelector(
+      ".precentColor h3"
+    ).innerHTML = `${votedPrecent} <span>%</span>`;
+
     votedPrecent += 1;
   }
 
-  const intervalId = setInterval(updateColor, 10);
+  const intervalId = setInterval(updateColor, 15);
 
   const movieDetails = `
         <div class="movieDetailsCard" key="${id}">
@@ -46,7 +54,7 @@ export const MovieDetails = (
                 </div>
                 <div class="movieContent container">
                     <div class="movieImg" >
-                        <img src="https://image.tmdb.org/t/p/original${img}" />
+                        <img src=${CoverImage} />
                     </div>
                     <div class="movieInfo">
                         <h1>${title} <span>(${date.slice(0, 4)})</span></h1>
@@ -61,16 +69,18 @@ export const MovieDetails = (
                             <div class="precent"> 
                               <div class="precentBorder">
                                   <div class="precentColor" style="background: ${colorChange}">
-                                      <h3>${vote
-                                        .toString()
-                                        .replace(".", "")
-                                        .slice(0, 2)} 
-                                      <span>%</span></h3>
+                                      <h3>${votedPrecent === 0 ? 0 : ""}</h3>
                                   </div>
                                 </div>
                             </div>
-                            <div class="like-btn precent">
+                            <div class="iconBtn like-btn precent">
                                 <i class='bx bxs-heart'></i>
+                            </div>
+                            <div class="iconBtn bookmark-btn precent">
+                                <i class='bx bxs-bookmark'></i>
+                            </div> 
+                            <div class="iconBtn menu-btn precent">
+                                <i class='bx bxs-food-menu'></i>
                             </div>
                         </div>
                         <div class="playTrailer">
@@ -135,10 +145,12 @@ function FetchVideo(itemId) {
           mainOverlay.style.display = "none";
         });
 
-        const likeBtn = document.querySelector(".like-btn");
+        const iconBtns = document.querySelectorAll(".iconBtn");
 
-        likeBtn.addEventListener("click", () => {
-          likeBtn.classList.toggle("change");
+        iconBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            btn.classList.toggle("change");
+          });
         });
       } else {
         playBtn.innerHTML =
@@ -164,7 +176,7 @@ function FetchCast(itemId) {
         const castImg = document.createElement("img");
         const resetImage =
           item.profile_path === null
-            ? Image
+            ? personImage
             : `https://image.tmdb.org/t/p/original${item.profile_path}`;
         castImg.src = resetImage;
 

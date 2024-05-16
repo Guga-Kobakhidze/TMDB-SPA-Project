@@ -14,8 +14,10 @@ function fetchGenres(genreList, key) {
   Fetching(CategoryKeywords.genre, key + "/list")
     .then((data) => {
       const genres = data.genres.map((genre) => {
-        const genreItem = document.createElement("h1");
+        const genreItem = document.createElement("a");
+
         genreItem.textContent = genre.name;
+        genreItem.href = `/search/items?query=${genreItem.innerHTML}`;
         return genreItem;
       });
 

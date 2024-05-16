@@ -2,12 +2,12 @@ export const ProductsCard = (key, id, title, img, vote, date) => {
   let colorChange = "";
   const votedPrecent = vote * 10;
 
-  if (vote >= 4 && vote < 7) {
-    colorChange = `conic-gradient(rgb(169, 169, 25) ${votedPrecent}%, rgb(155, 155, 155) 0.5deg)`;
+  if (vote >= 5 && vote < 7) {
+    colorChange = `conic-gradient(#d2d531 ${votedPrecent}%, #423d0f 0.5deg)`;
   } else if (vote >= 7) {
-    colorChange = `conic-gradient(rgb(14, 90, 14) ${votedPrecent}%, rgb(155, 155, 155) 0.5deg)`;
-  } else {
-    colorChange = `conic-gradient(rgb(155, 155, 155) ${votedPrecent}%, rgb(155, 155, 155) 0.5deg)`;
+    colorChange = `conic-gradient(#00890b ${votedPrecent}%, #204529 0.5deg)`;
+  } else if (vote < 5) {
+    colorChange = `conic-gradient(#ca1325 ${votedPrecent}%, #571435 0.5deg)`;
   }
 
   const productsCard = `
@@ -18,7 +18,7 @@ export const ProductsCard = (key, id, title, img, vote, date) => {
               <div class="precent"> 
                 <div class="precentBorder">
                       <div class="precentColor" style="background: ${colorChange}">
-                          <h3>${vote.toString().replace(".", "").slice(0, 2)} 
+                          <h3>${Math.round(votedPrecent)} 
                           <span>%</span></h3>
                       </div>
                     </div>

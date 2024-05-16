@@ -189,6 +189,14 @@ body {
   z-index: 1000;
 }
 
+.card {
+  transition: 0.5s;
+}
+
+.card:hover {
+  transform: translateY(-15px);
+}
+
 @keyframes Slider {
   0% {
     transform: translateX(0);
@@ -708,7 +716,7 @@ input::-moz-range-thumb {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: black;
+  background-color: #081c22;
 }
 .precent .precentBorder {
   position: absolute;
@@ -718,7 +726,7 @@ input::-moz-range-thumb {
   transform: translate(-50%, -50%);
   width: 45px;
   height: 45px;
-  background-color: gray;
+  background-color: #ca1325;
 }
 .precent .precentBorder .precentColor {
   display: flex;
@@ -741,7 +749,7 @@ input::-moz-range-thumb {
   transform: translate(-50%, -50%);
   width: 40px;
   height: 40px;
-  background-color: black;
+  background-color: #081c22;
   z-index: 0;
 }
 .precent .precentBorder h3 {
@@ -888,7 +896,6 @@ input::-moz-range-thumb {
   position: relative;
   height: 100vh;
   color: #fff;
-  margin-bottom: 20px;
 }
 .movieDetailsCard img {
   width: 100%;
@@ -949,39 +956,52 @@ input::-moz-range-thumb {
   position: relative;
   margin-bottom: 60px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent {
-  margin-left: 70px;
-  top: -12px;
+.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent,
+.movieDetailsCard .movieContent .movieInfo .precentBox .bookmark-btn.precent,
+.movieDetailsCard .movieContent .movieInfo .precentBox .menu-btn.precent {
+  left: 50px;
+  top: -10px;
   width: 40px;
   height: 40px;
   cursor: pointer;
+  background-color: #032541;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent i {
+.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent i,
+.movieDetailsCard .movieContent .movieInfo .precentBox .bookmark-btn.precent i,
+.movieDetailsCard .movieContent .movieInfo .precentBox .menu-btn.precent i {
   padding: 10px;
   font-size: 20px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent::after {
+.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent::after,
+.movieDetailsCard .movieContent .movieInfo .precentBox .bookmark-btn.precent::after,
+.movieDetailsCard .movieContent .movieInfo .precentBox .menu-btn.precent::after {
   width: 45px;
   height: 45px;
 }
+.movieDetailsCard .movieContent .movieInfo .precentBox .menu-btn.precent {
+  left: 0px;
+}
+.movieDetailsCard .movieContent .movieInfo .precentBox .bookmark-btn.precent {
+  left: 100px;
+}
 .movieDetailsCard .movieContent .movieInfo .precentBox .precent {
   top: -20px;
-  left: -5px;
-  width: 60px;
-  height: 60px;
+  left: 160px;
+  width: 100px;
+  height: 100px;
 }
 .movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentBorder {
-  width: 55px;
-  height: 55px;
+  width: 90px;
+  height: 90px;
 }
 .movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentBorder .precentColor {
-  width: 55px;
-  height: 55px;
+  width: 90px;
+  height: 90px;
   transition: 0.5s;
 }
 .movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentBorder .precentColor::before {
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
 }
 .movieDetailsCard .movieContent .movieInfo .playTrailer {
   margin-bottom: 15px;
@@ -1423,6 +1443,7 @@ input::-moz-range-thumb {
   position: relative;
   z-index: 2;
   overflow: hidden;
+  transition: opacity 0.3s;
 }
 .trendingSection .trending .trendingContent {
   display: flex;
@@ -1550,7 +1571,7 @@ input::-moz-range-thumb {
   gap: 20px;
   padding: 40px 0;
 }
-.genreContainer .genreCard .genreBox h1 {
+.genreContainer .genreCard .genreBox a {
   padding: 0 10px;
   font-size: 48px;
   color: transparent;
@@ -1567,7 +1588,7 @@ input::-moz-range-thumb {
   justify-content: end;
   animation: reverseSlider 60s infinite linear;
 }
-.genreContainer.tvGenre .genreContent .genreBox h1 {
+.genreContainer.tvGenre .genreContent .genreBox a {
   padding: 0 10px;
   font-size: 48px;
   color: transparent;

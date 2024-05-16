@@ -108,5 +108,4 @@ export function SearchPopup(e, popup) {
   popup.style.top = `${mouseY}px`;
 }
 
-// precent animation function 
 

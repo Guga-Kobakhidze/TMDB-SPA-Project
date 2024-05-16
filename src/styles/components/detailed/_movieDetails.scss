@@ -2,7 +2,6 @@
   position: relative;
   height: 100vh;
   color: #fff;
-  margin-bottom: 20px;
 
   img {
     width: 100%;
@@ -54,7 +53,6 @@
         justify-content: start;
         gap: 8px;
         margin-bottom: 40px;
-
         color: rgb(211, 198, 198);
       }
 
@@ -65,12 +63,15 @@
         position: relative;
         margin-bottom: 60px;
 
-        .like-btn.precent {
-          margin-left: 70px;
-          top: -12px;
+        .like-btn.precent,
+        .bookmark-btn.precent,
+        .menu-btn.precent {
+          left: 50px;
+          top: -10px;
           width: 40px;
           height: 40px;
           cursor: pointer;
+          background-color: #032541;
 
           i {
             padding: 10px;
@@ -83,24 +84,32 @@
           }
         }
 
+        .menu-btn.precent {
+          left: 0px;
+        }
+
+        .bookmark-btn.precent {
+          left: 100px;
+        }
+
         .precent {
           top: -20px;
-          left: -5px;
-          width: 60px;
-          height: 60px;
+          left: 160px;
+          width: 100px;
+          height: 100px;
 
           .precentBorder {
-            width: 55px;
-            height: 55px;
+            width: 90px;
+            height: 90px;
 
             .precentColor {
-              width: 55px;
-              height: 55px;
+              width: 90px;
+              height: 90px;
               transition: 0.5s;
 
               &::before {
-                width: 50px;
-                height: 50px;
+                width: 75px;
+                height: 75px;
               }
             }
           }

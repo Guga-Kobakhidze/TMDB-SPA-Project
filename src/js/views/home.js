@@ -42,6 +42,7 @@ const renderDetailedPage = () => {
   SearchFunction(HeroInput, HeroSearch);
 
   const trendBtns = document.querySelectorAll(".trendBtn");
+
   getTrendingCards(trendBtns);
 };
 

@@ -48,8 +48,6 @@ export function fetchTrending(key) {
       const trendingCards = document.querySelectorAll(".card");
       trendingCards.forEach((card) => {
         card.addEventListener("mouseover", () => {
-          card.style.transform = "translateY(-10px)";
-
           trendingCards.forEach((otherCards) => {
             if (otherCards != card) {
               otherCards.style.filter = "blur(5px)";
@@ -58,7 +56,6 @@ export function fetchTrending(key) {
         });
 
         card.addEventListener("mouseout", () => {
-          card.style.transform = "translateY(0)";
           trendingCards.forEach((otherCards) => {
             if (otherCards != card) {
               otherCards.style.filter = "blur(0)";
@@ -67,7 +64,19 @@ export function fetchTrending(key) {
         });
       });
 
-      console.log(trendingContent);
+      const trendBtns = document.querySelectorAll(".trendBtn");
+      const contentCard = document.querySelector(".trending");
+      trendBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          contentCard.style.filter = "blur(5px)";
+          contentCard.style.opacity = "0";
+          setTimeout(() => {
+            contentCard.style.filter = "blur(0)";
+            contentCard.style.opacity = "1";
+          }, 500);
+        });
+      });
+
       Slider(rightBtn, leftBtn, sliderDay);
       return trendingContent;
     })

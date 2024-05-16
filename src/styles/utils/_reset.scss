@@ -190,3 +190,11 @@ body {
   background-color: rgba(0, 0, 0, 0.563);
   z-index: 1000;
 }
+
+.card {
+  transition: 0.5s;
+}
+
+.card:hover {
+  transform: translateY(-15px);
+}
