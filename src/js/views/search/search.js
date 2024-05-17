@@ -1,3 +1,4 @@
+import { Loader } from "../../components/loader/loader";
 import { pagination } from "../../components/pagination/pagination";
 import { SearchedItem, searchedValues } from "../../components/search/searched";
 import { Fetching, SearchFunction, scrollToTop } from "../../helpers/functions";
@@ -11,6 +12,8 @@ const SearchData = (query) => {
     query || new URLSearchParams(window.location.search).get("query") || "";
 
   const searchItem = async (page, key) => {
+    Loader("flex");
+
     Fetching("search", key, `query=${searchQuery}&page=${page}`)
       .then((items) => {
         let Items;
@@ -96,8 +99,6 @@ const SearchData = (query) => {
 
                 const nextBtn = mainContent.querySelector(".next");
                 const prevBtn = mainContent.querySelector(".prev");
-
-                console.log(nextBtn, prevBtn);
 
                 nextBtn.addEventListener("click", () => {
                   currentPage++;

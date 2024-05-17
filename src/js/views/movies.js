@@ -3,6 +3,7 @@ import { ProductsCard } from "../components/productCard.js";
 import { Fetching, scrollToTop } from "../helpers/functions.js";
 import { CategoryKeywords } from "../helpers/Links.js";
 import { Filter } from "../components/filter/filter.js";
+import { Loader } from "../components/loader/loader.js";
 import routes from "../route/route.js";
 
 let currentPage = 1;
@@ -11,6 +12,8 @@ const allMovies = (key) => {
   const app = document.getElementById("app");
 
   const loadMovies = (page) => {
+    Loader("flex");
+
     Fetching(CategoryKeywords.movie, key, `page=${page}`)
       .then((data) => {
         const movieCards = data.results.map((card) => {
@@ -46,7 +49,6 @@ const allMovies = (key) => {
         productsContent.append(filterSection, allCardsContainer);
         container.append(mainTitle, productsContent);
         container.insertAdjacentHTML("beforeend", pagination);
-
         app.innerHTML = "";
         app.appendChild(container);
 

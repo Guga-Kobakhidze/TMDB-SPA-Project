@@ -1,4 +1,5 @@
 import { MovieDetails } from "../../components/detailed/movieDetails";
+import { Loader } from "../../components/loader/loader";
 import { CategoryKeywords } from "../../helpers/Links";
 import { Fetching } from "../../helpers/functions";
 
@@ -6,6 +7,7 @@ const movieDetailsPage = () => {
   const app = document.getElementById("app");
   const urlParams = new URLSearchParams(window.location.search);
   const movieId = urlParams.get("id");
+  Loader("flex");
 
   Fetching(CategoryKeywords.movie, movieId)
     .then((data) => {

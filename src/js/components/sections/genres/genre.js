@@ -15,9 +15,10 @@ function fetchGenres(genreList, key) {
     .then((data) => {
       const genres = data.genres.map((genre) => {
         const genreItem = document.createElement("a");
-
+        genreItem.setAttribute("data-link", "");
         genreItem.textContent = genre.name;
         genreItem.href = `/search/items?query=${genreItem.innerHTML}`;
+
         return genreItem;
       });
 

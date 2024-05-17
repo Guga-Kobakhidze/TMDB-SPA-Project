@@ -12,11 +12,18 @@ export const modules = {
   },
 };
 
-export const Fetching = async (category, title, page) =>
-  fetch(
-    `https://api.themoviedb.org/3/${category}/${title}?${page}`,
-    modules
-  ).then((response) => response.json());
+export const Fetching = async (category, title, page) => {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/${category}/${title}?${page}`,
+      modules
+    );
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  } 
+};
 
 // Scroll to Top
 
@@ -107,5 +114,3 @@ export function SearchPopup(e, popup) {
   popup.style.left = `${mouseX}px`;
   popup.style.top = `${mouseY}px`;
 }
-
-

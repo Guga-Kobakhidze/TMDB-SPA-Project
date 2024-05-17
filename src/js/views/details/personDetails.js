@@ -1,4 +1,5 @@
 import { PersonDetails } from "../../components/detailed/personDetails.js";
+import { Loader } from "../../components/loader/loader.js";
 import { Fetching } from "../../helpers/functions.js";
 import { CategoryKeywords } from "../../helpers/Links.js";
 
@@ -6,6 +7,7 @@ const details = () => {
   const app = document.getElementById("app");
   const urlParams = new URLSearchParams(window.location.search);
   const personId = urlParams.get("id");
+  Loader("flex");
 
   Fetching(CategoryKeywords.person, personId)
     .then((data) => {

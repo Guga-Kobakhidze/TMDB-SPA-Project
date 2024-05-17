@@ -1,4 +1,5 @@
-import Image from "../../../assets/unnamed.png";
+import personImage from "../../../assets/unnamed.png";
+import coverImage from "../../../assets/notfound.jpg";
 import { Fetching } from "../../helpers/functions";
 import { CategoryKeywords } from "../../helpers/Links";
 
@@ -12,7 +13,7 @@ export const PersonDetails = (
   id
 ) => {
   const resetImage =
-    img === null ? Image : `https://image.tmdb.org/t/p/original${img}`;
+    img === null ? personImage : `https://image.tmdb.org/t/p/original${img}`;
 
   const personDetails = `
     <div class="peaopleDetails container">            
@@ -60,7 +61,7 @@ function fetchCasts(personId) {
         const castImg = document.createElement("img");
         castImg.src =
           cast.poster_path === null
-            ? Image
+            ? coverImage
             : `https://image.tmdb.org/t/p/original${cast.poster_path}`;
 
         const castTitle = document.createElement("span");

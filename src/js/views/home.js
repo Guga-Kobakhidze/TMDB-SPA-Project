@@ -1,9 +1,10 @@
 import { SearchFunction, getTrendingCards } from "../helpers/functions.js";
 import { HeroSection } from "../components/sections/heroSection.js";
 import { TrendButtons } from "../components/pagination/trendButtons.js";
-import { TrendingDay } from "../components/sections/trending/trending.js";
+import { Trending } from "../components/sections/trending/trending.js";
 import { GetGenres } from "../components/sections/genres/genre.js";
 import { GenreFunc } from "../components/sections/genres/genreFunc.js";
+import { Trailers } from "../components/sections/trailers/trailers.js";
 
 const renderDetailedPage = () => {
   const app = document.getElementById("app");
@@ -19,11 +20,11 @@ const renderDetailedPage = () => {
 
   // Trending Section
   const trendingBtns = TrendButtons();
-  const trendingDay = TrendingDay();
+  const trending = Trending();
 
   const mergeTrending = document.createElement("div");
   mergeTrending.classList.add("trendingSection");
-  mergeTrending.innerHTML = trendingBtns + trendingDay;
+  mergeTrending.innerHTML = trendingBtns + trending;
 
   // Gemres Section TV
   const tvGenreOne = GetGenres("tv");
@@ -31,9 +32,16 @@ const renderDetailedPage = () => {
 
   const getTvGenre = GenreFunc(tvGenreOne, tvGenreTwo, "tvGenre");
 
+  // Trailers Section
+
+  const trailers = Trailers();
+  const mergeTrailers = document.createElement("div");
+  mergeTrailers.classList.add("trailerSection");
+  mergeTrailers.innerHTML = trailers;
+
   // merge all
   app.innerHTML = "";
-  app.append(heroContent, getMovieGenre, mergeTrending, getTvGenre);
+  app.append(heroContent, getMovieGenre, mergeTrending, getTvGenre, mergeTrailers);
 
   // Search
   const HeroSearch = document.querySelector(".heroSearch");

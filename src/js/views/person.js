@@ -1,3 +1,4 @@
+import { Loader } from "../components/loader/loader.js";
 import { pagination } from "../components/pagination/pagination.js";
 import { PersonCard } from "../components/personCard.js";
 import { Fetching, scrollToTop } from "../helpers/functions.js";
@@ -9,6 +10,8 @@ const person = () => {
   const app = document.getElementById("app");
 
   const loadPerson = (page) => {
+    Loader("flex");
+
     Fetching(CategoryKeywords.person, "popular", `page=${page}`)
       .then((data) => {
         const personCards = data.results.map((card) => {

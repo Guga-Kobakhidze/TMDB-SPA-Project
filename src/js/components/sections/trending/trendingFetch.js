@@ -21,16 +21,30 @@ export function fetchTrending(key) {
         mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${backgroundArray[randomNum]}")`;
       }
 
-      setInterval(getRendomBg, 10000);
+      setInterval(getRendomBg, 9000);
 
       const cards = data.results.map((item) => {
+        let title;
+        let type;
+        let date;
+
+        if (item.title) {
+          title = item.title;
+          date = item.release_date;
+          type = "movies";
+        } else if (item.name) {
+          title = item.name;
+          date = item.first_air_date;
+          type = "tv";
+        }
+
         return ProductsCard(
-          "movies",
+          type,
           item.id,
-          item.title,
+          title,
           item.poster_path,
           item.vote_average,
-          item.release_date,
+          date,
           item.backdrop_path
         );
       });

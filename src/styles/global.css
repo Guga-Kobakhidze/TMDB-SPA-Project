@@ -121,7 +121,7 @@ section {
 }
 
 body {
-  line-height: 1;
+  line-height: normal;
   font-family: "Work Sans", sans-serif;
   background-color: #f7f7f7;
 }
@@ -197,6 +197,46 @@ body {
   transform: translateY(-10px);
 }
 
+.loader {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: f;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.0392156863);
+}
+.loader .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(88, 83, 83);
+}
+.loader .circle1 {
+  animation: loader 0.5s ease-in-out infinite;
+}
+.loader .circle2 {
+  animation: loader 0.5s ease-in-out infinite 0.2s;
+}
+.loader .circle3 {
+  animation: loader 0.5s ease-in-out infinite 0.4s;
+}
+
+@keyframes loader {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 @keyframes Slider {
   0% {
     transform: translateX(0);
@@ -727,7 +767,6 @@ input::-moz-range-thumb {
   transform: translate(-50%, -50%);
   width: 45px;
   height: 45px;
-  background-color: #ca1325;
 }
 .precent .precentBorder .precentColor {
   display: flex;
@@ -1614,4 +1653,24 @@ input::-moz-range-thumb {
   to {
     transform: translateX(330%);
   }
+}
+.trailerSection {
+  overflow: auto;
+  padding: 60px 0;
+}
+.trailerSection .container {
+  padding: 0;
+}
+
+.trailerImage {
+  width: 280px;
+  height: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.trailers {
+  overflow: auto;
+  display: flex;
+  gap: 10px;
 }/*# sourceMappingURL=global.css.map */

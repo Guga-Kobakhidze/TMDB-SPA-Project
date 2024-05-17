@@ -1,7 +1,6 @@
 import Image from "../../../assets/notfound.jpg";
 
 export function SearchedItem(key, img, title, date, desc, id) {
-  console.log(key);
   const resetImage =
     img === null ? Image : `https://image.tmdb.org/t/p/original${img}`;
 

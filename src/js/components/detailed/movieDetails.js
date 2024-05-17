@@ -24,7 +24,7 @@ export const MovieDetails = (
   let votedPrecent = 0;
 
   function updateColor() {
-    if (votedPrecent >= vote * 10) {
+    if (votedPrecent >= (vote * 10) + 1) {
       clearInterval(intervalId);
       return;
     }
@@ -69,7 +69,7 @@ export const MovieDetails = (
                             <div class="precent"> 
                               <div class="precentBorder">
                                   <div class="precentColor" style="background: ${colorChange}">
-                                      <h3>${votedPrecent === 0 ? 0 : ""}</h3>
+                                      <h3>${votedPrecent === 0 ? "NR" : ""}</h3>
                                   </div>
                                 </div>
                             </div>

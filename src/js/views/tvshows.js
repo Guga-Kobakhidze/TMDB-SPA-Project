@@ -1,3 +1,4 @@
+import { Loader } from "../components/loader/loader.js";
 import { pagination } from "../components/pagination/pagination.js";
 import { ProductsCard } from "../components/productCard.js";
 import { Fetching, scrollToTop } from "../helpers/functions.js";
@@ -9,6 +10,8 @@ const allTvShows = (key) => {
   const app = document.getElementById("app");
 
   const loadTvShows = (page) => {
+    Loader("flex");
+
     Fetching(CategoryKeywords.tv, key, `page=${page}`)
       .then((data) => {
         const tvShowCards = data.results.map((card) => {
