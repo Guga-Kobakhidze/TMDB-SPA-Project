@@ -1,0 +1,43 @@
+.loader {
+  @include Absolute;
+  top: 40px;
+  z-index: 1000;
+  display: f;
+  gap: 10px;
+
+  .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #70c8b0;
+  }
+
+  .circle1 {
+    animation: loader 0.5s ease-in-out infinite;
+  }
+
+  .circle2 {
+    animation: loader 0.5s ease-in-out infinite 0.2s;
+  }
+
+  .circle3 {
+    animation: loader 0.5s ease-in-out infinite 0.4s;
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

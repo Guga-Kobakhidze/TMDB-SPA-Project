@@ -27,7 +27,9 @@ export function fetchTrending() {
       ).style.backgroundImage = `url("https://image.tmdb.org/t/p/original${itemsArray[randomNum].background}")`;
 
       const trailerSection = document.querySelector(".trailers");
-      trailerSection.innerHTML = trailerCard.join("");
+      const trailerCards = document.querySelector(".trailerCards");
+      trailerCards.innerHTML = trailerCard.join("");
+      trailerSection.appendChild(trailerCards);
 
       const cardBoxes = document.querySelectorAll(".trailerCard");
 
@@ -44,19 +46,64 @@ export function fetchTrending() {
 
       //  hard variant -->
 
-      itemsArray.filter((id) => {
+      itemsArray.find((id) => {
         cardBoxes.forEach((card) => {
           card.addEventListener("mouseover", () => {
             const attr = card.getAttribute("id");
-
-            console.log(attr);
-
             if (id.id === Number(attr)) {
               document.querySelector(
                 ".trailerSection"
               ).style.backgroundImage = `url("https://image.tmdb.org/t/p/original${id.background}")`;
             }
           });
+        });
+      });
+
+      const TrailerCards = document.querySelector(".trailerCards");
+      const rightBtn = document.querySelector(".handleRight");
+      const leftBtn = document.querySelector(".handleLeft");
+
+      Slider(rightBtn, leftBtn, TrailerCards, 365);
+
+      TrailerCards.querySelectorAll(".trailerCard").forEach((card) => {
+        card.addEventListener("click", () => {
+          TrailerCards.style.opacity = "0";
+
+          const Message = document.createElement("a");
+          const attr = card.getAttribute("id");
+
+          Message.setAttribute("href", `/movies/details?id=${attr}`);
+          Message.setAttribute("data-link", "");
+          Message.classList.add("Message");
+          Message.innerHTML = "<i class='bx bxs-hand-right'></i> Watch Trailer";
+
+          trailerSection.append(Message);
+
+          setTimeout(() => {
+            TrailerCards.style.scale = "0";
+            Message.style.opacity = "1";
+
+            const close = document.querySelector(".trailersHeading h2");
+            close.innerHTML = "Close";
+            close.style.cursor = "pointer";
+
+            close.addEventListener(
+              "click",
+              () => {
+                TrailerCards.style.scale = "1";
+                Message.style.opacity = "0";
+                Message.removeAttribute("href");
+                Message.removeAttribute("data-link");
+
+                setTimeout(() => {
+                  TrailerCards.style.opacity = "1";
+                  close.innerHTML = "Latest Trailers";
+                  close.style.cursor = "default";
+                }, 200);
+              },
+              { once: true }
+            );
+          }, 200);
         });
       });
 

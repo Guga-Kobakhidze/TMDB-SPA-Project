@@ -22,7 +22,7 @@ export const Fetching = async (category, title, page) => {
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
-  } 
+  }
 };
 
 // Scroll to Top
@@ -58,7 +58,7 @@ export function SearchFunction(input, form) {
 
 // Trending Functions
 
-export function Slider(rightBtn, leftBtn, sliderCard) {
+export function Slider(rightBtn, leftBtn, sliderCard, num) {
   let currentScroller = 0;
 
   rightBtn.addEventListener("click", () => {
@@ -69,7 +69,7 @@ export function Slider(rightBtn, leftBtn, sliderCard) {
       }, 500);
       return;
     } else {
-      currentScroller += 200;
+      currentScroller += num;
       sliderCard.style.transform = `translateX(-${currentScroller}px)`;
     }
   });
@@ -82,7 +82,7 @@ export function Slider(rightBtn, leftBtn, sliderCard) {
       }, 500);
       return;
     } else {
-      currentScroller -= 200;
+      currentScroller -= num;
       sliderCard.style.transform = `translateX(-${currentScroller}px)`;
     }
   });

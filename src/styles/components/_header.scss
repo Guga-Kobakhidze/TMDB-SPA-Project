@@ -27,13 +27,26 @@ header {
         i {
           cursor: pointer;
           color: white;
-          font-size: 20px;
+          font-size: 28px;
+          transition: 0.3s;
+
+          &:hover {
+            color: #70c8b0;
+          }
         }
       }
 
       li {
         position: relative;
         line-height: 34px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          a {
+            color: #70c8b0;
+          }
+        }
 
         &:hover {
           .nav_links {
@@ -41,6 +54,11 @@ header {
 
             a {
               color: black;
+              transition: 0.3s;
+
+              &:hover {
+                color: #70c8b0;
+              }
             }
           }
         }
@@ -113,7 +131,7 @@ header {
       display: none;
       width: 120px;
       border-radius: 10px;
-      background-color: #fff;
+      background-color: $main-color;
       top: 100px;
       left: 50%;
       transform: translate(-50%, -50%);

@@ -3,7 +3,7 @@
   padding: 60px 0;
   background-size: cover;
   background-position: center;
-  transition: all 0.8s ease-in-out;
+  transition: all 1.5s linear;
 
   .container {
     padding: 0;
@@ -85,7 +85,7 @@
 
       h2 {
         font-size: 32px;
-        color: #fff;
+        color: $main-color;
       }
 
       .buttons {
@@ -112,7 +112,7 @@
 
         .chosen {
           background-color: #03033f;
-          color: #fff;
+          color: $main-color;
         }
       }
     }

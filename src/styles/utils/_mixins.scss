@@ -129,3 +129,10 @@ $pc-max: $pc - 1;
 @mixin Slider($scroll: 40s, $delay: 1s) {
   animation: Slider $scroll infinite $delay;
 }
+
+@mixin Absolute($top: 50%, $left: 50%) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  transform: translate(-50%, -50%);
+}

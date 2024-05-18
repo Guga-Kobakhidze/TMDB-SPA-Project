@@ -78,18 +78,7 @@ export function fetchTrending(key) {
         });
       });
 
-      const trendBtns = document.querySelectorAll(".trendBtn");
-      const contentCard = document.querySelector(".trending");
-      trendBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          contentCard.style.visibility = "hidden";
-          setTimeout(() => {
-            contentCard.style.visibility = "visible";
-          }, 500);
-        });
-      });
-
-      Slider(rightBtn, leftBtn, sliderDay);
+      Slider(rightBtn, leftBtn, sliderDay, 200);
       return trendingContent;
     })
     .catch((err) => console.log(err));

@@ -3,6 +3,7 @@
 @import "./utils/variables";
 @import "./components/header";
 @import "./components/footer";
+@import "./components/loader/loader";
 @import "./components/products/products";
 @import "./components/products/cards";
 @import "./components/products/personCard";
@@ -12,4 +13,4 @@
 @import "./components/sections/mainSection";
 @import "./components/sections/trendingSection";
 @import "./components/sections/genreSection";
-@import "./components/sections/trailerSection"
+@import "./components/sections/trailerSection";

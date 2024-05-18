@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="./src/styles/global.css" />
   </head>
+  <div id="Loader"></div>
   <body>
     <div class="mainOverlay"></div>
     <header id="main-header">
@@ -113,11 +114,12 @@
               </li>
               <li><a href="/person" data-link>People</a></li>
               <div class="search">
-                <div class="showSearch">
+                <label for="search-input" class="showSearch">
                   <i class="bx bx-search-alt-2"></i>
-                </div>
+                </label>
                 <form class="SearchForm">
                   <input
+                    id="search-input"
                     class="SearchInput"
                     type="text"
                     placeholder="Search for a movie, tv show, person"
