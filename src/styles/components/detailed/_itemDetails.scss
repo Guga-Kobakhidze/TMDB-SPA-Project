@@ -1,4 +1,4 @@
-.movieDetailsCard {
+.itemDetailsCard {
   position: relative;
   height: 100vh;
   color: $main-color;
@@ -8,7 +8,7 @@
     object-fit: cover;
   }
 
-  .movieCover {
+  .itemCover {
     height: 100%;
     position: absolute;
     top: 0;
@@ -18,7 +18,7 @@
     filter: brightness(0.2) blur(2px);
   }
 
-  .movieContent {
+  .itemContent {
     @include flexBox;
     gap: 60px;
     position: relative;
@@ -26,7 +26,7 @@
     padding: 80px 40px 0;
     z-index: 2;
 
-    .movieImg {
+    .itemImg {
       img {
         width: 350px;
         height: 450px;
@@ -34,7 +34,7 @@
       }
     }
 
-    .movieInfo {
+    .itemInfo {
       position: relative;
 
       h1 {
@@ -48,7 +48,7 @@
         }
       }
 
-      .movieDate {
+      .itemDate {
         @include flexBox;
         justify-content: start;
         gap: 8px;
@@ -94,7 +94,7 @@
 
         .precent {
           top: -20px;
-          left: 160px;
+          left: 175px;
           width: 100px;
           height: 100px;
 
@@ -118,7 +118,7 @@
 
       .playTrailer {
         margin-bottom: 15px;
-        width: 150px;
+        width: 160px;
 
         i {
           font-size: 22px;
@@ -168,7 +168,7 @@
     @include responsive(tablet) {
       flex-direction: column;
 
-      .movieImg {
+      .itemImg {
         width: 100%;
 
         img {

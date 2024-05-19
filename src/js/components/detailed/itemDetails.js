@@ -4,7 +4,8 @@ import bgImage from "../../../assets/bgError.jpg";
 import { Fetching, imageFinder, infoFinder } from "../../helpers/functions";
 import { CategoryKeywords } from "../../helpers/Links";
 
-export const MovieDetails = (
+export const ItemDetails = (
+  key,
   cover,
   img,
   title,
@@ -20,6 +21,12 @@ export const MovieDetails = (
 ) => {
   let colorChange = "";
   let votedPrecent = 0;
+
+  const isArray = Array.isArray(runtime);
+
+  const totalEpisodes = isArray
+    ? runtime.reduce((sum, season) => sum + season.episode_count, 0)
+    : runtime;
 
   function mappingData(data) {
     const dataMap = data.map((item) => {
@@ -56,30 +63,32 @@ export const MovieDetails = (
 
   const intervalId = setInterval(updateColor, 15);
 
-  const movieDetails = `
-        <div class="movieDetailsCard" key="${id}">
+  const itemDetails = `
+        <div class="itemDetailsCard" key="${id}">
                 <div class="overlay">
-                  <img class="movieCover" src="${imageFinder(
+                  <img class="itemCover" src="${imageFinder(
                     cover,
                     bgImage
                   )}" />
                 </div>
-                <div class="movieContent container">
-                    <div class="movieImg" >
+                <div class="itemContent container">
+                    <div class="itemImg" >
                         <img src=${imageFinder(img, coverImage)} />
                     </div>
-                    <div class="movieInfo">
+                    <div class="itemInfo">
                         <h1>${infoFinder(title)} 
                             <span>(${date.slice(0, 4)})</span>
                         </h1>
-                        <div class="movieDate">
+                        <div class="itemDate">
                             <h3>${infoFinder(date)} 
                               <span>(${infoFinder(language)})</span>
                             </h3>
                             &#x2219
                             <h3>${genre ? infoFinder(genreSentence) : ""}</h3>
                             &#x2219
-                            <h3>${infoFinder(runtime)} <span>min</span></h3>
+                            <h3>${infoFinder(totalEpisodes)} 
+                                <span>${isArray ? "episodes" : "min"}</span>
+                            </h3>
                         </div>
                         <div class="precentBox">
                             <div class="precent"> 
@@ -106,7 +115,7 @@ export const MovieDetails = (
                         <div class="playTrailer">
                             <button>
                                 <i class='bx bxs-right-arrow' ></i>
-                                Play Trailer
+                                ${isArray ? "Play Opening" : "Play Trailer"}   
                             </button>
                         </div>
                         <h3 class="tagline">${infoFinder(tagline)}</h3>
@@ -123,21 +132,23 @@ export const MovieDetails = (
                 <div class="videoBox" id="videoSection"></div>
             </div>
             <div class="castBG container">
-                  <h2 class="actors">Actors</h2>
+                  <h2 class="actors">
+                      ${isArray ? "Series Cast" : "Top Billed Cast"}
+                  </h2>
                   <div class="casts">
                   <div class="castSlider"></div>
             </div>
       </div>
     `;
 
-  FetchVideo(id);
-  FetchCast(id);
+  FetchVideo(id, key);
+  FetchCast(id, key);
 
-  return movieDetails;
+  return itemDetails;
 };
 
-function FetchVideo(itemId) {
-  Fetching(CategoryKeywords.movie, `${itemId}/videos`)
+function FetchVideo(itemId, itemKey) {
+  Fetching(itemKey, `${itemId}/videos`)
     .then((data) => {
       const randomNum = Math.floor(Math.random() * data.results.length);
       const videoKey = data.results[randomNum]?.key;
@@ -179,17 +190,20 @@ function FetchVideo(itemId) {
       }
     })
     .catch((error) => {
-      console.error("Error fetching movie trailer:", error);
+      console.error(`Error fetching ${itemKey} trailer:`, error);
     });
 }
 
-function FetchCast(itemId) {
-  Fetching(CategoryKeywords.movie, `${itemId}/credits`)
+function FetchCast(itemId, itemKey) {
+  Fetching(itemKey, `${itemId}/credits`)
     .then((data) => {
+      const members = [...data.cast, ...data.crew];
       const castContainer = document.querySelector(".castSlider");
-      data.cast.map((item) => {
+
+      members.map((item) => {
         const castBox = document.createElement("div");
         castBox.classList.add("castBox");
+
         const castLink = document.createElement("a");
         castLink.href = `/person/details?id=${item.id}`;
 
@@ -199,6 +213,7 @@ function FetchCast(itemId) {
         const actName = document.createElement("h2");
         const originalName = document.createElement("h2");
         const desc = document.createElement("p");
+
         actName.innerHTML = item.name;
         originalName.innerHTML = item.original_name;
         desc.innerHTML = item.popularity;
@@ -209,6 +224,6 @@ function FetchCast(itemId) {
       });
     })
     .catch((error) => {
-      console.error("Error fetching movie trailer:", error);
+      console.error(`Error fetching ${itemKey} trailer:`, error);
     });
 }

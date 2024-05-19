@@ -1005,17 +1005,17 @@ input::-moz-range-thumb {
   margin-top: 5px;
 }
 
-.movieDetailsCard {
+.itemDetailsCard {
   position: relative;
   height: 100vh;
   color: #fff;
 }
-.movieDetailsCard img {
+.itemDetailsCard img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.movieDetailsCard .movieCover {
+.itemDetailsCard .itemCover {
   height: 100%;
   position: absolute;
   top: 0;
@@ -1024,7 +1024,7 @@ input::-moz-range-thumb {
   bottom: 0;
   filter: brightness(0.2) blur(2px);
 }
-.movieDetailsCard .movieContent {
+.itemDetailsCard .itemContent {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1034,24 +1034,24 @@ input::-moz-range-thumb {
   padding: 80px 40px 0;
   z-index: 2;
 }
-.movieDetailsCard .movieContent .movieImg img {
+.itemDetailsCard .itemContent .itemImg img {
   width: 350px;
   height: 450px;
   border-radius: 15px;
 }
-.movieDetailsCard .movieContent .movieInfo {
+.itemDetailsCard .itemContent .itemInfo {
   position: relative;
 }
-.movieDetailsCard .movieContent .movieInfo h1 {
+.itemDetailsCard .itemContent .itemInfo h1 {
   font-size: 42px;
   font-weight: 700;
   margin-bottom: 10px;
 }
-.movieDetailsCard .movieContent .movieInfo h1 span {
+.itemDetailsCard .itemContent .itemInfo h1 span {
   font-weight: 200;
   opacity: 0.8;
 }
-.movieDetailsCard .movieContent .movieInfo .movieDate {
+.itemDetailsCard .itemContent .itemInfo .itemDate {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1060,7 +1060,7 @@ input::-moz-range-thumb {
   margin-bottom: 40px;
   color: rgb(211, 198, 198);
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox {
+.itemDetailsCard .itemContent .itemInfo .precentBox {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1069,9 +1069,9 @@ input::-moz-range-thumb {
   position: relative;
   margin-bottom: 60px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent,
-.movieDetailsCard .movieContent .movieInfo .precentBox .bookmark-btn.precent,
-.movieDetailsCard .movieContent .movieInfo .precentBox .menu-btn.precent {
+.itemDetailsCard .itemContent .itemInfo .precentBox .like-btn.precent,
+.itemDetailsCard .itemContent .itemInfo .precentBox .bookmark-btn.precent,
+.itemDetailsCard .itemContent .itemInfo .precentBox .menu-btn.precent {
   left: 50px;
   top: -10px;
   width: 40px;
@@ -1079,51 +1079,51 @@ input::-moz-range-thumb {
   cursor: pointer;
   background-color: #032541;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent i,
-.movieDetailsCard .movieContent .movieInfo .precentBox .bookmark-btn.precent i,
-.movieDetailsCard .movieContent .movieInfo .precentBox .menu-btn.precent i {
+.itemDetailsCard .itemContent .itemInfo .precentBox .like-btn.precent i,
+.itemDetailsCard .itemContent .itemInfo .precentBox .bookmark-btn.precent i,
+.itemDetailsCard .itemContent .itemInfo .precentBox .menu-btn.precent i {
   padding: 10px;
   font-size: 20px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .like-btn.precent::after,
-.movieDetailsCard .movieContent .movieInfo .precentBox .bookmark-btn.precent::after,
-.movieDetailsCard .movieContent .movieInfo .precentBox .menu-btn.precent::after {
+.itemDetailsCard .itemContent .itemInfo .precentBox .like-btn.precent::after,
+.itemDetailsCard .itemContent .itemInfo .precentBox .bookmark-btn.precent::after,
+.itemDetailsCard .itemContent .itemInfo .precentBox .menu-btn.precent::after {
   width: 45px;
   height: 45px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .menu-btn.precent {
+.itemDetailsCard .itemContent .itemInfo .precentBox .menu-btn.precent {
   left: 0px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .bookmark-btn.precent {
+.itemDetailsCard .itemContent .itemInfo .precentBox .bookmark-btn.precent {
   left: 100px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .precent {
+.itemDetailsCard .itemContent .itemInfo .precentBox .precent {
   top: -20px;
-  left: 160px;
+  left: 175px;
   width: 100px;
   height: 100px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentBorder {
+.itemDetailsCard .itemContent .itemInfo .precentBox .precent .precentBorder {
   width: 90px;
   height: 90px;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentBorder .precentColor {
+.itemDetailsCard .itemContent .itemInfo .precentBox .precent .precentBorder .precentColor {
   width: 90px;
   height: 90px;
   transition: 0.5s;
 }
-.movieDetailsCard .movieContent .movieInfo .precentBox .precent .precentBorder .precentColor::before {
+.itemDetailsCard .itemContent .itemInfo .precentBox .precent .precentBorder .precentColor::before {
   width: 75px;
   height: 75px;
 }
-.movieDetailsCard .movieContent .movieInfo .playTrailer {
+.itemDetailsCard .itemContent .itemInfo .playTrailer {
   margin-bottom: 15px;
-  width: 150px;
+  width: 160px;
 }
-.movieDetailsCard .movieContent .movieInfo .playTrailer i {
+.itemDetailsCard .itemContent .itemInfo .playTrailer i {
   font-size: 22px;
 }
-.movieDetailsCard .movieContent .movieInfo .playTrailer button {
+.itemDetailsCard .itemContent .itemInfo .playTrailer button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1135,45 +1135,45 @@ input::-moz-range-thumb {
   background-color: transparent;
   transition: 0.3s;
 }
-.movieDetailsCard .movieContent .movieInfo .playTrailer button:hover {
+.itemDetailsCard .itemContent .itemInfo .playTrailer button:hover {
   color: gray;
 }
-.movieDetailsCard .movieContent .movieInfo .tagline {
+.itemDetailsCard .itemContent .itemInfo .tagline {
   font-size: 18px;
   color: rgb(175, 172, 172);
   margin-bottom: 15px;
   font-style: italic;
 }
-.movieDetailsCard .movieContent .movieInfo .overview,
-.movieDetailsCard .movieContent .movieInfo .company {
+.itemDetailsCard .itemContent .itemInfo .overview,
+.itemDetailsCard .itemContent .itemInfo .company {
   margin-bottom: 15px;
 }
-.movieDetailsCard .movieContent .movieInfo .overview h3,
-.movieDetailsCard .movieContent .movieInfo .company h3 {
+.itemDetailsCard .itemContent .itemInfo .overview h3,
+.itemDetailsCard .itemContent .itemInfo .company h3 {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 10px;
 }
-.movieDetailsCard .movieContent .movieInfo .overview h4,
-.movieDetailsCard .movieContent .movieInfo .company h4 {
+.itemDetailsCard .itemContent .itemInfo .overview h4,
+.itemDetailsCard .itemContent .itemInfo .company h4 {
   font-size: 18px;
   color: rgb(209, 188, 188);
   margin-bottom: 15px;
 }
 @media only screen and (max-width: 800px) {
-  .movieDetailsCard .movieContent {
+  .itemDetailsCard .itemContent {
     flex-direction: column;
   }
-  .movieDetailsCard .movieContent .movieImg {
+  .itemDetailsCard .itemContent .itemImg {
     width: 100%;
   }
-  .movieDetailsCard .movieContent .movieImg img {
+  .itemDetailsCard .itemContent .itemImg img {
     width: 100%;
     -o-object-fit: cover;
        object-fit: cover;
   }
 }
-.movieDetailsCard .videoBox {
+.itemDetailsCard .videoBox {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -1184,7 +1184,7 @@ input::-moz-range-thumb {
   border-radius: 20px;
   overflow: hidden;
 }
-.movieDetailsCard .videoBox iframe {
+.itemDetailsCard .videoBox iframe {
   width: 100%;
   height: 100%;
 }

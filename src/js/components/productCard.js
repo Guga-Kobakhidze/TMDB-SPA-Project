@@ -10,6 +10,8 @@ export const ProductsCard = (key, id, title, img, vote, date) => {
     colorChange = `conic-gradient(#ca1325 ${votedPrecent}%, #571435 0.5deg)`;
   }
 
+  // console.log(key);
+
   const productsCard = `
       <a href="/${key}/details?id=${id}" data-link>
           <div class="card" key="${id}"> 

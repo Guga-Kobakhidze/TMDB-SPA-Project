@@ -35,7 +35,7 @@ export function fetchTrending(key) {
         } else if (item.name) {
           title = item.name;
           date = item.first_air_date;
-          type = "tv";
+          type = "tvshows";
         }
 
         return ProductsCard(

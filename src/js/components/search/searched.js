@@ -4,11 +4,16 @@ export function SearchedItem(key, img, title, date, desc, id) {
   const resetImage =
     img === null ? Image : `https://image.tmdb.org/t/p/original${img}`;
 
+  const accessKey = key === "tv" ? "tvshow" : key;
+  console.log(accessKey);
+
   const searchedItems = `
         <div class="SearchedItems"> 
-            <a href="/${key}${
-    key === "person" ? "" : "s"
-  }/details?id=${id}" data-link>
+            <a 
+            href="/${accessKey}${
+    accessKey === "person" ? "" : "s"
+  }/details?id=${id}" 
+            data-link>
                 <img width="300px" src=${resetImage}/>
             </a> 
             <div class="SearchedDesc">

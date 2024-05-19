@@ -1,24 +1,25 @@
-import { MovieDetails } from "../../components/detailed/movieDetails";
+import { ItemDetails } from "../../components/detailed/itemDetails";
 import { Loader } from "../../components/loader/loader";
 import { CategoryKeywords } from "../../helpers/Links";
 import { Fetching } from "../../helpers/functions";
 
-const movieDetailsPage = () => {
+const tvShowDetailsPage = () => {
   const app = document.getElementById("app");
   const urlParams = new URLSearchParams(window.location.search);
-  const movieId = urlParams.get("id");
+  const tvshowId = urlParams.get("id");
   Loader("flex");
 
-  Fetching(CategoryKeywords.movie, movieId)
+  Fetching(CategoryKeywords.tv, tvshowId)
     .then((data) => {
-      const movieDetailedPage = MovieDetails(
+      const movieDetailedPage = ItemDetails(
+        CategoryKeywords.tv,
         data.backdrop_path,
         data.poster_path,
-        data.title,
-        data.release_date,
+        data.name,
+        data.first_air_date,
         data.genres,
         data.original_language,
-        data.runtime,
+        data.seasons,
         data.vote_average,
         data.tagline,
         data.overview,
@@ -31,4 +32,4 @@ const movieDetailsPage = () => {
     .catch((err) => console.error(err));
 };
 
-export default movieDetailsPage;
+export default tvShowDetailsPage;
