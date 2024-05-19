@@ -252,7 +252,12 @@ header .header_content .navMenu li {
   cursor: pointer;
   transition: 0.3s;
 }
-header .header_content .navMenu li:hover a {
+header .header_content .navMenu li span {
+  color: #fff;
+  transition: 0.3s;
+}
+header .header_content .navMenu li:hover a,
+header .header_content .navMenu li:hover span {
   color: #70c8b0;
 }
 header .header_content .navMenu li:hover .nav_links {
@@ -1846,4 +1851,41 @@ input::-moz-range-thumb {
   z-index: 10;
   opacity: 0;
   transition: 0.8s;
+}
+
+.show-popup {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  font-size: 32px;
+  padding: 10px;
+  background-color: rgb(86, 17, 17);
+  transition: 0.5s;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+.show-popup:hover::before {
+  content: "show currencies";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  left: 100px;
+  font-size: 16px;
+  color: white;
+}
+.show-popup .exchange {
+  display: none;
+  width: 200px;
+}
+
+.show-popup.toggle:hover::before {
+  content: "choose country";
+  left: 100px;
+  top: 25px;
+}
+.show-popup.toggle .exchange {
+  display: block;
 }/*# sourceMappingURL=global.css.map */

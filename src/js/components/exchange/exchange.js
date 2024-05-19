@@ -1,6 +1,10 @@
 import { FetchExchanges } from "../../helpers/functions";
 
 export const exchangeCurrencies = () => {
+  const showPopup = document.createElement("div");
+  showPopup.classList.add("show-popup");
+  showPopup.innerHTML = "<i class='bx bxs-dollar-circle'></i>";
+
   const popUp = document.createElement("div");
   popUp.classList.add("exchange");
 
@@ -10,7 +14,7 @@ export const exchangeCurrencies = () => {
   const SelectInput = document.createElement("select");
   SelectInput.classList.add("SelectInput");
   SelectInput.setAttribute("name", "select");
-  SelectInput.innerHTML = `<option value="">Select $$$ - $$$ </option>`;
+  SelectInput.innerHTML = `<option value="">$$$ - $$$ </option>`;
 
   FetchExchanges()
     .then((data) => {
@@ -29,6 +33,11 @@ export const exchangeCurrencies = () => {
 
   selectForm.appendChild(SelectInput);
   popUp.appendChild(selectForm);
+  showPopup.appendChild(popUp);
 
-  return popUp;
+  showPopup.querySelector("i").addEventListener("click", () => {
+    showPopup.classList.toggle("toggle");
+  });
+
+  return showPopup;
 };

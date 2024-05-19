@@ -1,0 +1,37 @@
+.show-popup {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  font-size: 32px;
+  padding: 10px;
+  background-color: rgb(86, 17, 17);
+  transition: 0.5s;
+  border-radius: 10px;
+  color: $main-color;
+  cursor: pointer;
+
+  &:hover::before {
+    content: "show currencies";
+    @include Absolute;
+    left: 100px;
+    font-size: 16px;
+    color: white;
+  }
+
+  .exchange {
+    display: none;
+    width: 200px;
+  }
+}
+
+.show-popup.toggle {
+  &:hover::before {
+    content: "choose country";
+    left: 100px;
+    top: 25px;
+  }
+  .exchange {
+    display: block;
+  }
+}

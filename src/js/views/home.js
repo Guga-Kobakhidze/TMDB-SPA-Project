@@ -40,10 +40,10 @@ const renderDetailedPage = () => {
   mergeTrailers.classList.add("trailerSection");
   mergeTrailers.innerHTML = trailers;
 
-  // const exchangePopup = exchangeCurrencies();
-  // const exchangeDiv = document.createElement("div");
-  // exchangeDiv.append(exchangePopup);
-  // console.log(exchangeDiv);
+  const exchangePopup = exchangeCurrencies();
+  const exchangeDiv = document.createElement("div");
+  exchangeDiv.append(exchangePopup);
+  console.log(exchangeDiv);
 
   // merge all
   app.innerHTML = "";
@@ -52,8 +52,8 @@ const renderDetailedPage = () => {
     getMovieGenre,
     mergeTrending,
     getTvGenre,
-    mergeTrailers
-    // exchangeDiv
+    mergeTrailers,
+    exchangeDiv
   );
 
   // Search

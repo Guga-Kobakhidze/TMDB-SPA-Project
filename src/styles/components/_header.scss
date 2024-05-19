@@ -42,8 +42,14 @@ header {
         cursor: pointer;
         transition: 0.3s;
 
+        span {
+          color: $main-color;
+          transition: 0.3s;
+        }
+
         &:hover {
-          a {
+          a,
+          span {
             color: #70c8b0;
           }
         }
