@@ -6,23 +6,68 @@
   width: 100%;
 
   .personalInfo {
-    img {
-      border-radius: 20px;
+    .personalImage {
+      position: relative;
       width: 400px;
       height: 520px;
-      object-fit: cover;
+      border-radius: 20px;
+      overflow: hidden;
+
+      img {
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        transition: 0.5s;
+      }
+
+      .socials {
+        @include Absolute;
+        @include flexBox;
+        top: 120%;
+        gap: 40px;
+        visibility: hidden;
+        transition: 0.5s;
+
+        i {
+          font-size: 48px;
+          color: $main-color;
+          transition: 0.5s;
+
+          &:hover {
+            color: #70c8b0;
+          }
+        }
+      }
+
+      &:hover {
+        .socials {
+          visibility: visible;
+          top: 90%;
+        }
+
+        img {
+          scale: 1.05;
+        }
+      }
+    }
+
+    .Personal {
+      font-size: 28px;
+      font-weight: 800;
       margin-bottom: 20px;
+    }
+
+    .knownContent {
+      display: flex;
+      justify-content: start;
+      gap: 40px;
     }
 
     .knownFor,
     .birthday {
       margin-bottom: 20px;
-
-      h2 {
-        font-size: 28px;
-        font-weight: 800;
-        margin-bottom: 20px;
-      }
 
       h3 {
         font-size: 22px;
@@ -67,7 +112,21 @@
       p {
         font-size: 18px;
         font-weight: 500;
-        line-height: 22px;
+        line-height: 28px;
+        position: relative;
+      }
+
+      .readMore {
+        position: absolute;
+        right: 0;
+        bottom: -30px;
+        color: gray;
+        @include flexBox;
+        cursor: pointer;
+
+        &:hover {
+          color: #70c8b0;
+        }
       }
     }
     .castSlider {

@@ -16,13 +16,13 @@ const movieDetailsPage = () => {
         data.poster_path,
         data.title,
         data.release_date,
-        data.genres[0].name,
+        data.genres,
         data.original_language,
         data.runtime,
         data.vote_average,
         data.tagline,
         data.overview,
-        data.production_companies[0].name,
+        data.production_companies,
         data.id
       );
 

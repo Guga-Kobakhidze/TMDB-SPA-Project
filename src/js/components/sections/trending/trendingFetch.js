@@ -15,13 +15,13 @@ export function fetchTrending(key) {
       let randomNum = Math.floor(Math.random() * 20);
       mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${backgroundArray[randomNum]}")`;
 
-      function getRendomBg() {
-        let random = Math.floor(Math.random() * 20);
-        randomNum = random;
-        mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${backgroundArray[randomNum]}")`;
-      }
+      // function getRendomBg() {
+      //   let random = Math.floor(Math.random() * 20);
+      //   randomNum = random;
+      //   mainSection.style.backgroundImage = `url("https://image.tmdb.org/t/p/original${backgroundArray[randomNum]}")`;
+      // }
 
-      setInterval(getRendomBg, 9000);
+      // setInterval(getRendomBg, 9000);
 
       const cards = data.results.map((item) => {
         let title;

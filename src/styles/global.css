@@ -740,10 +740,14 @@ input::-moz-range-thumb {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 2px 5px 2px rgba(180, 179, 179, 0.511);
+  border: 1px solid transparent;
+  border-radius: 20px;
 }
 .card img {
   width: 100%;
-  height: calc(100% - 100px);
+  height: 273px;
+  border: 1px solid transparent;
+  border-start-start-radius: 10px;
 }
 .card .card-content,
 .card .movieInfo {
@@ -853,22 +857,62 @@ input::-moz-range-thumb {
   margin: 140px auto 40px;
   width: 100%;
 }
-.peaopleDetails .personalInfo img {
-  border-radius: 20px;
+.peaopleDetails .personalInfo .personalImage {
+  position: relative;
   width: 400px;
   height: 520px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.peaopleDetails .personalInfo .personalImage img {
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 20px;
+  transition: 0.5s;
+}
+.peaopleDetails .personalInfo .personalImage .socials {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 120%;
+  gap: 40px;
+  visibility: hidden;
+  transition: 0.5s;
+}
+.peaopleDetails .personalInfo .personalImage .socials i {
+  font-size: 48px;
+  color: #fff;
+  transition: 0.5s;
+}
+.peaopleDetails .personalInfo .personalImage .socials i:hover {
+  color: #70c8b0;
+}
+.peaopleDetails .personalInfo .personalImage:hover .socials {
+  visibility: visible;
+  top: 90%;
+}
+.peaopleDetails .personalInfo .personalImage:hover img {
+  scale: 1.05;
+}
+.peaopleDetails .personalInfo .Personal {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.peaopleDetails .personalInfo .knownContent {
+  display: flex;
+  justify-content: start;
+  gap: 40px;
 }
 .peaopleDetails .personalInfo .knownFor,
 .peaopleDetails .personalInfo .birthday {
-  margin-bottom: 20px;
-}
-.peaopleDetails .personalInfo .knownFor h2,
-.peaopleDetails .personalInfo .birthday h2 {
-  font-size: 28px;
-  font-weight: 800;
   margin-bottom: 20px;
 }
 .peaopleDetails .personalInfo .knownFor h3,
@@ -909,7 +953,23 @@ input::-moz-range-thumb {
 .peaopleDetails .peopleContent .castSlider p {
   font-size: 18px;
   font-weight: 500;
-  line-height: 22px;
+  line-height: 28px;
+  position: relative;
+}
+.peaopleDetails .peopleContent .peopleInfo .readMore,
+.peaopleDetails .peopleContent .castSlider .readMore {
+  position: absolute;
+  right: 0;
+  bottom: -30px;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.peaopleDetails .peopleContent .peopleInfo .readMore:hover,
+.peaopleDetails .peopleContent .castSlider .readMore:hover {
+  color: #70c8b0;
 }
 .peaopleDetails .peopleContent .castSlider {
   width: auto;
@@ -1613,9 +1673,6 @@ input::-moz-range-thumb {
   animation: textSlider 60s infinite linear;
   animation-fill-mode: both;
   cursor: default;
-}
-.genreContainer .genreCard .genreContent:hover {
-  animation-play-state: paused;
 }
 .genreContainer .genreCard .genreBox {
   display: flex;

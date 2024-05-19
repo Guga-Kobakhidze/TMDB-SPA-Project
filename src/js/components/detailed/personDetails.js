@@ -1,7 +1,7 @@
 import personImage from "../../../assets/unnamed.png";
 import coverImage from "../../../assets/notfound.jpg";
-import { Fetching } from "../../helpers/functions";
-import { CategoryKeywords } from "../../helpers/Links";
+import { Fetching, imageFinder, infoFinder } from "../../helpers/functions";
+import { CategoryKeywords, SocialLinks } from "../../helpers/Links";
 
 export const PersonDetails = (
   img,
@@ -12,32 +12,43 @@ export const PersonDetails = (
   birthPlace,
   id
 ) => {
-  const resetImage =
-    img === null ? personImage : `https://image.tmdb.org/t/p/original${img}`;
+  const fullDescription = desc;
+  const description = desc.length >= 300 ? desc.slice(0, 300) : desc;
 
   const personDetails = `
     <div class="peaopleDetails container">            
         <div class="personalInfo">
-            <img class="peaopleImage" src="${resetImage}" alt="cover" />
-            <div class="knownFor">
-                <h2>Personal Info<h2>
-                <h3>Known For</h3>
-                <h4>${known}</h4>
+            <div class="personalImage">
+                <img class="peaopleImage" 
+                src="${imageFinder(img, personImage)}" 
+                alt="cover" />
+              <div class="socials"></div>
             </div>
-            <div class="birthday"> 
-                <h3>Personal Info<h2>
-                <h4>${birthday}</h4>
+            <h2 class="Personal">Personal Info<h2>
+            <div class="knownContent">
+                <div class="knownFor">
+                    <h3>Known For</h3>
+                    <h4>${infoFinder(known)}</h4>
+                </div>
+                <div class="birthday"> 
+                    <h3>Personal Info<h2>
+                    <h4>${infoFinder(birthday)}</h4>
+                </div>
             </div>
             <div class="birthday"> 
                 <h3>Place of Birth</h3>
-                <h4>${birthPlace}</h4>
+                <h4>${infoFinder(birthPlace)}</h4>
             </div>
         </div>
         <div class="peopleContent">
           <div class="peopleInfo"> 
-            <h1>${name}</h1>
+            <h1>${infoFinder(name)}</h1>
             <h2>Biography</h2>
-            <p>${desc}</p>
+            <p class="biorgraphy">${infoFinder(description)}
+              <span class="readMore" style="display: ${
+                desc.length >= 300 ? "flex" : "none"
+              }">Read More <i class='bx bx-chevron-right'></i></span>
+            </p>
             </div>
             <h2 class="knownFor">Known For</h2>
             <div class="castSlider">
@@ -49,6 +60,16 @@ export const PersonDetails = (
 
   fetchCasts(id);
 
+  setTimeout(() => {
+    const readMore = document.querySelector(".readMore");
+    readMore.addEventListener("click", () => {
+      document.querySelector(".biorgraphy").innerHTML = `${infoFinder(
+        fullDescription
+      )}`;
+      readMore.style.display = "none";
+    });
+  }, 0);
+
   return personDetails;
 };
 
@@ -59,10 +80,7 @@ function fetchCasts(personId) {
 
       data.cast.map((cast) => {
         const castImg = document.createElement("img");
-        castImg.src =
-          cast.poster_path === null
-            ? coverImage
-            : `https://image.tmdb.org/t/p/original${cast.poster_path}`;
+        castImg.src = imageFinder(cast.poster_path, coverImage);
 
         const castTitle = document.createElement("span");
         castTitle.innerHTML = cast.title;
@@ -73,9 +91,30 @@ function fetchCasts(personId) {
         castCard.classList.add("castCard");
 
         castCard.append(castImg, castTitle);
-
         castContainer.appendChild(castCard);
       });
+    })
+    .then(() => {
+      Fetching(CategoryKeywords.person, `${personId}/external_ids`).then(
+        (data) => {
+          Object.keys(data).forEach((key) => {
+            if (SocialLinks.hasOwnProperty(key)) {
+              const socials = document.querySelector(".socials");
+              const linkTag = document.createElement("a");
+
+              linkTag.href = `${SocialLinks[key]}${data[key]}`;
+              linkTag.setAttribute("target", "_blank");
+
+              const removeId = key.replace("_id", "");
+              key.includes("facebook")
+                ? (linkTag.innerHTML = `<i class='bx bxl-${removeId}-circle'></i>`)
+                : (linkTag.innerHTML = `<i class='bx bxl-${removeId}'></i>`);
+
+              socials.appendChild(linkTag);
+            }
+          });
+        }
+      );
     })
     .catch((err) => console.error(err));
 }

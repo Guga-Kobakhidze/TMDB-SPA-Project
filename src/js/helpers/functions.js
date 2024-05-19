@@ -114,3 +114,25 @@ export function SearchPopup(e, popup) {
   popup.style.left = `${mouseX}px`;
   popup.style.top = `${mouseY}px`;
 }
+
+// Unknown info and bio
+
+export function infoFinder(info) {
+  let text = info;
+  info == null || info == undefined || info == ""
+    ? (text = "there is no information available")
+    : (text = info);
+
+  return text;
+}
+
+// Unknown images
+
+export function imageFinder(image, changer) {
+  let cover = image;
+  image == null || image == undefined
+    ? cover = changer
+    : (cover = `https://image.tmdb.org/t/p/original${image}`);
+
+  return cover;
+}

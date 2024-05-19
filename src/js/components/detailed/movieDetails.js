@@ -1,6 +1,7 @@
 import personImage from "../../../assets/unnamed.png";
 import coverImage from "../../../assets/notfound.jpg";
-import { Fetching } from "../../helpers/functions";
+import bgImage from "../../../assets/bgError.jpg";
+import { Fetching, imageFinder, infoFinder } from "../../helpers/functions";
 import { CategoryKeywords } from "../../helpers/Links";
 
 export const MovieDetails = (
@@ -17,14 +18,22 @@ export const MovieDetails = (
   company,
   id
 ) => {
-  const CoverImage =
-    img === null ? coverImage : `https://image.tmdb.org/t/p/original${img}`;
-
   let colorChange = "";
   let votedPrecent = 0;
 
+  function mappingData(data) {
+    const dataMap = data.map((item) => {
+      const splitedArr = item.name.split(", ");
+      return splitedArr;
+    });
+    return dataMap;
+  }
+
+  const genreSentence = mappingData(genre).join(", ");
+  const companySentence = mappingData(company).join(", ");
+
   function updateColor() {
-    if (votedPrecent >= (vote * 10) + 1) {
+    if (votedPrecent >= vote * 10 + 1) {
       clearInterval(intervalId);
       return;
     }
@@ -50,26 +59,37 @@ export const MovieDetails = (
   const movieDetails = `
         <div class="movieDetailsCard" key="${id}">
                 <div class="overlay">
-                  <img class="movieCover" src="https://image.tmdb.org/t/p/original${cover}" />
+                  <img class="movieCover" src="${imageFinder(
+                    cover,
+                    bgImage
+                  )}" />
                 </div>
                 <div class="movieContent container">
                     <div class="movieImg" >
-                        <img src=${CoverImage} />
+                        <img src=${imageFinder(img, coverImage)} />
                     </div>
                     <div class="movieInfo">
-                        <h1>${title} <span>(${date.slice(0, 4)})</span></h1>
+                        <h1>${infoFinder(title)} 
+                            <span>(${date.slice(0, 4)})</span>
+                        </h1>
                         <div class="movieDate">
-                            <h3>${date} <span>(${language})</span></h3>
+                            <h3>${infoFinder(date)} 
+                              <span>(${infoFinder(language)})</span>
+                            </h3>
                             &#x2219
-                            <h3>${genre}</h3>
+                            <h3>${genre ? infoFinder(genreSentence) : ""}</h3>
                             &#x2219
-                            <h3>${runtime} <span>min</span></h3>
+                            <h3>${infoFinder(runtime)} <span>min</span></h3>
                         </div>
                         <div class="precentBox">
                             <div class="precent"> 
                               <div class="precentBorder">
                                   <div class="precentColor" style="background: ${colorChange}">
-                                      <h3>${votedPrecent === 0 ? "NR" : ""}</h3>
+                                      <h3>${
+                                        votedPrecent >= 0 && votedPrecent <= 1
+                                          ? "NR"
+                                          : ""
+                                      }</h3>
                                   </div>
                                 </div>
                             </div>
@@ -89,14 +109,14 @@ export const MovieDetails = (
                                 Play Trailer
                             </button>
                         </div>
-                        <h3 class="tagline">${tagline}</h3>
+                        <h3 class="tagline">${infoFinder(tagline)}</h3>
                         <div class="overview"> 
                             <h3>Overview</h3>
-                            <h4>${desc}</h4>
+                            <h4>${infoFinder(desc)}</h4>
                         </div>
                         <div class="company">
                             <h3>Company</h3>
-                            <h4>${company}</h4>
+                            <h4>${infoFinder(companySentence)}</h4>
                         </div>
                     </div>
                 </div>
@@ -174,11 +194,7 @@ function FetchCast(itemId) {
         castLink.href = `/person/details?id=${item.id}`;
 
         const castImg = document.createElement("img");
-        const resetImage =
-          item.profile_path === null
-            ? personImage
-            : `https://image.tmdb.org/t/p/original${item.profile_path}`;
-        castImg.src = resetImage;
+        castImg.src = imageFinder(item.profile_path, personImage);
 
         const actName = document.createElement("h2");
         const originalName = document.createElement("h2");
