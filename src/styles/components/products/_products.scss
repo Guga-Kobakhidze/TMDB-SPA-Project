@@ -9,25 +9,27 @@
   }
 
   .productsContent {
-    display: grid;
-    grid-template-columns: 300px 3fr;
+    display: flex;
+    align-items: start;
+    gap: 60px;
   }
 
   .AllCards {
     @include flexBox;
     flex-wrap: wrap;
-    justify-content: end;
-    align-content: start;
+
+    // align-content: start;
     gap: 20px;
   }
 
   .filterContent,
   .sortContent {
+    width: 300px;
     background-color: #fff;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.164);
     border-radius: 10px;
     padding: 20px 20px 40px 20px;
-    height: max-content;
+    height: 100%;
     overflow: hidden;
 
     .title {
@@ -41,7 +43,8 @@
 
       i {
         font-size: 22px;
-        rotate: 90deg;
+        rotate: 0deg;
+        transition: 0.1s;
       }
     }
 
@@ -117,12 +120,13 @@
   }
 
   .sortContent {
-    height: 0%;
+    height: 0;
     margin-bottom: 20px;
 
     .title {
       i {
-        rotate: 0deg;
+        rotate: 90deg;
+        transition: 0.1s;
       }
     }
 
@@ -161,21 +165,21 @@
   }
 
   .show {
-    height: 0%;
+    height: 0;
 
     .title {
       i {
-        rotate: 0deg;
+        rotate: 90deg;
       }
     }
   }
 
   .showSort {
-    height: max-content;
+    height: 100%;
 
     .title {
       i {
-        rotate: 90deg;
+        rotate: 0deg;
       }
     }
   }
