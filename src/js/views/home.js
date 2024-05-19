@@ -5,6 +5,7 @@ import { Trending } from "../components/sections/trending/trending.js";
 import { GetGenres } from "../components/sections/genres/genre.js";
 import { GenreFunc } from "../components/sections/genres/genreFunc.js";
 import { Trailers } from "../components/sections/trailers/trailers.js";
+import { exchangeCurrencies } from "../components/exchange/exchange.js";
 
 const renderDetailedPage = () => {
   const app = document.getElementById("app");
@@ -39,9 +40,21 @@ const renderDetailedPage = () => {
   mergeTrailers.classList.add("trailerSection");
   mergeTrailers.innerHTML = trailers;
 
+  // const exchangePopup = exchangeCurrencies();
+  // const exchangeDiv = document.createElement("div");
+  // exchangeDiv.append(exchangePopup);
+  // console.log(exchangeDiv);
+
   // merge all
   app.innerHTML = "";
-  app.append(heroContent, getMovieGenre, mergeTrending, getTvGenre, mergeTrailers);
+  app.append(
+    heroContent,
+    getMovieGenre,
+    mergeTrending,
+    getTvGenre,
+    mergeTrailers
+    // exchangeDiv
+  );
 
   // Search
   const HeroSearch = document.querySelector(".heroSearch");

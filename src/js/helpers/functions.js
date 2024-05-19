@@ -3,6 +3,25 @@ import SearchData from "../views/search/search";
 
 // Fetching Data functions
 
+const options = {
+  method: "GET",
+  url: "https://api.fxratesapi.com/latest?api_key=fxr_demo_lmasdg193",
+};
+
+export const FetchExchanges = async () => {
+  try {
+    const response = await fetch(options.url);
+
+    if (!response.ok) throw new Error("error fetching exchange");
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const modules = {
   method: "GET",
   headers: {
@@ -131,7 +150,7 @@ export function infoFinder(info) {
 export function imageFinder(image, changer) {
   let cover = image;
   image == null || image == undefined
-    ? cover = changer
+    ? (cover = changer)
     : (cover = `https://image.tmdb.org/t/p/original${image}`);
 
   return cover;
