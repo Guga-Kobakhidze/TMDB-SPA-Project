@@ -78,7 +78,7 @@ export function fetchTrending(key) {
         });
       });
 
-      Slider(rightBtn, leftBtn, sliderDay, 200);
+      Slider(rightBtn, leftBtn, sliderDay, 200, 2590);
       return trendingContent;
     })
     .catch((err) => console.log(err));

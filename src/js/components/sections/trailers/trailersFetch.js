@@ -63,7 +63,7 @@ export function fetchTrending() {
       const rightBtn = document.querySelector(".handleRight");
       const leftBtn = document.querySelector(".handleLeft");
 
-      Slider(rightBtn, leftBtn, TrailerCards, 365);
+      Slider(rightBtn, leftBtn, TrailerCards, 365, 2590);
 
       TrailerCards.querySelectorAll(".trailerCard").forEach((card) => {
         card.addEventListener("click", () => {

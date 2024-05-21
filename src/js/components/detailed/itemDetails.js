@@ -1,7 +1,12 @@
 import personImage from "../../../assets/unnamed.png";
 import coverImage from "../../../assets/notfound.jpg";
 import bgImage from "../../../assets/bgError.jpg";
-import { Fetching, imageFinder, infoFinder } from "../../helpers/functions";
+import {
+  Fetching,
+  Slider,
+  imageFinder,
+  infoFinder,
+} from "../../helpers/functions";
 import { CategoryKeywords } from "../../helpers/Links";
 
 export const ItemDetails = (
@@ -66,10 +71,7 @@ export const ItemDetails = (
   const itemDetails = `
         <div class="itemDetailsCard" key="${id}">
                 <div class="overlay">
-                  <img class="itemCover" src="${imageFinder(
-                    cover,
-                    bgImage
-                  )}" />
+                  <img class="itemCover" src="${imageFinder(cover, bgImage)}" />
                 </div>
                 <div class="itemContent container">
                     <div class="itemImg" >
@@ -132,11 +134,18 @@ export const ItemDetails = (
                 <div class="videoBox" id="videoSection"></div>
             </div>
             <div class="castBG container">
-                  <h2 class="actors">
-                      ${isArray ? "Series Cast" : "Top Billed Cast"}
-                  </h2>
-                  <div class="casts">
-                  <div class="castSlider"></div>
+                  <div class="sliderControl" >
+                      <div class="sliderButtons">
+                          <i class='bx bx-left-arrow-alt left_castArrow'></i>
+                          <i class='bx bx-right-arrow-alt right_castAarrow' ></i>
+                      </div>
+                      <h2 class="actors">
+                            ${isArray ? "Series Cast" : "Top Billed Cast"}
+                      </h2>
+                  </div>
+                  <div class="castSlider">
+                      <div class="casts"></div>
+                  </div>
             </div>
       </div>
     `;
@@ -198,7 +207,8 @@ function FetchCast(itemId, itemKey) {
   Fetching(itemKey, `${itemId}/credits`)
     .then((data) => {
       const members = [...data.cast, ...data.crew];
-      const castContainer = document.querySelector(".castSlider");
+      const castContainer = document.querySelector(".casts");
+      const sliderLength = (members.length - 9) * 152 - 1;
 
       members.map((item) => {
         const castBox = document.createElement("div");
@@ -221,6 +231,10 @@ function FetchCast(itemId, itemKey) {
         castLink.appendChild(castImg);
         castBox.append(castLink, actName, originalName, desc);
         castContainer.appendChild(castBox);
+
+        const leftBtn = document.querySelector(".left_castArrow");
+        const rightBtn = document.querySelector(".right_castAarrow");
+        Slider(rightBtn, leftBtn, castContainer, 152, sliderLength);
       });
     })
     .catch((error) => {

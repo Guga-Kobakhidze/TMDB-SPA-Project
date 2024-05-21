@@ -43,7 +43,6 @@ const renderDetailedPage = () => {
   const exchangePopup = exchangeCurrencies();
   const exchangeDiv = document.createElement("div");
   exchangeDiv.append(exchangePopup);
-  console.log(exchangeDiv);
 
   // merge all
   app.innerHTML = "";

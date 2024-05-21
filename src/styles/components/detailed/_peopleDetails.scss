@@ -83,7 +83,7 @@
   }
 
   img {
-    width: 150px;
+    width: 143px;
   }
 
   .peopleContent {
@@ -92,7 +92,10 @@
     .knownFor {
       font-size: 22px;
       font-weight: 700;
-      margin-top: 20px;
+    }
+
+    .peopleInfo {
+      margin-bottom: 40px;
     }
 
     .peopleInfo,
@@ -129,7 +132,15 @@
         }
       }
     }
+
+    .sliderControl {
+      margin-bottom: -10px;
+    }
+
     .castSlider {
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       width: auto;
       margin-top: 30px;
 

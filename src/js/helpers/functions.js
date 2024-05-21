@@ -77,11 +77,11 @@ export function SearchFunction(input, form) {
 
 // Trending Functions
 
-export function Slider(rightBtn, leftBtn, sliderCard, num) {
+export function Slider(rightBtn, leftBtn, sliderCard, num, length) {
   let currentScroller = 0;
 
   rightBtn.addEventListener("click", () => {
-    if (currentScroller > 2590) {
+    if (currentScroller > length) {
       rightBtn.style.backgroundColor = "red";
       setTimeout(() => {
         rightBtn.style.backgroundColor = "";

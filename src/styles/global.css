@@ -932,7 +932,7 @@ input::-moz-range-thumb {
   font-weight: 500;
 }
 .peaopleDetails img {
-  width: 150px;
+  width: 143px;
 }
 .peaopleDetails .peopleContent {
   overflow-x: hidden;
@@ -940,7 +940,9 @@ input::-moz-range-thumb {
 .peaopleDetails .peopleContent .knownFor {
   font-size: 22px;
   font-weight: 700;
-  margin-top: 20px;
+}
+.peaopleDetails .peopleContent .peopleInfo {
+  margin-bottom: 40px;
 }
 .peaopleDetails .peopleContent .peopleInfo h1,
 .peaopleDetails .peopleContent .castSlider h1 {
@@ -976,7 +978,13 @@ input::-moz-range-thumb {
 .peaopleDetails .peopleContent .castSlider .readMore:hover {
   color: #70c8b0;
 }
+.peaopleDetails .peopleContent .sliderControl {
+  margin-bottom: -10px;
+}
 .peaopleDetails .peopleContent .castSlider {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   width: auto;
   margin-top: 30px;
 }
@@ -1206,45 +1214,65 @@ input::-moz-range-thumb {
   color: black;
   margin: 20px 0 10px;
 }
-
-.casts {
+.castBG .castSlider {
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   max-width: 100%;
   padding: 10px 0;
 }
-.casts h1 {
+.castBG .castSlider h1 {
   font-size: 32px;
   font-weight: 700;
   color: black;
   margin-bottom: 10px;
 }
-.casts .castSlider {
+.castBG .castSlider .casts {
   display: flex;
   gap: 10px;
   margin-bottom: 40px;
 }
-.casts .castSlider .castBox {
+.castBG .castSlider .casts .castBox {
   color: black;
 }
-.casts .castSlider .castBox img {
+.castBG .castSlider .casts .castBox img {
   border-radius: 10px;
-  width: 160px;
+  width: 142px;
   height: 200px;
   margin-bottom: 5px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.casts .castSlider .castBox h2 {
+.castBG .castSlider .casts .castBox h2 {
   margin-bottom: 5px;
 }
-.casts .castSlider .castBox p {
+.castBG .castSlider .casts .castBox p {
   color: rgba(128, 128, 128, 0.781);
 }
 
 .change {
   color: rgb(145, 0, 0);
+}
+
+.casts {
+  transition: 0.5s;
+}
+
+.sliderControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+}
+.sliderControl .sliderButtons i {
+  padding: 5px;
+  font-size: 28px;
+  cursor: pointer;
+}
+.sliderControl .sliderButtons i:hover {
+  color: #70c8b0;
 }
 
 .searchedContent {

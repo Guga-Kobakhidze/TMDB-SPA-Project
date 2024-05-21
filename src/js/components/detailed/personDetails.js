@@ -1,6 +1,11 @@
 import personImage from "../../../assets/unnamed.png";
 import coverImage from "../../../assets/notfound.jpg";
-import { Fetching, imageFinder, infoFinder } from "../../helpers/functions";
+import {
+  Fetching,
+  Slider,
+  imageFinder,
+  infoFinder,
+} from "../../helpers/functions";
 import { CategoryKeywords, SocialLinks } from "../../helpers/Links";
 
 export const PersonDetails = (
@@ -50,7 +55,13 @@ export const PersonDetails = (
               }">Read More <i class='bx bx-chevron-right'></i></span>
             </p>
             </div>
-            <h2 class="knownFor">Known For</h2>
+            <div class="sliderControl" >
+                <div class="sliderButtons">
+                    <i class='bx bx-left-arrow-alt left_arrow'></i>
+                    <i class='bx bx-right-arrow-alt right_arrow' ></i>
+                </div>
+                <h2 class="knownFor">Known For</h2>
+            </div>
             <div class="castSlider">
               <div class="casts" id="castContainer"></div>
             </div>
@@ -77,6 +88,7 @@ function fetchCasts(personId) {
   Fetching(CategoryKeywords.person, `${personId}/movie_credits`)
     .then((data) => {
       const castContainer = document.getElementById("castContainer");
+      const sliderLength = (data.cast.length - 6) * 153 - 1;
 
       data.cast.map((cast) => {
         const castImg = document.createElement("img");
@@ -92,6 +104,10 @@ function fetchCasts(personId) {
 
         castCard.append(castImg, castTitle);
         castContainer.appendChild(castCard);
+
+        const leftBtn = document.querySelector(".left_arrow");
+        const rightBtn = document.querySelector(".right_arrow");
+        Slider(rightBtn, leftBtn, castContainer, 153, sliderLength);
       });
     })
     .then(() => {
