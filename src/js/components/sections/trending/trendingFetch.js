@@ -64,7 +64,7 @@ export function fetchTrending(key) {
         card.addEventListener("mouseover", () => {
           trendingCards.forEach((otherCards) => {
             if (otherCards != card) {
-              otherCards.style.filter = "blur(5px)";
+              otherCards.style.filter = "blur(6px)";
             }
           });
         });
