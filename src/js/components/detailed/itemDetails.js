@@ -235,6 +235,11 @@ function FetchCast(itemId, itemKey) {
         const leftBtn = document.querySelector(".left_castArrow");
         const rightBtn = document.querySelector(".right_castAarrow");
         Slider(rightBtn, leftBtn, castContainer, 152, sliderLength);
+
+        if (data.cast.length < 6 || data.cast.length === 0) {
+          leftBtn.style.display = "none";
+          rightBtn.style.display = "none";
+        }
       });
     })
     .catch((error) => {

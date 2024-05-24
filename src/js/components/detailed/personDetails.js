@@ -108,6 +108,11 @@ function fetchCasts(personId) {
         const leftBtn = document.querySelector(".left_arrow");
         const rightBtn = document.querySelector(".right_arrow");
         Slider(rightBtn, leftBtn, castContainer, 153, sliderLength);
+
+        if (data.cast.length < 6 || data.cast.length === 0) {
+          leftBtn.style.display = "none";
+          rightBtn.style.display = "none";
+        }
       });
     })
     .then(() => {
