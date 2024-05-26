@@ -499,6 +499,7 @@ footer .footer_content .footer-nav li a:hover {
   font-size: 18px;
   font-weight: 200;
   color: rgba(128, 128, 128, 0.612);
+  margin-bottom: 15px;
 }
 .ProductsSection .filterContent .filterForm .radioGroup,
 .ProductsSection .sortContent .filterForm .radioGroup {
@@ -1081,6 +1082,7 @@ input::-moz-range-thumb {
   gap: 30px;
   position: relative;
   margin-bottom: 60px;
+  min-height: 2px;
 }
 .itemDetailsCard .itemContent .itemInfo .precentBox .like-btn.precent,
 .itemDetailsCard .itemContent .itemInfo .precentBox .bookmark-btn.precent,
@@ -1250,6 +1252,10 @@ input::-moz-range-thumb {
   color: rgba(128, 128, 128, 0.781);
 }
 
+.castSlider::-webkit-scrollbar {
+  display: none;
+}
+
 .change {
   color: rgb(145, 0, 0);
 }
@@ -1265,6 +1271,10 @@ input::-moz-range-thumb {
   flex-direction: row-reverse;
   justify-content: space-between;
   width: 100%;
+}
+.sliderControl .sliderButtons button {
+  background-color: transparent;
+  border: none;
 }
 .sliderControl .sliderButtons i {
   padding: 5px;

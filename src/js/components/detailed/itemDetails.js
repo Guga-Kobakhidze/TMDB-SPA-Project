@@ -7,7 +7,6 @@ import {
   imageFinder,
   infoFinder,
 } from "../../helpers/functions";
-import { CategoryKeywords } from "../../helpers/Links";
 
 export const ItemDetails = (
   key,
@@ -135,9 +134,9 @@ export const ItemDetails = (
             </div>
             <div class="castBG container">
                   <div class="sliderControl" >
-                      <div class="sliderButtons">
-                          <i class='bx bx-left-arrow-alt left_castArrow'></i>
-                          <i class='bx bx-right-arrow-alt right_castAarrow' ></i>
+                      <div class="sliderButtons"> 
+                          <button><i class='bx bx-left-arrow-alt left_castArrow'></i></button>
+                          <button><i class='bx bx-right-arrow-alt right_castAarrow' ></i></button>
                       </div>
                       <h2 class="actors">
                             ${isArray ? "Series Cast" : "Top Billed Cast"}

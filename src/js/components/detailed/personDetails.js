@@ -57,8 +57,8 @@ export const PersonDetails = (
             </div>
             <div class="sliderControl" >
                 <div class="sliderButtons">
-                    <i class='bx bx-left-arrow-alt left_arrow'></i>
-                    <i class='bx bx-right-arrow-alt right_arrow' ></i>
+                    <button><i class='bx bx-left-arrow-alt left_arrow'></i></button>
+                    <button><i class='bx bx-right-arrow-alt right_arrow' ></i></button>
                 </div>
                 <h2 class="knownFor">Known For</h2>
             </div>
