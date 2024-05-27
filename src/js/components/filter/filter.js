@@ -35,7 +35,7 @@ export const Filter = () => {
               </div>
               <div class="filterForm">
                   <h2>Show Me</h2>
-                  <div class="radioGroup">
+                  <div class="radioGroup filterTitle filterShow">
                       <div class="radioLabel">
                           <input type="radio" id="everyMovie" name="movieType" checked />
                           <label for="everyMovie">Everything</label>
@@ -49,79 +49,74 @@ export const Filter = () => {
                           <label for="haveSeen">Movies I have Seen</label>
                       </div>
                   </div>
-                  <div class="filterForm">
+                  <div class="filterForm filterRelease filterTitle">
                       <h2>Release Dates</h2>
-                      <div class="radioLabel">
+                      <div class="radioLabel ReleaseDate">
                           <input type="checkbox" id="searchAll" name="releaseType" />
                           <label for="searchAll">Search all releases?</label>
                       </div>
-                      <div class="radioLabel">
-                          <input type="checkbox" id="allCountries" name="releaseType" />
-                          <label for="allCountries">Search all countries?</label>
-                      </div>
-                      <div class="radioLabel">
-                          <input type="checkbox" id="thlim" name="releaseType" />
-                          <label for="thlim">Theatrical (limited)</label>
-                      </div>
-                      <div class="radioLabel">
-                          <input type="checkbox" id="theatrical" name="releaseType" />
-                          <label for="theatrical">Theatrical</label>
-                      </div>
-                      <div class="radioLabel">
-                          <input type="checkbox" id="premiere" name="releaseType" />
-                          <label for="premiere">Premiere</label>
-                      </div>
-                      <div class="radioLabel">
-                          <input type="checkbox" id="digital" name="releaseType" />
-                          <label for="digital">Digital</label>
-                      </div>
-                      <div class="radioLabel">
-                          <input type="checkbox" id="physical" name="releaseType" />
-                          <label for="physical">Physical</label>
-                      </div>
-                      <div class="radioLabel">
-                          <input type="checkbox" id="tv" name="releaseType" />
-                          <label for="tv">TV</label>
-                      </div>
-                      <div>
-                          <label for="releaseFrom">From:</label>
-                          <input type="date" id="releaseFrom" name="releaseFrom">
-                      </div>
-                      <div>
-                          <label for="releaseTo">To:</label>
-                          <input type="date" id="releaseTo" name="releaseTo">
+                     <div class="otherCheckboxes">
+                          <div class="radioLabel ReleaseDate">
+                              <input type="checkbox" id="allCountries" name="releaseType" />
+                              <label for="allCountries">Search all countries?</label>
+                          </div>
+                          <div class="radioLabel ReleaseDate">
+                              <input type="checkbox" id="thlim" name="releaseType" />
+                              <label for="thlim">Theatrical (limited)</label>
+                          </div>
+                          <div class="radioLabel ReleaseDate">
+                              <input type="checkbox" id="theatrical" name="releaseType" />
+                              <label for="theatrical">Theatrical</label>
+                          </div>
+                          <div class="radioLabel ReleaseDate">
+                              <input type="checkbox" id="premiere" name="releaseType" />
+                              <label for="premiere">Premiere</label>
+                          </div>
+                          <div class="radioLabel ReleaseDate">
+                              <input type="checkbox" id="digital" name="releaseType" />
+                              <label for="digital">Digital</label>
+                          </div>
+                          <div class="radioLabel ReleaseDate">
+                              <input type="checkbox" id="physical" name="releaseType" />
+                              <label for="physical">Physical</label>
+                          </div>
+                          <div class="radioLabel ReleaseDate">
+                              <input type="checkbox" id="tv" name="releaseType" />
+                              <label for="tv">TV</label>
+                          </div>
+                     </div>
+                      <div class="datePicker">
+                          <div>
+                              <label for="releaseFrom">From:</label>
+                              <input type="date" id="releaseFrom" name="releaseFrom">
+                          </div>
+                          <div>
+                              <label for="releaseTo">To:</label>
+                              <input type="date" id="releaseTo" name="releaseTo">
+                          </div>
                       </div>
                   </div>
-                  <div class="filterForm genresSection">
+                  <div class="filterForm filterTitle">
                       <h2>Genres</h2>
-                      <!-- Add genre checkboxes here -->
+                      <div class="allGenres"></div>
                   </div>
-                  <div class="filterForm languageContainer">
+                  <div class="filterForm languageContainer filterTitle">
                       <h2>Language</h2>
                       <select class="languages" name="languages">
                           <option value="">Select a language...</option>
                           <!-- Add language options here -->
                       </select>
                   </div>
-                  <div class="filterForm">
+                  <div class="filterForm filterTitle filterRage">
                       <h2>User Score</h2>
                       <div class="double_range_slider_box">
                           <p class='rangeInfo'>Range</p>
                           <ul class='scoreScale'>
-                              <!-- Add scale marks here -->
                           </ul>
                           <div class="double_range_slider">
                               <input type="range" class="inputRange range01" min="0" max="10" value="0" step="1" />
                               <input type="range" class="inputRange range02" min="0" max="10" value="10" step="1" />
                           </div>
-                      </div>
-                      <div class="radioGroup">
-                          <label for="minVotes">Minimum User Votes</label>
-                          <input id="minVotes" type="range" value="250" min="0" max="500" />
-                      </div>
-                      <div class="radioGroup">
-                          <label for="rate">Runtime (minutes)</label>
-                          <input id="rate" type="range" value="0" min="0" max="360" />
                       </div>
                   </div>
                   <button type="submit" class="searchBtn">Search</button>
@@ -145,25 +140,32 @@ export const Filter = () => {
   releaseSection.classList.add("releaseContent");
 
   const genreElementsCreator = async () => {
-    const rawData = fetch(
-      "https://api.themoviedb.org/3/genre/movie/list",
-      modules
-    )
+    fetch("https://api.themoviedb.org/3/genre/movie/list", modules)
       .then((response) => response.json())
-      .then((responseData) => {
-        const arr = [];
-        const divContainer = document.createElement("div");
-        divContainer.classList.add("radioGroup");
+      .then((data) => {
+        const genreArr = data.genres.map(({ name }) => ({
+          name,
+        }));
 
-        for (let genre of responseData.genres) {
-          const pELement = document.createElement("p");
-          pELement.textContent = genre.name;
-          divContainer.append(pELement);
+        for (let element of genreArr) {
+          const divElement = document.createElement("div");
+          divElement.classList.add("genreCheckbox");
+
+          const inputElement = document.createElement("input");
+          inputElement.type = "checkbox";
+          inputElement.id = element.name;
+
+          const labelElement = document.createElement("label");
+          labelElement.textContent = element.name;
+          labelElement.setAttribute("for", element.name);
+
+          divElement.append(inputElement, labelElement);
+
+          filterSection.querySelector(".allGenres").appendChild(divElement);
         }
-
-        filterSection.querySelector(".genresSection").append(divContainer);
       });
   };
+
   const languageGenerator = async () => {
     fetch(`https://api.themoviedb.org/3/configuration/languages`, modules)
       .then((res) => res.json())

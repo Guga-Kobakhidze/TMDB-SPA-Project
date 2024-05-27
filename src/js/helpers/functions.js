@@ -155,3 +155,75 @@ export function imageFinder(image, changer) {
 
   return cover;
 }
+
+// Filter Function
+
+export function setupEventListeners(
+  from,
+  to,
+  range1,
+  range2,
+  genres,
+  selectEl,
+  checkboxes,
+  radios,
+  allCheckBox,
+  releaseCheckes
+) {
+  // Release dates
+  from.addEventListener("change", () => {
+    console.log(releaseFrom.value);
+  });
+
+  to.addEventListener("change", () => {
+    console.log(releaseTo.value);
+  });
+
+  // Range
+  range1.addEventListener("input", () => {
+    logRangeValues();
+  });
+
+  range2.addEventListener("input", () => {
+    logRangeValues();
+  });
+
+  function logRangeValues() {
+    console.log(range1.value, range2.value);
+  }
+
+  // Genres
+  genres.addEventListener("change", (event) => {
+    const checkedCheckbox = event.target;
+    if (checkedCheckbox.checked) {
+      const checkboxId = checkedCheckbox.id;
+      console.log(checkboxId);
+    }
+  });
+
+  // Languages
+  selectEl.addEventListener("change", () => {
+    const selectedValue = selectEl.value;
+    console.log(selectedValue);
+  });
+
+  // Checkboxes and radios
+  function getAttribute(inputs) {
+    inputs.forEach((input) => {
+      input.addEventListener("change", () => {
+        if (input.checked) {
+          const attribute = input.getAttribute("id");
+          console.log(attribute);
+        }
+      });
+    });
+  }
+
+  getAttribute(checkboxes);
+  getAttribute(radios);
+
+  // Toggle checkboxes
+  allCheckBox.addEventListener("change", () => {
+    releaseCheckes.classList.toggle("hideCheckboxes");
+  });
+}

@@ -494,23 +494,44 @@ footer .footer_content .footer-nav li a:hover {
   rotate: 0deg;
   transition: 0.1s;
 }
+.ProductsSection .filterContent .filterForm,
+.ProductsSection .filterContent .otherCheckboxes,
+.ProductsSection .sortContent .filterForm,
+.ProductsSection .sortContent .otherCheckboxes {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
 .ProductsSection .filterContent .filterForm h2,
-.ProductsSection .sortContent .filterForm h2 {
+.ProductsSection .filterContent .otherCheckboxes h2,
+.ProductsSection .sortContent .filterForm h2,
+.ProductsSection .sortContent .otherCheckboxes h2 {
   font-size: 18px;
   font-weight: 200;
   color: rgba(128, 128, 128, 0.612);
   margin-bottom: 15px;
 }
-.ProductsSection .filterContent .filterForm .radioGroup,
-.ProductsSection .sortContent .filterForm .radioGroup {
-  padding-bottom: 20px;
+.ProductsSection .filterContent .filterForm .filterTitle,
+.ProductsSection .filterContent .otherCheckboxes .filterTitle,
+.ProductsSection .sortContent .filterForm .filterTitle,
+.ProductsSection .sortContent .otherCheckboxes .filterTitle {
+  padding-bottom: 30px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.207);
   margin-bottom: 20px;
+  width: 100%;
 }
 .ProductsSection .filterContent .filterForm .radioGroup,
 .ProductsSection .filterContent .filterForm .radioLabel,
+.ProductsSection .filterContent .otherCheckboxes .radioGroup,
+.ProductsSection .filterContent .otherCheckboxes .radioLabel,
 .ProductsSection .sortContent .filterForm .radioGroup,
-.ProductsSection .sortContent .filterForm .radioLabel {
+.ProductsSection .sortContent .filterForm .radioLabel,
+.ProductsSection .sortContent .otherCheckboxes .radioGroup,
+.ProductsSection .sortContent .otherCheckboxes .radioLabel {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -521,12 +542,102 @@ footer .footer_content .footer-nav li a:hover {
 }
 .ProductsSection .filterContent .filterForm .radioGroup .radioLabel,
 .ProductsSection .filterContent .filterForm .radioLabel .radioLabel,
+.ProductsSection .filterContent .otherCheckboxes .radioGroup .radioLabel,
+.ProductsSection .filterContent .otherCheckboxes .radioLabel .radioLabel,
 .ProductsSection .sortContent .filterForm .radioGroup .radioLabel,
-.ProductsSection .sortContent .filterForm .radioLabel .radioLabel {
+.ProductsSection .sortContent .filterForm .radioLabel .radioLabel,
+.ProductsSection .sortContent .otherCheckboxes .radioGroup .radioLabel,
+.ProductsSection .sortContent .otherCheckboxes .radioLabel .radioLabel {
   flex-direction: row;
   align-items: center;
 }
+.ProductsSection .filterContent .filterForm .datePicker,
+.ProductsSection .filterContent .otherCheckboxes .datePicker,
+.ProductsSection .sortContent .filterForm .datePicker,
+.ProductsSection .sortContent .otherCheckboxes .datePicker {
+  width: 100%;
+  margin-top: 20px;
+}
+.ProductsSection .filterContent .filterForm .datePicker div,
+.ProductsSection .filterContent .otherCheckboxes .datePicker div,
+.ProductsSection .sortContent .filterForm .datePicker div,
+.ProductsSection .sortContent .otherCheckboxes .datePicker div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.ProductsSection .filterContent .filterForm .datePicker input,
+.ProductsSection .filterContent .otherCheckboxes .datePicker input,
+.ProductsSection .sortContent .filterForm .datePicker input,
+.ProductsSection .sortContent .otherCheckboxes .datePicker input {
+  height: 40px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.156);
+  outline: none;
+  font-size: 16px;
+}
+.ProductsSection .filterContent .filterForm .allGenres,
+.ProductsSection .filterContent .otherCheckboxes .allGenres,
+.ProductsSection .sortContent .filterForm .allGenres,
+.ProductsSection .sortContent .otherCheckboxes .allGenres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.ProductsSection .filterContent .filterForm .allGenres .genreCheckbox,
+.ProductsSection .filterContent .otherCheckboxes .allGenres .genreCheckbox,
+.ProductsSection .sortContent .filterForm .allGenres .genreCheckbox,
+.ProductsSection .sortContent .otherCheckboxes .allGenres .genreCheckbox {
+  margin: 8px 0;
+}
+.ProductsSection .filterContent .filterForm .allGenres .genreCheckbox input:checked ~ label,
+.ProductsSection .filterContent .otherCheckboxes .allGenres .genreCheckbox input:checked ~ label,
+.ProductsSection .sortContent .filterForm .allGenres .genreCheckbox input:checked ~ label,
+.ProductsSection .sortContent .otherCheckboxes .allGenres .genreCheckbox input:checked ~ label {
+  background-color: rgb(1, 180, 228);
+  border: 1px solid rgb(1, 180, 228);
+}
+.ProductsSection .filterContent .filterForm .allGenres .genreCheckbox input,
+.ProductsSection .filterContent .otherCheckboxes .allGenres .genreCheckbox input,
+.ProductsSection .sortContent .filterForm .allGenres .genreCheckbox input,
+.ProductsSection .sortContent .otherCheckboxes .allGenres .genreCheckbox input {
+  display: none;
+}
+.ProductsSection .filterContent .filterForm .allGenres .genreCheckbox label,
+.ProductsSection .filterContent .otherCheckboxes .allGenres .genreCheckbox label,
+.ProductsSection .sortContent .filterForm .allGenres .genreCheckbox label,
+.ProductsSection .sortContent .otherCheckboxes .allGenres .genreCheckbox label {
+  padding: 6px 15px;
+  border: 1px solid rgba(0, 0, 0, 0.334);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.ProductsSection .filterContent .filterForm .allGenres .genreCheckbox label:hover,
+.ProductsSection .filterContent .otherCheckboxes .allGenres .genreCheckbox label:hover,
+.ProductsSection .sortContent .filterForm .allGenres .genreCheckbox label:hover,
+.ProductsSection .sortContent .otherCheckboxes .allGenres .genreCheckbox label:hover {
+  background-color: rgb(1, 180, 228);
+  border: 1px solid rgb(1, 180, 228);
+}
+.ProductsSection .filterContent .filterForm .ReleaseDate,
+.ProductsSection .filterContent .otherCheckboxes .ReleaseDate,
+.ProductsSection .sortContent .filterForm .ReleaseDate,
+.ProductsSection .sortContent .otherCheckboxes .ReleaseDate {
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+.ProductsSection .filterContent .otherCheckboxes.hideCheckboxes,
+.ProductsSection .sortContent .otherCheckboxes.hideCheckboxes {
+  display: none;
+}
 .ProductsSection .languageContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -534,31 +645,32 @@ footer .footer_content .footer-nav li a:hover {
   margin-bottom: 30px;
   gap: 10px;
 }
+.ProductsSection .languageContainer select {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  padding: 10px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+}
 .ProductsSection .scoreScale {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 103%;
-  margin-top: 30px;
+  transform: translateY(5px);
 }
 .ProductsSection .scoreScale li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 23px;
   color: rgba(128, 128, 128, 0.612);
-}
-.ProductsSection .scoreScale li .division {
-  margin-left: 10px;
-}
-.ProductsSection .scoreScale li::before {
-  content: "|";
-  width: 10px;
-}
-.ProductsSection .scoreScale li .division::before {
-  content: "|";
-  font-size: 10px;
-  display: inline-block;
 }
 .ProductsSection .sortContent {
   height: 0;
@@ -617,8 +729,11 @@ footer .footer_content .footer-nav li a:hover {
   background-color: rgba(128, 128, 128, 0.273);
 }
 
+.filterForm.filterRage {
+  padding: 0;
+}
+
 .double_range_slider_box {
-  margin-top: 15px;
   position: relative;
   width: 100%;
   height: 100%;
@@ -629,12 +744,11 @@ footer .footer_content .footer-nav li a:hover {
   align-items: center;
 }
 .double_range_slider_box .rangeInfo {
-  margin-bottom: 10px;
   background-color: black;
   color: white;
   height: 30px;
   position: absolute;
-  top: -10px;
+  top: -50px;
   padding-top: 8px;
   border-radius: 5px;
   font-size: 12px;
@@ -643,7 +757,7 @@ footer .footer_content .footer-nav li a:hover {
   opacity: 0;
   transition: all 1s ease;
   visibility: hidden;
-  left: calc((var(--value1) + var(--value2)) / 2 * 10%);
+  right: 0;
 }
 .double_range_slider_box .rangeInfo.visible {
   visibility: visible;
@@ -698,12 +812,13 @@ footer .footer_content .footer-nav li a:hover {
 
 .inputRange {
   position: absolute;
-  width: 103%;
+  width: 104%;
   height: 5px;
   background: none;
   pointer-events: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -721,7 +836,7 @@ input::-webkit-slider-thumb {
 }
 
 input[type=range].inputRange:nth-of-type(1)::-webkit-slider-thumb {
-  margin-left: -9px;
+  margin-left: -8px;
 }
 
 input[type=range].inputRange:nth-of-type(2)::-webkit-slider-thumb {

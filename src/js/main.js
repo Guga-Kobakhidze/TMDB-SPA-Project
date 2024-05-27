@@ -73,3 +73,4 @@ document.addEventListener("click", (event) => {
     searchForm.classList.remove("showSearch");
   }
 });
+
