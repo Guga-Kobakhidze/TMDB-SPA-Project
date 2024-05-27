@@ -17,6 +17,7 @@
   .AllCards {
     @include flexBox;
     flex-wrap: wrap;
+    // justify-content: end;
 
     // align-content: start;
     gap: 20px;
@@ -53,6 +54,7 @@
         font-size: 18px;
         font-weight: 200;
         color: rgba(128, 128, 128, 0.612);
+        margin-bottom: 15px;
       }
 
       .radioGroup {

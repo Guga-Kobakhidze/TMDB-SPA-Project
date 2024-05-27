@@ -62,6 +62,7 @@
         gap: 30px;
         position: relative;
         margin-bottom: 60px;
+        min-height: 2px;
 
         .like-btn.precent,
         .bookmark-btn.precent,
@@ -250,6 +251,10 @@
   }
 }
 
+.castSlider::-webkit-scrollbar {
+  display: none;
+}
+
 .change {
   color: rgb(145, 0, 0);
 }
@@ -265,6 +270,11 @@
   width: 100%;
 
   .sliderButtons {
+    button {
+      background-color: transparent;
+      border: none;
+    }
+
     i {
       padding: 5px;
       font-size: 28px;
