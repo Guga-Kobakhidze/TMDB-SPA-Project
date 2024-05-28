@@ -10,11 +10,71 @@ import { Filter } from "../components/filter/filter.js";
 import { Loader } from "../components/loader/loader.js";
 import routes from "../route/route.js";
 
+function MoviePage(movieCards, loadMovies) {
+  const app = document.getElementById("app");
+  const allCards = movieCards.join("");
+  const allCardsContainer = document.createElement("div");
+  allCardsContainer.classList.add("AllCards");
+  allCardsContainer.innerHTML = allCards;
+
+  const filterSection = Filter();
+
+  const container = document.createElement("div");
+  container.classList.add("ProductsSection");
+  container.classList.add("container");
+
+  const productsContent = document.createElement("div");
+  productsContent.classList.add("productsContent");
+
+  let view = routes[location.pathname];
+  const mainTitle = document.createElement("h1");
+  mainTitle.classList.add("mainTitle");
+  mainTitle.innerHTML = view.title;
+
+  productsContent.append(filterSection, allCardsContainer);
+  container.append(mainTitle, productsContent);
+  container.insertAdjacentHTML("beforeend", pagination);
+  app.innerHTML = "";
+  app.appendChild(container);
+
+  const sortClick = document.querySelector(".sortBox .title");
+  const sortContent = document.querySelector(".sortContent");
+
+  const filterClick = document.querySelector(".filterBox .title");
+  const filterContent = document.querySelector(".filterContent");
+
+  function getSearch(item, content, className) {
+    item.addEventListener("click", () => {
+      content.classList.toggle(className);
+    });
+  }
+
+  getSearch(sortClick, sortContent, "showSort");
+  getSearch(filterClick, filterContent, "show");
+
+  const nextBtn = container.querySelector(".next");
+  const prevBtn = container.querySelector(".prev");
+
+  nextBtn.addEventListener("click", () => {
+    currentPage++;
+    loadMovies(currentPage);
+    scrollToTop();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      loadMovies(currentPage);
+      scrollToTop();
+    }
+  });
+
+  return container;
+}
+
 let currentPage = 1;
 
 const allMovies = (key) => {
-  const app = document.getElementById("app");
-
   const loadMovies = (page) => {
     Loader("flex");
 
@@ -31,45 +91,7 @@ const allMovies = (key) => {
           );
         });
 
-        const allCards = movieCards.join("");
-        const allCardsContainer = document.createElement("div");
-        allCardsContainer.classList.add("AllCards");
-        allCardsContainer.innerHTML = allCards;
-
-        const filterSection = Filter();
-
-        const container = document.createElement("div");
-        container.classList.add("ProductsSection");
-        container.classList.add("container");
-
-        const productsContent = document.createElement("div");
-        productsContent.classList.add("productsContent");
-
-        let view = routes[location.pathname];
-        const mainTitle = document.createElement("h1");
-        mainTitle.classList.add("mainTitle");
-        mainTitle.innerHTML = view.title;
-
-        productsContent.append(filterSection, allCardsContainer);
-        container.append(mainTitle, productsContent);
-        container.insertAdjacentHTML("beforeend", pagination);
-        app.innerHTML = "";
-        app.appendChild(container);
-
-        const sortClick = document.querySelector(".sortBox .title");
-        const sortContent = document.querySelector(".sortContent");
-
-        const filterClick = document.querySelector(".filterBox .title");
-        const filterContent = document.querySelector(".filterContent");
-
-        function getSearch(item, content, className) {
-          item.addEventListener("click", () => {
-            content.classList.toggle(className);
-          });
-        }
-
-        getSearch(sortClick, sortContent, "showSort");
-        getSearch(filterClick, filterContent, "show");
+        MoviePage(movieCards, loadMovies);
 
         // Checkboxes Release Date
 
@@ -108,25 +130,9 @@ const allMovies = (key) => {
           movieCheckboxes,
           movieRadios,
           movieSearchAllCheckBox,
-          movieReleaseCheckes
+          movieReleaseCheckes,
+          (filterData) => {}
         );
-
-        const nextBtn = container.querySelector(".next");
-        const prevBtn = container.querySelector(".prev");
-
-        nextBtn.addEventListener("click", () => {
-          currentPage++;
-          loadMovies(currentPage);
-          scrollToTop();
-        });
-
-        prevBtn.addEventListener("click", () => {
-          if (currentPage > 1) {
-            currentPage--;
-            loadMovies(currentPage);
-            scrollToTop();
-          }
-        });
       })
       .catch((err) => console.error(err));
   };

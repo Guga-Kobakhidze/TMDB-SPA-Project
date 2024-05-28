@@ -169,7 +169,8 @@ export function setupEventListeners(
   checkboxes,
   radios,
   allCheckBox,
-  releaseCheckes
+  releaseCheckes,
+  filterData
 ) {
   const filters = { checkboxStates: {} };
 
@@ -199,7 +200,7 @@ export function setupEventListeners(
   genres.addEventListener("change", (event) => {
     const checkedCheckbox = event.target;
     const checkboxId = checkedCheckbox.id;
-    filters.checkboxStates[checkboxId] = checkboxId;
+    filters.checkboxStates[checkboxId] = checkedCheckbox;
     console.log(filters.checkboxStates);
   });
 
@@ -216,7 +217,6 @@ export function setupEventListeners(
       input.addEventListener("change", () => {
         const attribute = input.getAttribute("id");
         filters.checkboxStates[attribute] = input.checked;
-        console.log(filters.checkboxStates);
       });
     });
   }
@@ -229,14 +229,11 @@ export function setupEventListeners(
     releaseCheckes.classList.toggle("hideCheckboxes");
   });
 
-  const app = document.getElementById("app");
-
   const filterForm = document.querySelector(".filter-form");
-  console.log(filterForm);
 
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log(filters);
     Loader("flex");
+    filterData(filters);
   });
 }
