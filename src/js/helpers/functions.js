@@ -170,9 +170,9 @@ export function setupEventListeners(
   radios,
   allCheckBox,
   releaseCheckes,
-  filterData
+  onDataArrive
 ) {
-  const filters = { checkboxStates: {} };
+  const filters = { checkboxStates: [], genreStates: [] };
 
   // Release dates
   from.addEventListener("change", () => {
@@ -193,22 +193,21 @@ export function setupEventListeners(
   });
 
   function logRangeValues() {
-    filters.range = [range1.value, range2.value];
+    filters.rangeFrom = range1.value;
+    filters.rangeTo = range2.value;
   }
 
   // Genres
   genres.addEventListener("change", (event) => {
     const checkedCheckbox = event.target;
     const checkboxId = checkedCheckbox.id;
-    filters.checkboxStates[checkboxId] = checkedCheckbox;
-    console.log(filters.checkboxStates);
+    filters.genreStates[checkboxId] = checkedCheckbox;
   });
 
   // Languages
   selectEl.addEventListener("change", () => {
     const selectedValue = selectEl.value;
     filters.selectedLanguage = selectedValue;
-    console.log(filters.selectedLanguage);
   });
 
   // Checkboxes and radios
@@ -234,6 +233,8 @@ export function setupEventListeners(
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
     Loader("flex");
-    filterData(filters);
+    onDataArrive(filters);
   });
+
+  return filters;
 }
