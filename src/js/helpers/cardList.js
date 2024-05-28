@@ -1,7 +1,6 @@
 import { Filter } from "../components/filter/filter";
 import { pagination } from "../components/pagination/pagination";
 import routes from "../route/route";
-import { scrollToTop } from "./functions";
 
 export function getItemPage(movieCards, loadMovies, currentPage) {
   const app = document.getElementById("app");
@@ -40,23 +39,6 @@ export function getItemPage(movieCards, loadMovies, currentPage) {
   }
 
   getSearch(filterClick, filterContent, "show");
-
-  const nextBtn = container.querySelector(".next");
-  const prevBtn = container.querySelector(".prev");
-
-  nextBtn.addEventListener("click", () => {
-    currentPage++;
-    loadMovies(currentPage);
-    scrollToTop();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      loadMovies(currentPage);
-      scrollToTop();
-    }
-  });
 
   return container;
 }

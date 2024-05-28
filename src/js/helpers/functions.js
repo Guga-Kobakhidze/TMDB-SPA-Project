@@ -201,7 +201,11 @@ export function setupEventListeners(
   genres.addEventListener("change", (event) => {
     const checkedCheckbox = event.target;
     const checkboxId = checkedCheckbox.id;
-    filters.genreStates[checkboxId] = checkedCheckbox;
+    if (checkedCheckbox.checked) {
+      filters.genreStates[checkboxId] = checkedCheckbox.value;
+    } else {
+      delete filters.genreStates[checkboxId];
+    }
   });
 
   // Languages
@@ -214,8 +218,13 @@ export function setupEventListeners(
   function getAttribute(inputs) {
     inputs.forEach((input) => {
       input.addEventListener("change", () => {
-        const attribute = input.getAttribute("id");
-        filters.checkboxStates[attribute] = input.checked;
+        if (input.type === "checkbox") {
+          const attribute = input.getAttribute("id");
+          filters.checkboxStates[attribute] = input.checked;
+        } else if (input.type === "radio") {
+          const attribute = input.getAttribute("id");
+          filters.radio = attribute;
+        }
       });
     });
   }

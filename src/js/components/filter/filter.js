@@ -112,9 +112,11 @@ export const Filter = () => {
     fetch("https://api.themoviedb.org/3/genre/movie/list", modules)
       .then((response) => response.json())
       .then((data) => {
-        const genreArr = data.genres.map(({ name }) => ({
+        const genreArr = data.genres.map(({ name, id }) => ({
+          id,
           name,
         }));
+        console.log(genreArr);
 
         for (let element of genreArr) {
           const divElement = document.createElement("div");
@@ -122,11 +124,11 @@ export const Filter = () => {
 
           const inputElement = document.createElement("input");
           inputElement.type = "checkbox";
-          inputElement.id = element.name;
+          inputElement.id = element.id;
 
           const labelElement = document.createElement("label");
           labelElement.textContent = element.name;
-          labelElement.setAttribute("for", element.name);
+          labelElement.setAttribute("for", element.id);
 
           divElement.append(inputElement, labelElement);
 

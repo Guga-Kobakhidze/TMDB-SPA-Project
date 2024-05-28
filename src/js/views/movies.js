@@ -1,4 +1,8 @@
-import { Fetching, setupEventListeners } from "../helpers/functions.js";
+import {
+  Fetching,
+  scrollToTop,
+  setupEventListeners,
+} from "../helpers/functions.js";
 import { CategoryKeywords } from "../helpers/Links.js";
 import { ProductsCard } from "../components/productCard.js";
 import { getItemPage } from "../helpers/cardList.js";
@@ -25,7 +29,7 @@ const allMovies = (key) => {
 
         // get Movie cards
 
-        getItemPage(movieCards, loadMovies, currentPage);
+        getItemPage(movieCards);
 
         // Checkbox Inputes for filter
 
@@ -56,9 +60,75 @@ const allMovies = (key) => {
           movieSearchAllCheckBox,
           movieReleaseCheckes,
           (data) => {
-            console.log(data);
+            const showMe = data.radio;
+            const fromDate = data.releaseFrom;
+            const toDate = data.releaseTo;
+            const language = data.selectedLanguage;
+            const fromRate = data.rangeFrom;
+            const toRate = data.rangeTo;
+
+            const genres = data.genreStates;
+            const genreArray = Object.entries(genres).map(([key]) => ({ key }));
+
+            const releaseDates = data.checkboxStates;
+            const releaseDatesArray = Object.entries(releaseDates).map(
+              ([key]) => ({
+                key,
+              })
+            );
+
+            const filterGenre = genreArray.map((val) => val.key).join(",");
+
+            Fetching(
+              "discover",
+              "movie",
+              `page=${page}${filterGenre ? `&with_genres=${filterGenre}` : ""}${
+                language ? `&language=${language}` : ""
+              }${
+                fromRate
+                  ? `&vote_count.gte=${fromRate}&vote_count.lte=${toRate}`
+                  : ""
+              }`
+            )
+              .then((data) => {
+                const movieCards = data.results.map((card) => {
+                  return ProductsCard(
+                    "movies",
+                    card.id,
+                    card.title,
+                    card.poster_path,
+                    card.vote_average,
+                    card.release_date
+                  );
+                });
+
+                // get Movie cards
+
+                getItemPage(movieCards);
+
+                document.querySelector(".next").style.display = "none";
+                document.querySelector(".prev").style.display = "none";
+              })
+              .catch((err) => console.error(err));
           }
         );
+
+        const nextBtn = document.querySelector(".next");
+        const prevBtn = document.querySelector(".prev");
+
+        nextBtn.addEventListener("click", () => {
+          currentPage++;
+          loadMovies(currentPage);
+          scrollToTop();
+        });
+
+        prevBtn.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            loadMovies(currentPage);
+            scrollToTop();
+          }
+        });
       })
       .catch((err) => console.error(err));
   };
