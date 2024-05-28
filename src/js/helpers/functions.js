@@ -1,3 +1,4 @@
+import { Loader } from "../components/loader/loader";
 import { fetchTrending } from "../components/sections/trending/trendingFetch";
 import SearchData from "../views/search/search";
 
@@ -170,13 +171,15 @@ export function setupEventListeners(
   allCheckBox,
   releaseCheckes
 ) {
+  const filters = { checkboxStates: {} };
+
   // Release dates
   from.addEventListener("change", () => {
-    console.log(releaseFrom.value);
+    filters.releaseFrom = from.value;
   });
 
   to.addEventListener("change", () => {
-    console.log(releaseTo.value);
+    filters.releaseTo = to.value;
   });
 
   // Range
@@ -189,32 +192,31 @@ export function setupEventListeners(
   });
 
   function logRangeValues() {
-    console.log(range1.value, range2.value);
+    filters.range = [range1.value, range2.value];
   }
 
   // Genres
   genres.addEventListener("change", (event) => {
     const checkedCheckbox = event.target;
-    if (checkedCheckbox.checked) {
-      const checkboxId = checkedCheckbox.id;
-      console.log(checkboxId);
-    }
+    const checkboxId = checkedCheckbox.id;
+    filters.checkboxStates[checkboxId] = checkboxId;
+    console.log(filters.checkboxStates);
   });
 
   // Languages
   selectEl.addEventListener("change", () => {
     const selectedValue = selectEl.value;
-    console.log(selectedValue);
+    filters.selectedLanguage = selectedValue;
+    console.log(filters.selectedLanguage);
   });
 
   // Checkboxes and radios
   function getAttribute(inputs) {
     inputs.forEach((input) => {
       input.addEventListener("change", () => {
-        if (input.checked) {
-          const attribute = input.getAttribute("id");
-          console.log(attribute);
-        }
+        const attribute = input.getAttribute("id");
+        filters.checkboxStates[attribute] = input.checked;
+        console.log(filters.checkboxStates);
       });
     });
   }
@@ -225,5 +227,16 @@ export function setupEventListeners(
   // Toggle checkboxes
   allCheckBox.addEventListener("change", () => {
     releaseCheckes.classList.toggle("hideCheckboxes");
+  });
+
+  const app = document.getElementById("app");
+
+  const filterForm = document.querySelector(".filter-form");
+  console.log(filterForm);
+
+  filterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(filters);
+    Loader("flex");
   });
 }

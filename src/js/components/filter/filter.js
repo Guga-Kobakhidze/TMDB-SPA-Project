@@ -28,7 +28,7 @@ export const Filter = () => {
     `;
 
   const filterBox = `
-        <form class="filterBox">
+        <form class="filterBox filter-form">
               <div class="title">
                   <h2>Filters</h2>
                   <i class='bx bx-chevron-right'></i>
