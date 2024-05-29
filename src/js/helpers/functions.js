@@ -170,10 +170,8 @@ export function setupEventListeners(
   radios,
   allCheckBox,
   releaseCheckes,
-  onDataArrive
+  filters
 ) {
-  const filters = { checkboxStates: [], genreStates: [] };
-
   // Release dates
   from.addEventListener("change", () => {
     filters.releaseFrom = from.value;
@@ -236,14 +234,4 @@ export function setupEventListeners(
   allCheckBox.addEventListener("change", () => {
     releaseCheckes.classList.toggle("hideCheckboxes");
   });
-
-  const filterForm = document.querySelector(".filter-form");
-
-  filterForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    Loader("flex");
-    onDataArrive(filters);
-  });
-
-  return filters;
 }

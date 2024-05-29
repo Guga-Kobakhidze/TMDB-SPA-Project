@@ -9,6 +9,8 @@ import { getItemPage } from "../helpers/cardList.js";
 import { Loader } from "../components/loader/loader.js";
 
 let currentPage = 1;
+const filters = { checkboxStates: [], genreStates: [] };
+console.log("MyFilter", filters);
 
 const allMovies = (key) => {
   const loadMovies = (page) => {
@@ -28,11 +30,9 @@ const allMovies = (key) => {
         });
 
         // get Movie cards
-
         getItemPage(movieCards);
 
-        // Checkbox Inputes for filter
-
+        // Checkbox Inputs for filter
         const movieSearchAllCheckBox = document.getElementById("searchAll");
         const movieReleaseCheckes = document.querySelector(".otherCheckboxes");
         const movieRadios = document.querySelectorAll(".filterShow input");
@@ -46,8 +46,7 @@ const allMovies = (key) => {
           ".filterRelease input"
         );
 
-        // Get Filter Function
-
+        // Set up event listeners
         setupEventListeners(
           movieRelFrom,
           movieRelTo,
@@ -59,59 +58,62 @@ const allMovies = (key) => {
           movieRadios,
           movieSearchAllCheckBox,
           movieReleaseCheckes,
-          (data) => {
-            const showMe = data.radio;
-            const fromDate = data.releaseFrom;
-            const toDate = data.releaseTo;
-            const language = data.selectedLanguage;
-            const fromRate = data.rangeFrom;
-            const toRate = data.rangeTo;
-
-            const genres = data.genreStates;
-            const genreArray = Object.entries(genres).map(([key]) => ({ key }));
-
-            const releaseDates = data.checkboxStates;
-            const releaseDatesArray = Object.entries(releaseDates).map(
-              ([key]) => ({
-                key,
-              })
-            );
-
-            const filterGenre = genreArray.map((val) => val.key).join(",");
-
-            Fetching(
-              "discover",
-              "movie",
-              `page=${page}${filterGenre ? `&with_genres=${filterGenre}` : ""}${
-                language ? `&language=${language}` : ""
-              }${
-                fromRate
-                  ? `&vote_count.gte=${fromRate}&vote_count.lte=${toRate}`
-                  : ""
-              }`
-            )
-              .then((data) => {
-                const movieCards = data.results.map((card) => {
-                  return ProductsCard(
-                    "movies",
-                    card.id,
-                    card.title,
-                    card.poster_path,
-                    card.vote_average,
-                    card.release_date
-                  );
-                });
-
-                // get Movie cards
-
-                getItemPage(movieCards);
-
-                document.querySelector(".next").style.display = "none";
-                document.querySelector(".prev").style.display = "none";
-              })
-              .catch((err) => console.error(err));
-          }
+          filters
         );
+
+        // Form submit event
+        const filterForm = document.querySelector(".filter-form");
+        filterForm.addEventListener("change", (e) => {
+          // it works with change event too
+          e.preventDefault();
+
+          const showMe = filters.radio;
+          const fromDate = filters.releaseFrom;
+          const toDate = filters.releaseTo;
+          const language = filters.selectedLanguage;
+          const fromRate = filters.rangeFrom;
+          const toRate = filters.rangeTo;
+          console.log(language);
+
+          const genres = filters.genreStates;
+          const genreArray = Object.entries(genres).map(([key]) => ({ key }));
+
+          const releaseDates = filters.checkboxStates;
+          const releaseDatesArray = Object.entries(releaseDates).map(
+            ([key]) => ({
+              key,
+            })
+          );
+
+          const filterGenre = genreArray.map((val) => val.key).join(",");
+
+          Fetching(
+            "discover",
+            "movie",
+            `page=${page}${filterGenre ? `&with_genres=${filterGenre}` : ""}${
+              language ? `&language=${language}` : ""
+            }${
+              fromRate
+                ? `&vote_count.gte=${fromRate}&vote_count.lte=${toRate}`
+                : ""
+            }`
+          ).then((data) => {
+            const movieCards = data.results.map((card) => {
+              return ProductsCard(
+                "movies",
+                card.id,
+                card.title,
+                card.poster_path,
+                card.vote_average,
+                card.release_date
+              );
+            });
+
+            document.querySelector(".AllCards").innerHTML = "";
+            document.querySelector(".AllCards").innerHTML =
+              movieCards.join(" ");
+          });
+        });
 
         const nextBtn = document.querySelector(".next");
         const prevBtn = document.querySelector(".prev");
