@@ -2,7 +2,7 @@
   @include Absolute;
   top: 40px;
   z-index: 1000;
-  display: f;
+  display: flex;
   gap: 10px;
 
   .circle {
@@ -39,5 +39,25 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+footer {
+  position: relative;
+
+  #Loader {
+    @include Absolute;
+    top: -50px;
+    display: none;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      content: "LOADING...";
+      position: absolute;
+      color: black;
+      font-size: 3rem;
+    }
   }
 }

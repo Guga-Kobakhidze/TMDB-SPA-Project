@@ -10,16 +10,16 @@ export const Filter = () => {
                   <h2>Show Me</h2>
                   <div class="radioGroup filterTitle filterShow">
                       <div class="radioLabel">
-                          <input type="radio" id="everyMovie" name="movieType" checked />
-                          <label for="everyMovie">Everything</label>
+                          <input type="radio" id="0" name="movieType" checked />
+                          <label for="0">Everything</label>
                       </div>
                       <div class="radioLabel">
-                          <input type="radio" id="havenotSeen" name="movieType" />
-                          <label for="havenotSeen">Movies I Haven't Seen</label>
+                          <input type="radio" id="1" name="movieType" />
+                          <label for="1">Movies I Haven't Seen</label>
                       </div>
                       <div class="radioLabel">
-                          <input type="radio" id="haveSeen" name="movieType" />
-                          <label for="haveSeen">Movies I have Seen</label>
+                          <input type="radio" id="2" name="movieType" />
+                          <label for="2">Movies I have Seen</label>
                       </div>
                   </div>
                   <div class="filterForm filterRelease filterTitle">
@@ -30,32 +30,28 @@ export const Filter = () => {
                       </div>
                      <div class="otherCheckboxes">
                           <div class="radioLabel ReleaseDate">
-                              <input type="checkbox" id="allCountries" name="releaseType" />
-                              <label for="allCountries">Search all countries?</label>
+                              <input type="checkbox" id="222" name="releaseType" />
+                              <label for="222">Theatrical (limited)</label>
                           </div>
                           <div class="radioLabel ReleaseDate">
-                              <input type="checkbox" id="thlim" name="releaseType" />
-                              <label for="thlim">Theatrical (limited)</label>
+                              <input type="checkbox" id="333" name="releaseType" />
+                              <label for="333">Theatrical</label>
                           </div>
                           <div class="radioLabel ReleaseDate">
-                              <input type="checkbox" id="theatrical" name="releaseType" />
-                              <label for="theatrical">Theatrical</label>
+                              <input type="checkbox" id="111" name="releaseType" />
+                              <label for="111">Premiere</label>
                           </div>
                           <div class="radioLabel ReleaseDate">
-                              <input type="checkbox" id="premiere" name="releaseType" />
-                              <label for="premiere">Premiere</label>
+                              <input type="checkbox" id="444" name="releaseType" />
+                              <label for="444">Digital</label>
                           </div>
                           <div class="radioLabel ReleaseDate">
-                              <input type="checkbox" id="digital" name="releaseType" />
-                              <label for="digital">Digital</label>
+                              <input type="checkbox" id="555" name="releaseType" />
+                              <label for="555">Physical</label>
                           </div>
                           <div class="radioLabel ReleaseDate">
-                              <input type="checkbox" id="physical" name="releaseType" />
-                              <label for="physical">Physical</label>
-                          </div>
-                          <div class="radioLabel ReleaseDate">
-                              <input type="checkbox" id="tv" name="releaseType" />
-                              <label for="tv">TV</label>
+                              <input type="checkbox" id="666" name="releaseType" />
+                              <label for="666">TV</label>
                           </div>
                      </div>
                       <div class="datePicker">

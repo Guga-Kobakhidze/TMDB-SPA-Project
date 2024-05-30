@@ -87,6 +87,9 @@ const allMovies = (key) => {
               key,
             })
           );
+          const release_dates = releaseDatesArray
+            .map((val) => Number(val.key.slice(0, 1)))
+            .join("|");
 
           const filterGenre = genreArray.map((val) => val.key).join(",");
 
@@ -102,6 +105,14 @@ const allMovies = (key) => {
                 fromRate
                   ? `&vote_count.gte=${fromRate}&vote_count.lte=${toRate}`
                   : ""
+              }${showMe ? `&show_me=${showMe}` : ""}${
+                release_dates && release_dates !== "searchAll"
+                  ? `&with_release_type=${release_dates}`
+                  : ""
+              }${
+                fromDate
+                  ? `&release_date.gte=${fromDate}&release_date.lte=${toDate}`
+                  : ""
               }`
             ).then((data) => {
               const movieCards = data.results.map((card) => {
@@ -116,25 +127,32 @@ const allMovies = (key) => {
               });
 
               accumulatedMovies = [...accumulatedMovies, ...movieCards];
-              console.log(accumulatedMovies);
 
               prevBtn.style.display = "none";
               nextBtn.style.display = "none";
 
-              const showMore = document.createElement("button");
-              showMore.classList.add("show-more");
-              showMore.innerHTML = "Show More";
-              document.getElementById("app").appendChild(showMore);
-
-              showMore.addEventListener("click", () => {
-                perPage++;
-                fetchingFilter(perPage);
-              });
-
-              document.querySelector(".AllCards").innerHTML = "";
               document.querySelector(".AllCards").innerHTML =
                 accumulatedMovies.join(" ");
+
+              window.addEventListener("scroll", handleScroll);
             });
+
+          const handleScroll = () => {
+            if (
+              window.innerHeight + window.scrollY >=
+              document.body.scrollHeight - 1
+            ) {
+              document.getElementById("Loader").style.display = "flex";
+              window.removeEventListener("scroll", handleScroll);
+              setTimeout(() => {
+                perPage++;
+                fetchingFilter(perPage).then(() => {
+                  document.getElementById("Loader").style.display = "none";
+                  window.addEventListener("scroll", handleScroll);
+                });
+              }, 500);
+            }
+          };
 
           fetchingFilter(perPage);
         });

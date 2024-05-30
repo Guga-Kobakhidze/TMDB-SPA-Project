@@ -412,7 +412,7 @@ footer .footer_content .footer-nav li a:hover {
   transform: translate(-50%, -50%);
   top: 40px;
   z-index: 1000;
-  display: f;
+  display: flex;
   gap: 10px;
 }
 .loader .circle {
@@ -445,6 +445,27 @@ footer .footer_content .footer-nav li a:hover {
     opacity: 1;
   }
 }
+footer {
+  position: relative;
+}
+footer #Loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: -50px;
+  display: none;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
+}
+footer #Loader::after {
+  content: "LOADING...";
+  position: absolute;
+  color: black;
+  font-size: 3rem;
+}
+
 .ProductsSection {
   margin-top: 130px;
 }
