@@ -855,6 +855,17 @@ input::-moz-range-thumb {
   margin-top: 30%;
 }
 
+.showMore {
+  width: 100%;
+  height: 60px;
+  margin-top: 40px;
+  border: none;
+  transition: 0.2s;
+}
+.showMore:hover {
+  background-color: rgba(93, 24, 36, 0.5607843137);
+}
+
 .card {
   width: 182px;
   height: 373px;

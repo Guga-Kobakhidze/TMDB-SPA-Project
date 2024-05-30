@@ -63,9 +63,13 @@ const allMovies = (key) => {
 
         // Form submit event
         const filterForm = document.querySelector(".filter-form");
-        filterForm.addEventListener("change", (e) => {
-          // it works with change event too
+        let accumulatedMovies = [];
+
+        filterForm.addEventListener("submit", (e) => {
           e.preventDefault();
+          scrollToTop();
+          accumulatedMovies = [];
+          document.querySelector(".AllCards").innerHTML = "";
 
           const showMe = filters.radio;
           const fromDate = filters.releaseFrom;
@@ -73,7 +77,6 @@ const allMovies = (key) => {
           const language = filters.selectedLanguage;
           const fromRate = filters.rangeFrom;
           const toRate = filters.rangeTo;
-          console.log(language);
 
           const genres = filters.genreStates;
           const genreArray = Object.entries(genres).map(([key]) => ({ key }));
@@ -87,32 +90,53 @@ const allMovies = (key) => {
 
           const filterGenre = genreArray.map((val) => val.key).join(",");
 
-          Fetching(
-            "discover",
-            "movie",
-            `page=${page}${filterGenre ? `&with_genres=${filterGenre}` : ""}${
-              language ? `&language=${language}` : ""
-            }${
-              fromRate
-                ? `&vote_count.gte=${fromRate}&vote_count.lte=${toRate}`
-                : ""
-            }`
-          ).then((data) => {
-            const movieCards = data.results.map((card) => {
-              return ProductsCard(
-                "movies",
-                card.id,
-                card.title,
-                card.poster_path,
-                card.vote_average,
-                card.release_date
-              );
+          let perPage = 1;
+
+          const fetchingFilter = (perPage) =>
+            Fetching(
+              "discover",
+              "movie",
+              `page=${perPage}${
+                filterGenre ? `&with_genres=${filterGenre}` : ""
+              }${language ? `&with_original_language=${language}` : ""}${
+                fromRate
+                  ? `&vote_count.gte=${fromRate}&vote_count.lte=${toRate}`
+                  : ""
+              }`
+            ).then((data) => {
+              const movieCards = data.results.map((card) => {
+                return ProductsCard(
+                  "movies",
+                  card.id,
+                  card.title,
+                  card.poster_path,
+                  card.vote_average,
+                  card.release_date
+                );
+              });
+
+              accumulatedMovies = [...accumulatedMovies, ...movieCards];
+              console.log(accumulatedMovies);
+
+              prevBtn.style.display = "none";
+              nextBtn.style.display = "none";
+
+              const showMore = document.createElement("button");
+              showMore.classList.add("show-more");
+              showMore.innerHTML = "Show More";
+              document.getElementById("app").appendChild(showMore);
+
+              showMore.addEventListener("click", () => {
+                perPage++;
+                fetchingFilter(perPage);
+              });
+
+              document.querySelector(".AllCards").innerHTML = "";
+              document.querySelector(".AllCards").innerHTML =
+                accumulatedMovies.join(" ");
             });
 
-            document.querySelector(".AllCards").innerHTML = "";
-            document.querySelector(".AllCards").innerHTML =
-              movieCards.join(" ");
-          });
+          fetchingFilter(perPage);
         });
 
         const nextBtn = document.querySelector(".next");
