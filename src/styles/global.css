@@ -485,6 +485,7 @@ footer #Loader::after {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: start;
   gap: 20px;
 }
 .ProductsSection .filterContent,

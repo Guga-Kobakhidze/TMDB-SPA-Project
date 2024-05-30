@@ -17,7 +17,7 @@
   .AllCards {
     @include flexBox;
     flex-wrap: wrap;
-    // justify-content: end;
+    justify-content: start;
 
     // align-content: start;
     gap: 20px;
