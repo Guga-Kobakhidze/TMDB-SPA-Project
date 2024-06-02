@@ -405,3 +405,16 @@ input::-moz-range-thumb {
     background-color: #5d18248f;
   }
 }
+
+.scrollToTop {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  left: 80px;
+  padding: 15px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}

@@ -1,4 +1,9 @@
+import Img from "../../assets/notfound.jpg";
+
 export const ProductsCard = (key, id, title, img, vote, date) => {
+  const resetImage =
+    img === null ? Img : `https://image.tmdb.org/t/p/original${img}`;
+
   let colorChange = "";
   const votedPrecent = vote * 10;
 
@@ -15,7 +20,7 @@ export const ProductsCard = (key, id, title, img, vote, date) => {
   const productsCard = `
       <a href="/${key}/details?id=${id}" data-link>
           <div class="card" key="${id}"> 
-              <img src="https://image.tmdb.org/t/p/original${img}" alt="${title}"/>
+              <img src="${resetImage}" alt="${title}"/>
               <div class="card-content">
               <div class="precent"> 
                 <div class="precentBorder">

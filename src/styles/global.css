@@ -888,6 +888,19 @@ input::-moz-range-thumb {
   background-color: rgba(93, 24, 36, 0.5607843137);
 }
 
+.scrollToTop {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  left: 80px;
+  padding: 15px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
 .card {
   width: 182px;
   height: 373px;

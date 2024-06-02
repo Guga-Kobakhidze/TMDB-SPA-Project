@@ -1,5 +1,7 @@
 import { modules } from "../../helpers/functions";
-export const Filter = () => {
+export const Filter = (pageKey) => {
+  const isShow = pageKey === "movie";
+
   const filterBox = `
         <form class="filterBox filter-form">
               <div class="title">
@@ -15,11 +17,15 @@ export const Filter = () => {
                       </div>
                       <div class="radioLabel">
                           <input type="radio" id="1" name="movieType" />
-                          <label for="1">Movies I Haven't Seen</label>
+                          <label for="1">${
+                            isShow ? `Movies` : `TV Shows`
+                          } I Haven't Seen</label>
                       </div>
                       <div class="radioLabel">
                           <input type="radio" id="2" name="movieType" />
-                          <label for="2">Movies I have Seen</label>
+                          <label for="2">${
+                            isShow ? `Movies` : `TV Shows`
+                          } I have Seen</label>
                       </div>
                   </div>
                   <div class="filterForm filterRelease filterTitle">
@@ -28,7 +34,9 @@ export const Filter = () => {
                           <input type="checkbox" id="searchAll" name="releaseType" />
                           <label for="searchAll">Search all releases?</label>
                       </div>
-                     <div class="otherCheckboxes">
+                     ${
+                       isShow
+                         ? `<div class="otherCheckboxes">
                           <div class="radioLabel ReleaseDate">
                               <input type="checkbox" id="222" name="releaseType" />
                               <label for="222">Theatrical (limited)</label>
@@ -53,7 +61,9 @@ export const Filter = () => {
                               <input type="checkbox" id="666" name="releaseType" />
                               <label for="666">TV</label>
                           </div>
-                     </div>
+                      </div>`
+                         : ""
+                     }
                       <div class="datePicker">
                           <div>
                               <label for="releaseFrom">From:</label>
@@ -105,7 +115,10 @@ export const Filter = () => {
   releaseSection.classList.add("releaseContent");
 
   const genreElementsCreator = async () => {
-    fetch("https://api.themoviedb.org/3/genre/movie/list", modules)
+    fetch(
+      `https://api.themoviedb.org/3/genre/${isShow ? "movie" : "tv"}/list`,
+      modules
+    )
       .then((response) => response.json())
       .then((data) => {
         const genreArr = data.genres.map(({ name, id }) => ({

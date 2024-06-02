@@ -1,16 +1,11 @@
-import {
-  Fetching,
-  scrollToTop,
-  setupEventListeners,
-} from "../helpers/functions.js";
+import { Fetching, scrollToTop } from "../helpers/functions.js";
 import { CategoryKeywords } from "../helpers/Links.js";
 import { ProductsCard } from "../components/productCard.js";
-import { getItemPage } from "../helpers/cardList.js";
+import { getItemPage, setupEventListeners } from "../helpers/cardList.js";
 import { Loader } from "../components/loader/loader.js";
 
 let currentPage = 1;
 const filters = { checkboxStates: [], genreStates: [] };
-console.log("MyFilter", filters);
 
 const allMovies = (key) => {
   const loadMovies = (page) => {
@@ -30,7 +25,7 @@ const allMovies = (key) => {
         });
 
         // get Movie cards
-        getItemPage(movieCards);
+        getItemPage(movieCards, "movie");
 
         // Checkbox Inputs for filter
         const movieSearchAllCheckBox = document.getElementById("searchAll");
@@ -94,6 +89,7 @@ const allMovies = (key) => {
           const filterGenre = genreArray.map((val) => val.key).join(",");
 
           let perPage = 1;
+          document.getElementById("Loader").style.display = "none";
 
           const fetchingFilter = (perPage) =>
             Fetching(
@@ -131,6 +127,12 @@ const allMovies = (key) => {
               prevBtn.style.display = "none";
               nextBtn.style.display = "none";
 
+              const scrollToTopBtn = document.querySelector(".scrollToTop");
+              scrollToTopBtn.style.display = "block";
+              scrollToTopBtn.addEventListener("click", () => {
+                scrollToTop();
+              });
+
               document.querySelector(".AllCards").innerHTML =
                 accumulatedMovies.join(" ");
 
@@ -139,8 +141,8 @@ const allMovies = (key) => {
 
           const handleScroll = () => {
             if (
-              window.innerHeight + window.scrollY >=
-              document.body.scrollHeight - 1
+              window.innerHeight + window.scrollY >
+              document.body.scrollHeight
             ) {
               document.getElementById("Loader").style.display = "flex";
               window.removeEventListener("scroll", handleScroll);
@@ -151,6 +153,8 @@ const allMovies = (key) => {
                   window.addEventListener("scroll", handleScroll);
                 });
               }, 500);
+            } else {
+              null;
             }
           };
 
