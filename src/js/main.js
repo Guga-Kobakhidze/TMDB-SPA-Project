@@ -74,3 +74,6 @@ document.addEventListener("click", (event) => {
   }
 });
 
+const date = new Date();
+
+console.log(date);

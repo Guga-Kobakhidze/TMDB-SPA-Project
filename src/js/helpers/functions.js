@@ -156,3 +156,7 @@ export function imageFinder(image, changer) {
 
   return cover;
 }
+
+export const MyName = (name) => {
+  return name;
+};
