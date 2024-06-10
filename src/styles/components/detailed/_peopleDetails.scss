@@ -34,6 +34,7 @@
           font-size: 48px;
           color: $main-color;
           transition: 0.5s;
+          line-height: 50px;
 
           &:hover {
             color: #70c8b0;
@@ -71,6 +72,7 @@
 
       h3 {
         font-size: 22px;
+        line-height: 24px;
         font-weight: 600;
         margin-bottom: 10px;
       }
@@ -91,6 +93,7 @@
 
     .knownFor {
       font-size: 22px;
+      line-height: 24px;
       font-weight: 700;
     }
 
@@ -102,12 +105,14 @@
     .castSlider {
       h1 {
         font-size: 48px;
+        line-height: 50px;
         font-weight: 700;
         margin-bottom: 30px;
       }
 
       h2 {
         font-size: 28px;
+        line-height: 30px;
         font-weight: 500;
         margin-bottom: 10px;
       }
