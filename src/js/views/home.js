@@ -5,7 +5,6 @@ import { Trending } from "../components/sections/trending/trending.js";
 import { GetGenres } from "../components/sections/genres/genre.js";
 import { GenreFunc } from "../components/sections/genres/genreFunc.js";
 import { Trailers } from "../components/sections/trailers/trailers.js";
-import { exchangeCurrencies } from "../components/exchange/exchange.js";
 
 const renderDetailedPage = () => {
   const app = document.getElementById("app");
