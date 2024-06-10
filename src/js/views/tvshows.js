@@ -145,14 +145,14 @@ const allTvShows = (key) => {
 
         nextBtn.addEventListener("click", () => {
           currentPage++;
-          loadTvShows(currentPage);
+          loadMovies(currentPage);
           scrollToTop();
         });
 
         prevBtn.addEventListener("click", () => {
           if (currentPage > 1) {
             currentPage--;
-            loadTvShows(currentPage);
+            loadMovies(currentPage);
             scrollToTop();
           }
         });
