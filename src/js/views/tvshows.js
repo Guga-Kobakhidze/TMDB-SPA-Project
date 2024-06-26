@@ -134,6 +134,8 @@ const allTvShows = (key) => {
                   window.addEventListener("scroll", handleScroll);
                 });
               }, 500);
+            } else {
+              document.getElementById("Loader").style.display = "none";
             }
           };
 
